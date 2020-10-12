@@ -1,0 +1,20 @@
+﻿@page "/Score"
+<div class="container">
+
+
+    <div class="wrapper">
+        <h1>    You scored out @Score of 79</h1>
+        <div class="progbar">
+            <span class="progfill" style="width: @StringScore;">@StringScore</span>
+        </div>
+    </div>
+</div>
+
+
+
+@code{
+    string StringScore => ScorePerc.ToString("0.##") + "%";
+
+    double ScorePerc => (Score / 79) * 100;
+    double Score => ExamMTA.scores98_361.Count(x => x.IsCorrect == true);
+}

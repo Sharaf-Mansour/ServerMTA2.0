@@ -1,0 +1,98 @@
+﻿@page "/{QNumber:int}"
+@inject NavigationManager NavigationManager
+ 
+@if (QNumber > 79 || QNumber < 1)
+{
+    <div class="container">
+        <h1>Error 404 Page not Found :( </h1>
+    </div>
+}
+else
+{
+    <h3>@($"Q{Qeustion.ID}")</h3>
+    <img src='@($"img/98-361/Q{Qeustion.ID}/98-361-Q{Qeustion.ID}.jpg")' alt="Alternate Text" />
+    <br />
+    @if (Qeustion.ID != 2 && Qeustion.ID != 29 && Qeustion.ID != 35 && Qeustion.ID != 36 &&
+  Qeustion.ID != 48 && Qeustion.ID != 49 && Qeustion.ID != 53 && Qeustion.ID != 79)
+    {
+        foreach (var item in Qeustion.Answers)
+        {
+            <input type="radio" name="technology" id="@item.Value" value="@item.Value" @onchange="RadioSelection" checked=@(RadioValue.Equals(item.Value,StringComparison.OrdinalIgnoreCase)) />
+            <label for="@item.Value"><img src="img/98-361/@item.Value" alt="@item.Value" /></label>
+            <br />
+        }
+    }
+    else
+    {
+        foreach (var item in Qeustion.Answers)
+        {
+                                   <input type="checkbox" id="@item.Value" name="math"
+                   value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e,item))" />
+            <label for="@item.Value"><img src="img/98-361/@item.Value" alt="@item.Value" /></label>
+            <br />
+        }
+    }
+
+    @if(showAnswer){
+    @if (CorrectAnswer)
+    {
+        <h1>CORRECT</h1>
+    }
+    else
+    {
+        <h1>WRONG</h1>
+    }
+    }
+
+    @if (QNumber == 79)
+    {
+        <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Score")'>End Exam</button>
+    }
+    else
+    {
+        <button class="btnsubmit" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>Next Qeustion</button>
+
+    }
+
+}
+@code {
+    [Parameter] public  int QNumber { get; set; }
+    public bool showAnswer = false;
+    string RadioValue = "";
+    public bool CorrectAnswer = false;
+    public Exam Qeustion => ExamMTA.Exams98_361[(QNumber - 1) % 79];
+    private void NavigateToComponent(string Report)
+    {
+        showAnswer = false;
+        CorrectAnswer = false;
+        NavigationManager.NavigateTo(Report);
+    }
+    void RadioSelection(ChangeEventArgs args)
+    {
+        showAnswer = true;
+        RadioValue = args.Value.ToString();
+        CorrectAnswer = (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>();
+        ExamMTA.scores98_361[(QNumber - 1) % 79] = new ((QNumber - 1) % 78,CorrectAnswer);
+    }
+    void CheckSelection(ChangeEventArgs __e, Answer I)
+    {
+        showAnswer = true;
+        Qeustion.Answers[Qeustion.Answers.FindIndex(x=> x.ID == I.ID)]= new(I.ID,I.Value,I.IsCorrect,(bool)__e.Value);
+        var CorrectAnswersCount = (from item in Qeustion.Answers where item.IsCorrect == true select item).ToList().Count();
+        var SelectsAnswers = (from item in Qeustion.Answers where item.IsSelected == true select item).ToList();
+        foreach (var item in SelectsAnswers)
+        {
+            if (!item.IsCorrect)
+            {
+                CorrectAnswer = false;
+                break;
+            }
+            CorrectAnswer = true;
+        }
+        if (SelectsAnswers.Count != CorrectAnswersCount)
+        {
+            CorrectAnswer = false;
+        }
+        ExamMTA.scores98_361[(QNumber - 1) % 79] = new ((QNumber - 1) % 79,CorrectAnswer);
+            }
+                        }
