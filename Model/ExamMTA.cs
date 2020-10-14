@@ -418,8 +418,8 @@ What is the action you should take?",ControlType.RadioButton),
               You make use of C# and ASP.NET for development purposes.
 You are in the process of creating a new program using C#. 
 Your code has to include an element that meets the following requirements:
-�Specifies the template for an object.
-�Must be a characterization of a new data type.
+*Specifies the template for an object.
+*Must be a characterization of a new data type.
 What action should you take?",ControlType.RadioButton),
             new(25, new()
             {
@@ -625,9 +625,9 @@ What is TRUE for this scenario?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
             You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a new TestKing.com application that makes use of a data structure that satisfies the following requirements:
-�Prohibits random access to its items.
-�Are extremely fast in executing insert and delete operations.
-�Are not stored in contiguous memory locations.
+*Prohibits random access to its items.
+*Are extremely fast in executing insert and delete operations.
+*Are not stored in contiguous memory locations.
 What data structure should you make use of?",ControlType.RadioButton),
             new(44, new()
             {
@@ -754,7 +754,7 @@ Which of the following actions should you take?",ControlType.RadioButton),
                 new(1, @"You should consider inserting the reference in the machine.config file", false),
                 new(2, @"You should consider inserting the reference in the app.config file", false),
                 new(3, @"You should consider inserting the reference in the Web.config file.", false),
-                new(4, @"You should consider configuring a Web reference to identiO� the Web service.", true),
+                new(4, @"You should consider configuring a Web reference to identify the Web service.", true),
             }, @"You are employed as a developer at TestKing.com. 
            You are using ASP.NET to develop a new Web application, named TKWebApp for TestKing.com.
 TKWebApp makes use of a Web service to obtain data.
@@ -827,10 +827,10 @@ Which of the following actions should you take?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You have been instructed to create a new application for TestKing.com.
  You want to make sure that the application allows for:
-�Internet communication via Electronic Data Interface (EDI).
-�Continual execution in the background.
-�Messages to be written to the Windows application event log, and has no user interface.
-�A user to log off without interrupting the application's processes.
+*Internet communication via Electronic Data Interface (EDI).
+*Continual execution in the background.
+*Messages to be written to the Windows application event log, and has no user interface.
+*A user to log off without interrupting the application's processes.
 What option should you make use of?",ControlType.RadioButton),
             new(62, new()
             {
