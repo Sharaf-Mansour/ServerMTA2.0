@@ -4,11 +4,13 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+
 }
 
 .container {
-    text-align: center;
+    text-align: left;
     margin: 50px auto;
+    padding-left: 50px;
 }
 
 h1 {
@@ -16,10 +18,13 @@ h1 {
     padding: 0;
     font-size: 35px;
 }
-
+pre {
+    margin-top: -5px;
+    font-size: 25px;
+   
+}
 h3 {
-    margin: 0;
-    padding-top: 20px;
+     padding-top: 10px;
     font-size: 30px;
     color: #3498db;
 }
@@ -128,7 +133,8 @@ h3 {
     width: 100%;
     z-index: 1000;
 }
-.ulloading {
+.textcenter{text-align:center;}
+.center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -137,83 +143,61 @@ h3 {
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
-    margin: 0;
-    padding: 0;
-    display: flex;
 }
 
-.liloading {
-    list-style: none;
-    font-size: 70px;
-    letter-spacing: 20px;
-    animation: animate 3s linear infinite;
-    -webkit-animation: animate 3s linear infinite;
+.text {
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    color: #262626;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-size: 2em;
+    background: transparent;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
 }
 
-    .liloading:nth-child(1) {
-        animation-delay: 0s;
-    }
-
-    .liloading:nth-child(2) {
-        animation-delay: .2s;
-    }
-
-    .liloading:nth-child(3) {
-        animation-delay: .4s;
-    }
-
-    .liloading:nth-child(4) {
-        animation-delay: .6s;
-    }
-
-    .liloading:nth-child(5) {
-        animation-delay: .8s;
-    }
-
-    .liloading:nth-child(6) {
-        animation-delay: 1s;
-    }
-
-    .liloading:nth-child(7) {
-        animation-delay: 1.2s;
-    }
+.ring {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    box-shadow: 0 4px 0 #262626;
+    background: transparent;
+    animation: animate 1s linear infinite;
+    -webkit-animation: animate 1s linear infinite;
+}
 
 @keyframes animate {
     0% {
-        transform: translateX(-50px);
-        -webkit-transform: translateX(-50px);
-        -moz-transform: translateX(-50px);
-        -ms-transform: translateX(-50px);
-        -o-transform: translateX(-50px);
-        letter-spacing: 20px;
-        opacity: 0;
-        color: #f00;
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    10% {
-        letter-spacing: -20px;
-        opacity: 1;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
     }
 
     100% {
-        transform: translateX(50px);
-        -webkit-transform: translateX(50px);
-        -moz-transform: translateX(50px);
-        -ms-transform: translateX(50px);
-        -o-transform: translateX(50px);
-        letter-spacing: 20px;
-        opacity: 0;
-        color: #00f;
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
     }
 }
 
-
 input[type="checkbox"], input[type="radio"] {
-    position: absolute;
+     position: absolute;
     opacity: 0;
     z-index: -1;
 }
@@ -226,7 +210,6 @@ label {
     line-height: 1.5;
     cursor: pointer;
 }
-
     label:before, label:after {
         position: absolute;
         top: 0;
@@ -251,6 +234,9 @@ input[type="checkbox"] + label:after {
     color: #fff;
     line-height: 1.7em;
     text-align: center;
+}
+.fix{
+     margin-top:10px;
 }
 /* Radio */
 input[type="radio"] + label:before {
@@ -298,11 +284,11 @@ input[type="checkbox"]:checked + label:after, input[type=radio]:checked + label:
 }
 /* Transition */
 label:before, label:after {
-    transition: .25s all ease;
-    -webkit-transition: .25s all ease;
-    -o-transition: .25s all ease;
-    -moz-transition: .25s all ease;
-    -ms-transition: .25s all ease;
+    transition: .27s all ease;
+    -webkit-transition: .27s all ease;
+    -o-transition: .27s all ease;
+    -moz-transition: .27s all ease;
+    -ms-transition: .27s all ease;
 }
 /* input number */
 .num {

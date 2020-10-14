@@ -4,10 +4,9 @@
     private void NavigateToComponent(string Report) => NavigationManager.NavigateTo(Report);
 }
 
-<div class="container">
-    <h1>Welcome to Microsoft MTA exam training center</h1>
-    <h1> Microsoft 98-361</h1>
-    <h3>to start a test click <button class="btn btnindex" @onclick='()=>NavigateToComponent("1")'>Here</button></h3>
+<div class="container textcenter">
+    <h1>Welcome to the Microsoft 98-361 Exam</h1>
+       <button class="btn btnindex" @onclick='()=>NavigateToComponent("1")'>Click to Start</button>
 
     @*<div style="margin: 50px auto;margin-top: 20px;padding-top: 10px;border: 2px solid #aaa;border-radius: 12px;box-shadow: 0 0px 20px #999;width: 870px;">
         <h1 style="margin-bottom: 30px;">Control Panel</h1>
