@@ -1,0 +1,21 @@
+﻿
+.btnindex {
+    color: #3498db;
+}
+
+    .btnindex:hover {
+        color: #fff;
+    }
+
+    .btnindex:before {
+        top: 0;
+        border-radius: 0 0 50% 50%;
+        -webkit-border-radius: 0 0 50% 50%;
+        -moz-border-radius: 0 0 50% 50%;
+        -ms-border-radius: 0 0 50% 50%;
+        -o-border-radius: 0 0 50% 50%;
+    }
+
+    .btnindex:hover:before {
+        height: 180%;
+    }

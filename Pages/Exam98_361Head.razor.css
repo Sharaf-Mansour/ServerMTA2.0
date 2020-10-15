@@ -1,0 +1,9 @@
+﻿
+.container {
+    text-align: left;
+    margin: 50px auto;
+    padding-left: 50px;
+}
+p {
+    white-space: pre;
+}

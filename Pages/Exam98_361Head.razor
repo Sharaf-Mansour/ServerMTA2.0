@@ -1,15 +1,15 @@
 ﻿@page "/{QNumber:int}"
 @inject NavigationManager NavigationManager
  <div    class="container">
+     
 @if (QNumber > 79 || QNumber < 1)
 {
          <h1>Error 404 Page not Found :( </h1>
  }
 else
 {
-
     <h3>@($"Question {Qeustion.ID}:-")</h3>
-	<pre  >@Qeustion.Value </pre> 
+	<p > @Qeustion.Value </p> 
     <br />
     @if (Qeustion.Type == ControlType.RadioButton)
     {
@@ -17,7 +17,7 @@ else
         {
             <input  type="radio"  id="@item.ID" value="@item.Value" @onchange="RadioSelection" 
         checked=@(RadioValue.Equals(item.Value,StringComparison.OrdinalIgnoreCase))   />
-        <label class="fix" for="@item.ID">	<pre>@item.Value </pre> </label>
+        <label class="fix" for="@item.ID">	<p>@item.Value </p> </label>
             <br />
         }
     }
@@ -27,7 +27,7 @@ else
         {
                      <input type="checkbox" id="@item.ID"  
                    value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e,item))" />
-            <label class="fix"   for="@item.ID">	<pre>@item.Value </pre> </label>
+            <label class="fix"   for="@item.ID">	<p>@item.Value </p> </label>
             <br />
         }
     }

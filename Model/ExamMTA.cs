@@ -15,13 +15,13 @@ namespace ServerMTA.Model
                 new(2, @"You should consider making use of the pivotchart method.", false),
                 new(3, @"You should consider making use of the data table method.", false),
                 new(4, @"You should consider making use of the XML method.", false),
-            }, @"You are employed as a developer at TestKing.com.
-You make use of C# and ASP.NET for development purposes.
-You have been asked to create a new program for TestKing.com. 
-Prior to creating the new program, you plan to create an algorithm to fully comprehend how the processes of the program must run.
-The algorithm will list the required actions for completing a process in the appropriate sequence.
-You are informed that your method for creating the algorithm should be as simple, and clear as possible.
-What option should you use?",ControlType.RadioButton),
+            }, @"You are employed as a developer at TestKing.com. 
+You make use of C# and ASP.NET for development purposes.  
+You have been asked to create a new program for TestKing.com.
+Prior to creating the new program, you plan to create an algorithm to fully comprehend how the processes of the program must run. 
+The algorithm will list the required actions for completing a process in the appropriate sequence.  
+You are informed that your method for creating the algorithm should be as simple, and clear as possible.  
+What option should you use?", ControlType.RadioButton),
             new(2, new()
             {
                 new(1, @"CIL is the highest-level human-readable programming language defined by the Common Language Infrastructure specification.", true),
@@ -956,7 +956,7 @@ What option should you use?",ControlType.RadioButton),
             new(73, new()
             {
                 new(1, @"You should consider making use of the DMLWriter class.", false),
-                new(2, @"You should consider making use of the DMLWriter class.", true),
+                new(2, @"You should consider making use of the StreamWriter class.", true),
                 new(3, @"You should consider making use of the DDLWriter class.", false),
                 new(4, @"You should consider making use of the SSLWriter class.", false),
             }, @"You are employed as a developer at TestKing.com. 

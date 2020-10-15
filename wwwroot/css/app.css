@@ -1,28 +1,29 @@
 ﻿
-
+* {
+    margin: 0;
+    padding: 0;
+}
+p {
+    white-space: pre;
+}
 html, body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
 
 }
-
 .container {
-    text-align: left;
+    text-align: center;
     margin: 50px auto;
-    padding-left: 50px;
 }
+
 
 h1 {
     margin: 0;
     padding: 0;
     font-size: 35px;
 }
-pre {
-    margin-top: -5px;
-    font-size: 25px;
-   
-}
+ 
 h3 {
      padding-top: 10px;
     font-size: 30px;
@@ -68,26 +69,6 @@ h3 {
         -o-transition: 0.8s;
     }
 
-.btnindex {
-    color: #3498db;
-}
-
-    .btnindex:hover {
-        color: #fff;
-    }
-
-    .btnindex:before {
-        top: 0;
-        border-radius: 0 0 50% 50%;
-        -webkit-border-radius: 0 0 50% 50%;
-        -moz-border-radius: 0 0 50% 50%;
-        -ms-border-radius: 0 0 50% 50%;
-        -o-border-radius: 0 0 50% 50%;
-    }
-
-    .btnindex:hover:before {
-        height: 180%;
-    }
 
 /* btnsubmit  */
 .btnsubmit {
