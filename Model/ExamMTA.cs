@@ -6,6 +6,17 @@ namespace ServerMTA.Model
 {
     public static class ExamMTA
     {
+        public static bool allowShowAnswer { get; set; }
+        public static bool ShuffleAnswer { get; set; }
+        public static bool ShuffleQeustion { get; set; }
+        static Random rng = new Random();
+        public static void SortQeustion() => Exams98_361.Sort((x, y) => x.ID.CompareTo(y.ID));
+        public static void SortAnswer() {
+            foreach (var item in Exams98_361)
+            {
+               item.Answers.Sort((x, y) => x.ID.CompareTo(y.ID));
+            }
+        } 
 
         static void Shuffle<T>(this IList<T> list)
         {
