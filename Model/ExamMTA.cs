@@ -6,7 +6,30 @@ namespace ServerMTA.Model
 {
     public static class ExamMTA
     {
+
+        static void Shuffle<T>(this IList<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+        public static void shuffleQeustions() => Exams98_361.Shuffle();
+        public static void shuffleAnswers() {
+            foreach (var item in Exams98_361)
+            {
+                item.Answers.Shuffle();
+            }
+        }
+   
         public static List<Score> scores98_361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
+     
+
         public static List<Exam> Exams98_361 { get; set; } = new()
         {
             new(1, new()

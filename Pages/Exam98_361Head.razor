@@ -1,6 +1,6 @@
 ﻿@page "/{QNumber:int}"
 @inject NavigationManager NavigationManager
- <div    class="container">
+ <div    class="container">  
      
 @if (QNumber > 79 || QNumber < 1)
 {
@@ -8,7 +8,49 @@
  }
 else
 {
-    <h3>@($"Question {Qeustion.ID}:-")</h3>
+    
+ <div class="container" style=" box-shadow:inset 0 0 15px rgba(0,0,0,.5); height:150px;">
+        <div class="row text-center">
+            <div class="col col-lg-3 col-md-6 col-sm-6">
+                <h5 style="margin-top: 50px;">
+                    Qeustion @QNumber of 79
+                </h5>
+            </div>
+            <div class="col col-lg-2 col-md-6 col-sm-6">
+                <div class="arrow">
+                    @if(QNumber == 1){
+                    <button class="arrow2 prev"><span class="spn"></span></button>
+                   }
+                   else{
+                                       <button class="arrow2 prev"@onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'><span class="spn"></span></button>
+
+                   }
+                    @if (QNumber == 79){
+                <button class="arrow2 next"><span class="spn"></span></button>
+               }
+                else{
+                                <button class="arrow2 next" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'><span class="spn"></span></button>
+
+                }
+            </div>
+            </div>
+          <div class="col col-lg-2 col-md-6 col-sm-6" style="margin-top:50px; margin-left:40px;">
+          @*      <input type="checkbox" id="cbmark"/>
+                <label class="label" for="cbmark">  Mark For Review</label>     *@ 
+                         <input type="checkbox" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
+                <label class="label" for="cbshow1">   Show Answer</label>
+      </div>
+            <div class="col col-lg-2 col-md-6 col-sm-6" style="margin-top:50px">
+                <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Score")'>End Exam</button>
+
+            </div>
+        
+             
+          </div>
+    </div>  
+
+
+@*    <h3>@($"Question {Qeustion.ID}:-")</h3>*@
 	<p > @Qeustion.Value </p> 
     <br />
     @if (Qeustion.Type == ControlType.RadioButton)
@@ -31,7 +73,7 @@ else
             <br />
         }
     }
-
+    @if(ExamMTA.allowShowAnswer)
     @if(showAnswer){
     @if (CorrectAnswer)
     {
@@ -42,16 +84,10 @@ else
         <h1>WRONG</h1>
     }
     }
+    }
 
-    @if (QNumber == 79)
-    {
-        <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Score")'>End Exam</button>
-    }
-    else
-    {
-        <button class="btnsubmit" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>Next Qeustion</button>
-    }
-    }
+ 
+    
 
 </div>
 @code {
@@ -64,6 +100,21 @@ else
     {
         (showAnswer, CorrectAnswer) = (false, false);
         NavigationManager.NavigateTo(Report);
+    }
+    protected override void OnInitialized(){
+        
+        if (ExamMTA.ShuffleQeustion) {
+            ExamMTA.shuffleQeustions();
+        }
+    else {
+            ExamMTA.SortQeustion();
+        }
+        if (ExamMTA.ShuffleAnswer) {
+            ExamMTA.shuffleAnswers();
+        }
+    else {
+            ExamMTA.SortAnswer();
+        }
     }
    //void RadioSelection(ChangeEventArgs args) => (showAnswer, RadioValue, CorrectAnswer,
    // ExamMTA.scores98_361[(QNumber - 1) % 79])  = (true,args.Value.ToString(),
