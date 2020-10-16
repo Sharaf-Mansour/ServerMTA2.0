@@ -10,45 +10,44 @@ else
 {
     
  <div class="container" style=" box-shadow:inset 0 0 15px rgba(0,0,0,.5); height:150px;">
-        <div class="row text-center">
-            <div class="col col-lg-3 col-md-6 col-sm-6">
-                <h5 style="margin-top: 50px;">
+    
+                <span style="margin-top: 50px;">
                     Qeustion @QNumber of 79
-                </h5>
-            </div>
-            <div class="col col-lg-2 col-md-6 col-sm-6">
-                <div class="arrow">
+                </span>
+           
+           
                     @if(QNumber == 1){
-                    <button class="arrow2 prev"><span class="spn"></span></button>
+                    <button class="arrow2 ">&larr;</button>
                    }
                    else{
-                                       <button class="arrow2 prev"@onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'><span class="spn"></span></button>
+                                       <button class="arrow2 "@onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>
+                                   &larr;
+                               </button>
 
                    }
                     @if (QNumber == 79){
-                <button class="arrow2 next"><span class="spn"></span></button>
+                <button class="arrow2 ">&rarr;</button>
                }
                 else{
-                                <button class="arrow2 next" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'><span class="spn"></span></button>
+                                <button class="arrow2 " @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button>
 
                 }
-            </div>
-            </div>
-          <div class="col col-lg-2 col-md-6 col-sm-6" style="margin-top:50px; margin-left:40px;">
+         
+           
+          <span  style="margin-top:50px; margin-left:40px;">
           @*      <input type="checkbox" id="cbmark"/>
                 <label class="label" for="cbmark">  Mark For Review</label>     *@ 
                          <input type="checkbox" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
                 <label class="label" for="cbshow1">   Show Answer</label>
-      </div>
-            <div class="col col-lg-2 col-md-6 col-sm-6" style="margin-top:50px">
+      </span>
+            <span   style="margin-top:50px">
                 <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Score")'>End Exam</button>
 
-            </div>
+            </span>
         
              
           </div>
-    </div>  
-
+ 
 
 @*    <h3>@($"Question {Qeustion.ID}:-")</h3>*@
 	<p > @Qeustion.Value </p> 

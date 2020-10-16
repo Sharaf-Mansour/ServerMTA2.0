@@ -8,41 +8,45 @@
 <div class="container">
     <h1>Welcome to the Microsoft 98-361 Exam</h1>
        <button class="btn btnindex" @onclick='()=>NavigateToComponent("1")'>Click to Start</button>
-           <div style="margin: 50px auto;margin-top: 20px;padding-top: 10px;border: 2px solid #aaa;border-radius: 12px;box-shadow: 0 0px 20px #999;width: 870px;">
+           <div style="margin: 50px auto;margin-top: 20px;padding-top: 10px;border: 2px solid #aaa;border-radius: 12px;box-shadow: 0 0px 20px #999;width: 80%;">
         <h1 style="margin-bottom: 25px;">Control Panel</h1>
-        <table style="margin: 50px auto;text-align: left;">
-            <tr>
-                <td>
-                    <div>
+           <div>    <br>
                         <input type="checkbox" name="cb" id="cb1" @bind="ExamMTA.allowShowAnswer"  /><label for="cb1">Show Answer</label>
                     </div>
+                     <div>
+                        <br>
+                        <input type="checkbox" name="cb" id="cb2" @bind="ExamMTA.ShuffleQeustion"  /><label for="cb2">Random Questions</label>
+                    </div>
+                      <div>    <br>
+                        <input type="checkbox" name="cb" id="cb3" @bind="ExamMTA.ShuffleAnswer" /><label for="cb3">Random Answer</label>
+                    </div>
+
+      @*  <table style="margin: 50px auto;text-align: left;">
+            <tr>
+                <td>
+                 
                 </td>
        @*<td style="padding-left: 50px;">
                     <div>
                         <input type="radio" name="rd" id="rd1" /><label for="rd1">All Questions</label>
                     </div>
-                </td>*@
+                </td>
             </tr> 
             <tr>
                 <td>
-                    <div>
-                        <br>
-                        <input type="checkbox" name="cb" id="cb2" @bind="ExamMTA.ShuffleQeustion"  /><label for="cb2">Random Questions</label>
-                    </div>
+                   
                 </td>
         @*<td style="padding-left: 50px;" colspan="2">
                     <div>
                         <input type="radio" name="rd" id="rd2" /><label for="rd2">Specific Number Of Questions :</label>
                         <input type="number" min="0" class="num" />
                     </div>
-                </td>*@
+                </td>
             </tr>
             <tr>
                 <td style="padding-top: 10px;">
-                    <div>
-                        <input type="checkbox" name="cb" id="cb3" @bind="ExamMTA.ShuffleAnswer" /><label for="cb3">Random Answer</label>
-                    </div>
-                </td>
+                  
+                </td>*@
              @*<td style="padding-left: 50px;" colspan="2">
                     <div>
                         <input type="radio" name="rd" id="rd3" /><label for="rd3">
@@ -51,8 +55,8 @@
                         To :&nbsp;&nbsp;
                         <input type="number" min="0" class="num" />
                     </div>
-                </td>*@
+                </td>
             </tr>
-        </table>
+        </table*@
     </div>
 </div>
