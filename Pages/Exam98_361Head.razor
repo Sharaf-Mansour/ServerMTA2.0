@@ -9,14 +9,13 @@
 else
 {
     
- <div class="container" style=" box-shadow:inset 0 0 15px rgba(0,0,0,.5); height:150px;">
+ <div class="container" style="   width:250%; height:20%;">
     
-                <span style="margin-top: 50px;">
-                    Qeustion @QNumber of 79
-                </span>
+ 
+                   <font size="5"> Qeustion @QNumber of 79
+        </font>
            
-           
-                    @if(QNumber == 1){
+                     @if(QNumber == 1){
                     <button class="arrow2 ">&larr;</button>
                    }
                    else{
@@ -32,20 +31,20 @@ else
                                 <button class="arrow2 " @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button>
 
                 }
-         
+ 
            
-          <span  style="margin-top:50px; margin-left:40px;">
+          <span  style="margin-top:50px; margin-left:50px;">
           @*      <input type="checkbox" id="cbmark"/>
                 <label class="label" for="cbmark">  Mark For Review</label>     *@ 
                          <input type="checkbox" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
                 <label class="label" for="cbshow1">   Show Answer</label>
       </span>
-            <span   style="margin-top:50px">
+            <span  style="margin-top:50px; margin-left:50px;">
                 <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Score")'>End Exam</button>
-
+                  <br/>
             </span>
         
-             
+             <br/>
           </div>
  
 

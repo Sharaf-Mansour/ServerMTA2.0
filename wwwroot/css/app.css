@@ -230,10 +230,10 @@ input[type="radio"] + label:before {
 
 input[type=radio] + label:after {
     content: '';
-    top: 4.5px;
-    left: 4.5px;
-    width: 14.5px;
-    height: 14.5px;
+    top: 4px;
+    left: 4px;
+    width: 14.55px;
+    height: 14.55px;
     background: #3498db;
     border: .2em solid #fff;
     border-radius: 50%;
@@ -295,7 +295,7 @@ label:before, label:after {
 }
 .progress {
     text-align: center;
-    height: 35px;
+    height: 45px;
           width: 100%;
           /* Set the progressbar to relative */
     position: relative;
@@ -349,14 +349,14 @@ label {
 
 .arrow2 {
     list-style: none;
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     background: #3498db;
     margin: 0 5px;
     margin-top: 50px;
     cursor: pointer;
     color:white;
-    font-size: 20px;
+    font-size: 27px;
     font-weight:bolder;
     border-radius: 50%;
     -webkit-border-radius: 50%;
