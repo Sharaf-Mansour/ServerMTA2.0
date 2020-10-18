@@ -1,104 +1,104 @@
 ﻿@page "/{QNumber:int}"
 @inject NavigationManager NavigationManager
- <div    class="container">  
-     @if (QNumber > 79 || QNumber < 1)
+@if (QNumber > 79 || QNumber < 1)
 {
-         <h1>Error 404 Page not Found :( </h1>
- }
+<h1>Error 404 Page not Found :( </h1> }
 else
 {
-     <div class="container" style="   width:300%; height:22%;">
-                        <font size="5"> Qeustion @QNumber of 79
-        </font>
-                                @if(QNumber == 1){
-                    <button class="arrow2 ">&larr;</button>
-                   }
-                   else{
-                                       <button class="arrow2 "@onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>
-                                   &larr;
-                               </button>
-                  }
-                    @if (QNumber == 79){
-                <button class="arrow2 ">&rarr;</button>
-               }
-                else{
-                                <button class="arrow2 " @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button>
-                }
-                      <span  style="margin-top:50px; margin-left:50px;">
-   @if (  ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)].IsMarked)
- {
-    <input type="checkbox" id="cbmark" checked @onchange="@( (ChangeEventArgs e) => Marker(e))" />
- }
- else
- {
-     <input type="checkbox"  id="cbmark"  @onchange="@( ( ChangeEventArgs e) => 
-              Marker(e))" />
- }
-                <label class="label" for="cbmark"  >  Mark For Review</label> 
-                 <input type="checkbox" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
-                <label class="label" for="cbshow1">   Show Answer</label>
-      </span>
-            <span  style="margin-top:50px; margin-left:50px;">
-                <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Score")'>End Exam</button>
-                  <br/>
-            </span>
-                     <br/>
-          </div>
-	<p > @Qeustion.Value </p> 
-    <br />
-    @if (Qeustion.Type == ControlType.RadioButton)
-    {
-        foreach (var item in Qeustion.Answers)
-        {
-                          if(Qeustion.Answers[Qeustion.Answers.FindIndex(x=> x.ID == item.ID)].IsSelected){
- <input  type="radio"  id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e,item)" 
-        checked   />
-           
-            }
-            else{
-            <input  type="radio"  id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e,item)" 
-        checked=@(RadioValue.Equals(item.Value,StringComparison.OrdinalIgnoreCase))   />
-            
-            }
-        <label class="fix" for="@item.ID">	<p>@item.Value </p> </label>
-            <br />
-        }
-    }
-    else if(Qeustion.Type == ControlType.CheackBox)
-    {
-        foreach (var item in Qeustion.Answers)
-        {
-              if(Qeustion.Answers[Qeustion.Answers.FindIndex(x=> x.ID == item.ID)].IsSelected){
-                 <input type="checkbox" id="@item.ID"  checked
-             
-                     value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e,item))" />
-            
 
-                  }else{
-                     <input type="checkbox" id="@item.ID"  
-             
-                     value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e,item))" />
-                     }
-            <label class="fix"   for="@item.ID">	<p>@item.Value </p> </label>
-            <br />
+<section class="sec1" style="margin: 10px;">
+    <section class="sec2">
+        <table border="0">
+            <tr>
+                <td style="width: 180px;"><span class="title">Qeustion @QNumber  of 79 </span></td>
+                <td>
+                    @if (QNumber == 1)
+                    {
+    <button class="arrow">&larr;</button> }
+else
+{
+<button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>&larr;</button>}
+
+                    @if (QNumber == 79)
+                    {
+    <button class="arrow">&rarr;</button> }
+else
+{
+<button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button>}
+                </td>
+                <td style="width: 220px;">
+
+                    @if (ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)].IsMarked)
+                    {
+    <input type="checkbox" id="cbmark" checked @onchange="@( (ChangeEventArgs e) => Marker(e))" /> }
+else
+{
+<input type="checkbox" id="cbmark" @onchange="@( ( ChangeEventArgs e) =>
+              Marker(e))" />}
+                    <label class="label" for="cbmark">  Mark For Review</label>
+                </td>
+                <td style="width: 200px;">
+                    <input type="checkbox" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
+                    <label class="label" for="cbshow1">   Show Answer</label>
+                </td>
+
+                <td>
+                    <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Score")'>End Exam</button>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <pre style="padding:20px"> @Qeustion.Value </pre>
+    <br />
+    <div style="padding: 20px;">
+        @if (Qeustion.Type == ControlType.RadioButton)
+        {
+            foreach (var item in Qeustion.Answers)
+            {
+                if (Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == item.ID)].IsSelected)
+                {
+                    <input type="radio" id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e, item)" checked /> }
+                else
+                {
+                    <input type="radio" id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e, item)" checked=@(RadioValue.Equals(item.Value, StringComparison.OrdinalIgnoreCase)) /> }
+                <label class="label" for="@item.ID">	<pre>@item.Value </pre> </label>
+        <br /><br /> }
         }
-    }
-    @if(ExamMTA.allowShowAnswer)
-    @if(showAnswer || Qeustion.Answers.Count(x=> x.IsSelected ) > 0){
-    @if (CorrectAnswer||  ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect  )
-    {
-        <h1>CORRECT</h1>
-    }
-    else
-    {
-        <h1>WRONG</h1>
-    }
-    }
-    }
+        else if (Qeustion.Type == ControlType.CheackBox)
+        {
+            foreach (var item in Qeustion.Answers)
+            {
+                if (Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == item.ID)].IsSelected)
+                {
+                    <input type="checkbox" id="@item.ID" checked value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> }
+                else
+                {
+                    <input type="checkbox" id="@item.ID" value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> }
+                <label class="label" for="@item.ID">	<pre>@item.Value </pre> </label><br /><br />}
+        }
+        @if (ExamMTA.allowShowAnswer)
+            @if (showAnswer || Qeustion.Answers.Count(x => x.IsSelected) > 0)
+            {
+                @if (CorrectAnswer || ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect)
+                {
+                    <h1>CORRECT</h1> }
+                else
+                {
+                    <h1>WRONG</h1>}}
     </div>
-@code {
-    [Parameter] public int QNumber { get; set; }
- 
+    </section>}
+
+
+
+
+
+
+
+
+
+
+@code { [Parameter] public int QNumber { get; set; }
+
     public bool showAnswer = false;
     string RadioValue = "";
     public bool CorrectAnswer = false;
@@ -107,41 +107,46 @@ else
     private void NavigateToComponent(string Report)
     {
         (showAnswer, CorrectAnswer) = (false, false);
-         NavigationManager.NavigateTo(Report);
+        NavigationManager.NavigateTo(Report);
     }
-    protected override void OnInitialized(){
-        
-        if (ExamMTA.ShuffleQeustion) {
+    protected override void OnInitialized()
+    {
+
+        if (ExamMTA.ShuffleQeustion)
+        {
             ExamMTA.shuffleQeustions();
         }
-    else {
+        else
+        {
             ExamMTA.SortQeustion();
         }
-        if (ExamMTA.ShuffleAnswer) {
+        if (ExamMTA.ShuffleAnswer)
+        {
             ExamMTA.shuffleAnswers();
         }
-    else {
+        else
+        {
             ExamMTA.SortAnswer();
         }
     }
-        void Marker(ChangeEventArgs args)=>    ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)] = new(QNumber,(bool)args.Value);
-     void RadioSelection(ChangeEventArgs args, Answer I)
+    void Marker(ChangeEventArgs args) => ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)] = new(QNumber, (bool)args.Value);
+    void RadioSelection(ChangeEventArgs args, Answer I)
     {
         ExamMTA.ClearRadioAnswer(Qeustion);
-       Qeustion.Answers[Qeustion.Answers.FindIndex(x=> x.ID == I.ID)]= new(I.ID,I.Value,I.IsCorrect,true);    
+        Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == I.ID)] = new(I.ID, I.Value, I.IsCorrect, true);
 
-        (showAnswer , RadioValue)= (true,args.Value.ToString());
-            CorrectAnswer = (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>();
-        ExamMTA.scores98_361[(QNumber - 1) % 79] = new ((QNumber - 1) % 79,CorrectAnswer);
+        (showAnswer, RadioValue) = (true, args.Value.ToString());
+        CorrectAnswer = (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>();
+        ExamMTA.scores98_361[(QNumber - 1) % 79] = new((QNumber - 1) % 79, CorrectAnswer);
     }
-     void CheckSelection(ChangeEventArgs __e, Answer I)
+    void CheckSelection(ChangeEventArgs __e, Answer I)
     {
-          ( CorrectAnswer, showAnswer)= (false,true); 
-                  Qeustion.Answers[Qeustion.Answers.FindIndex(x=> x.ID == I.ID)]= new(I.ID,I.Value,I.IsCorrect,(bool)__e.Value);    
-         var CorrectAnswersCount = (from item in Qeustion.Answers where item.IsCorrect == true select item).ToList().Count();
-          var SelectsAnswers = (from item in Qeustion.Answers where item.IsSelected == true select item).ToList();
- 
-         foreach (var item in SelectsAnswers)
+        (CorrectAnswer, showAnswer) = (false, true);
+        Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == I.ID)] = new(I.ID, I.Value, I.IsCorrect, (bool)__e.Value);
+        var CorrectAnswersCount = (from item in Qeustion.Answers where item.IsCorrect == true select item).ToList().Count();
+        var SelectsAnswers = (from item in Qeustion.Answers where item.IsSelected == true select item).ToList();
+
+        foreach (var item in SelectsAnswers)
         {
             if (!item.IsCorrect)
             {
@@ -154,6 +159,5 @@ else
         {
             CorrectAnswer = false;
         }
-        ExamMTA.scores98_361[(QNumber - 1) % 79] = new ((QNumber - 1) % 79,CorrectAnswer);
-            }
-     }
+        ExamMTA.scores98_361[(QNumber - 1) % 79] = new((QNumber - 1) % 79, CorrectAnswer);
+    } }

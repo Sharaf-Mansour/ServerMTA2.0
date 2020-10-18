@@ -1,0 +1,62 @@
+﻿*,html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.progress {
+    text-align: center;
+    height: 45px;
+    width: 100%;
+    /* Set the progressbar to relative */
+    position: relative;
+    margin: 50px auto;
+}
+
+.wrapper {
+    width: 50%;
+    margin: 50px auto;
+}
+
+.progfill {
+    display: block;
+    background-color: #3498db;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    transition: width 500ms ease-in-out;
+    -webkit-transition: width 500ms ease-in-out;
+    -moz-transition: width 500ms ease-in-out;
+    -ms-transition: width 500ms ease-in-out;
+    -o-transition: width 500ms ease-in-out;
+}
+
+/* btnsubmit  */
+.btnsubmit {
+    border: none;
+    margin: 2px;
+    padding: 5px;
+    width: 175px;
+    font-family: "montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-size: 200%;
+    transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+}
+.btnsubmit {background-image: linear-gradient(to left, #12cbc4, #0652dd, #12cbc4);}
+.btnsubmit:hover {background-position: right;}
