@@ -84,8 +84,8 @@ else
         }
     }
     @if(ExamMTA.allowShowAnswer)
-    @if(showAnswer){
-    @if (CorrectAnswer)
+    @if(showAnswer || Qeustion.Answers.Count(x=> x.IsSelected ) > 0){
+    @if (CorrectAnswer||  ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect  )
     {
         <h1>CORRECT</h1>
     }
