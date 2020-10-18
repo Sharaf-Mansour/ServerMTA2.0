@@ -1,39 +1,30 @@
 ﻿@page "/{QNumber:int}"
 @inject NavigationManager NavigationManager
  <div    class="container">  
-     
-@if (QNumber > 79 || QNumber < 1)
+     @if (QNumber > 79 || QNumber < 1)
 {
          <h1>Error 404 Page not Found :( </h1>
  }
 else
 {
-    
- <div class="container" style="   width:300%; height:22%;">
-    
- 
-                   <font size="5"> Qeustion @QNumber of 79
+     <div class="container" style="   width:300%; height:22%;">
+                        <font size="5"> Qeustion @QNumber of 79
         </font>
-           
-                     @if(QNumber == 1){
+                                @if(QNumber == 1){
                     <button class="arrow2 ">&larr;</button>
                    }
                    else{
                                        <button class="arrow2 "@onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>
                                    &larr;
                                </button>
-
-                   }
+                  }
                     @if (QNumber == 79){
                 <button class="arrow2 ">&rarr;</button>
                }
                 else{
                                 <button class="arrow2 " @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button>
-
                 }
- 
-           
-          <span  style="margin-top:50px; margin-left:50px;">
+                      <span  style="margin-top:50px; margin-left:50px;">
    @if (  ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)].IsMarked)
  {
     <input type="checkbox" id="cbmark" checked @onchange="@( (ChangeEventArgs e) => Marker(e))" />
@@ -51,12 +42,8 @@ else
                 <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Score")'>End Exam</button>
                   <br/>
             </span>
-        
-             <br/>
+                     <br/>
           </div>
- 
-
-@*    <h3>@($"Question {Qeustion.ID}:-")</h3>*@
 	<p > @Qeustion.Value </p> 
     <br />
     @if (Qeustion.Type == ControlType.RadioButton)
@@ -92,9 +79,6 @@ else
     }
     }
 
- 
-    
-    
 </div>
 @code {
     [Parameter] public int QNumber { get; set; }
@@ -106,11 +90,8 @@ else
 
     private void NavigateToComponent(string Report)
     {
-
         (showAnswer, CorrectAnswer) = (false, false);
-        this.StateHasChanged();
-        NavigationManager.NavigateTo(Report);
-
+         NavigationManager.NavigateTo(Report);
     }
     protected override void OnInitialized(){
         
@@ -127,27 +108,17 @@ else
             ExamMTA.SortAnswer();
         }
     }
-    void Marker(ChangeEventArgs args)
-    {
-          ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)] = new(QNumber,(bool)args.Value);
-    }
-
-   //void RadioSelection(ChangeEventArgs args) => (showAnswer, RadioValue, CorrectAnswer,
-   // ExamMTA.scores98_361[(QNumber - 1) % 79])  = (true,args.Value.ToString(),
-   // (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>(),
-   // new ((QNumber - 1) % 78,CorrectAnswer));
+    void Marker(ChangeEventArgs args)=>    ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)] = new(QNumber,(bool)args.Value);
      void RadioSelection(ChangeEventArgs args)
     {
-        showAnswer = true;
-        RadioValue = args.Value.ToString();
-        CorrectAnswer = (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>();
+        (showAnswer , RadioValue)= (true,args.Value.ToString());
+            CorrectAnswer = (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>();
         ExamMTA.scores98_361[(QNumber - 1) % 79] = new ((QNumber - 1) % 78,CorrectAnswer);
     }
     void CheckSelection(ChangeEventArgs __e, Answer I)
     {
          showAnswer = true;
         Qeustion.Answers[Qeustion.Answers.FindIndex(x=> x.ID == I.ID)]= new(I.ID,I.Value,I.IsCorrect,(bool)__e.Value);    
-   //  (showAnswer, Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == I.ID)]) = (true, new(I.ID, I.Value, I.IsCorrect, (bool)__e.Value));
          var CorrectAnswersCount = (from item in Qeustion.Answers where item.IsCorrect == true select item).ToList().Count();
         var SelectsAnswers = (from item in Qeustion.Answers where item.IsSelected == true select item).ToList();
         foreach (var item in SelectsAnswers)
@@ -165,4 +136,4 @@ else
         }
         ExamMTA.scores98_361[(QNumber - 1) % 79] = new ((QNumber - 1) % 79,CorrectAnswer);
             }
-                        }
+     }
