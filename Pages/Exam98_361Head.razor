@@ -34,8 +34,16 @@ else
  
            
           <span  style="margin-top:50px; margin-left:50px;">
-          @*      <input type="checkbox" id="cbmark"/>
-                <label class="label" for="cbmark">  Mark For Review</label>     *@ 
+   @if (  ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)].IsMarked)
+ {
+    <input type="checkbox" id="cbmark" checked @onchange="@( (ChangeEventArgs e) => Marker(e))" />
+ }
+ else
+ {
+     <input type="checkbox"  id="cbmark"  @onchange="@( ( ChangeEventArgs e) => 
+              Marker(e))" />
+ }
+                <label class="label" for="cbmark"  >  Mark For Review</label> 
                          <input type="checkbox" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
                 <label class="label" for="cbshow1">   Show Answer</label>
       </span>
@@ -86,18 +94,23 @@ else
 
  
     
-
+    
 </div>
 @code {
     [Parameter] public int QNumber { get; set; }
+ 
     public bool showAnswer = false;
     string RadioValue = "";
     public bool CorrectAnswer = false;
     public Exam Qeustion => ExamMTA.Exams98_361[(QNumber - 1) % 79];
+
     private void NavigateToComponent(string Report)
     {
+
         (showAnswer, CorrectAnswer) = (false, false);
+        this.StateHasChanged();
         NavigationManager.NavigateTo(Report);
+
     }
     protected override void OnInitialized(){
         
@@ -114,6 +127,14 @@ else
             ExamMTA.SortAnswer();
         }
     }
+    void Marker(ChangeEventArgs args)
+    {
+    
+
+        ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)] = new(QNumber,(bool)args.Value);
+ 
+        }
+
    //void RadioSelection(ChangeEventArgs args) => (showAnswer, RadioValue, CorrectAnswer,
    // ExamMTA.scores98_361[(QNumber - 1) % 79])  = (true,args.Value.ToString(),
    // (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>(),

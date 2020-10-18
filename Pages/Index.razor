@@ -1,9 +1,10 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
-@code{private void NavigateToComponent(string Report) {
+@code{
+    private void NavigateToComponent(string Report) {
     NavigationManager.NavigateTo(Report);
     ExamMTA.scores98_361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
-     
+    ExamMTA.ClearMark();
 }}
 <div class="container">
     <h1>Welcome to the Microsoft 98-361 Exam</h1>

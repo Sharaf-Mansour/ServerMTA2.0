@@ -39,7 +39,8 @@ namespace ServerMTA.Model
         }
    
         public static List<Score> scores98_361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
-     
+        public static List<MarkForReview> MarkForReviewList = Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
+        public static void ClearMark() => MarkForReviewList = Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
 
         public static List<Exam> Exams98_361 { get; set; } = new()
         {

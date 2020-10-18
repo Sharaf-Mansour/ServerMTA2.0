@@ -1,14 +1,31 @@
 ﻿@page "/Score"
 @inject NavigationManager NavigationManager
-@code{private void NavigateToComponent(string Report) =>NavigationManager.NavigateTo(Report);
+@code{
+    private void NavigateToComponent(string Report) =>NavigationManager.NavigateTo(Report);
+void EndExam(){
+        ExamMTA.ClearMark();
+    NavigationManager.NavigateTo("Score");
+
+}
 }
 <div class="container">
-    <div class="wrapper">
+@if(ExamMTA.MarkForReviewList.Count(x =>x.IsMarked) > 0){
+    @foreach(var i in ExamMTA.MarkForReviewList.Where(x =>x.IsMarked) ){
+  <button class="btnsubmit" @onclick='()=>NavigateToComponent($"/{i.Num}")'>Go to Number @i.Num</button>
+
+    }
+  <button class="btnsubmit" @onclick='()=>EndExam()'>END EXAM</button>
+
+} 
+else{
+
+
+<div class="wrapper">
      <h1>You scored  @Score out of 79</h1>
       <progress class="progress" id="file" value="@ScorePerc" max="100" data-label="@StringScore">  </progress>
     </div>
        <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
-
+}
 </div>
 
 @code{
