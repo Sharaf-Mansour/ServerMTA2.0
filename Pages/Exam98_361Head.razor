@@ -9,7 +9,7 @@
 else
 {
     
- <div class="container" style="   width:250%; height:20%;">
+ <div class="container" style="   width:300%; height:22%;">
     
  
                    <font size="5"> Qeustion @QNumber of 79
@@ -129,11 +129,8 @@ else
     }
     void Marker(ChangeEventArgs args)
     {
-    
-
-        ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)] = new(QNumber,(bool)args.Value);
- 
-        }
+          ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)] = new(QNumber,(bool)args.Value);
+    }
 
    //void RadioSelection(ChangeEventArgs args) => (showAnswer, RadioValue, CorrectAnswer,
    // ExamMTA.scores98_361[(QNumber - 1) % 79])  = (true,args.Value.ToString(),
