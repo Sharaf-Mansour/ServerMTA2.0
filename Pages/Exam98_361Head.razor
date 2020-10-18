@@ -50,8 +50,16 @@ else
     {
         foreach (var item in Qeustion.Answers)
         {
-            <input  type="radio"  id="@item.ID" value="@item.Value" @onchange="RadioSelection" 
+                          if(Qeustion.Answers[Qeustion.Answers.FindIndex(x=> x.ID == item.ID)].IsSelected){
+ <input  type="radio"  id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e,item)" 
+        checked   />
+           
+            }
+            else{
+            <input  type="radio"  id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e,item)" 
         checked=@(RadioValue.Equals(item.Value,StringComparison.OrdinalIgnoreCase))   />
+            
+            }
         <label class="fix" for="@item.ID">	<p>@item.Value </p> </label>
             <br />
         }
@@ -117,11 +125,14 @@ else
         }
     }
         void Marker(ChangeEventArgs args)=>    ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)] = new(QNumber,(bool)args.Value);
-     void RadioSelection(ChangeEventArgs args)
+     void RadioSelection(ChangeEventArgs args, Answer I)
     {
+        ExamMTA.ClearRadioAnswer(Qeustion);
+       Qeustion.Answers[Qeustion.Answers.FindIndex(x=> x.ID == I.ID)]= new(I.ID,I.Value,I.IsCorrect,true);    
+
         (showAnswer , RadioValue)= (true,args.Value.ToString());
             CorrectAnswer = (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>();
-        ExamMTA.scores98_361[(QNumber - 1) % 79] = new ((QNumber - 1) % 78,CorrectAnswer);
+        ExamMTA.scores98_361[(QNumber - 1) % 79] = new ((QNumber - 1) % 79,CorrectAnswer);
     }
      void CheckSelection(ChangeEventArgs __e, Answer I)
     {
