@@ -59,7 +59,19 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js" integrity=""></script>
-        <script integrity="">navigator.serviceWorker.register('service-worker.js');</script>
+    <script integrity="">navigator.serviceWorker.register('service-worker.js');</script>
+    <script>
+     
+
+        window.printwindow = () => {
+            setTimeout(function () {
+                window.print();
+                window.history.back(-1);
+            }, 200);
+            return true;
+        }
+
+    </script>
 
 </body>
 

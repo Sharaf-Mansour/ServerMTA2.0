@@ -15,7 +15,6 @@ void EndExam(){
 
     }
   <button class="btnsubmit" @onclick='()=>EndExam()'>END EXAM</button>
-
 } 
 else{
 
@@ -25,8 +24,11 @@ else{
       <progress class="progress" id="file" value="@ScorePerc" max="100" data-label="@StringScore">  </progress>
     </div>
        <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
+         <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
+
 }
 </div>
+ 
 
 @code{
     string StringScore => ScorePerc.ToString("0.##") + "%";

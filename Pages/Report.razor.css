@@ -1,0 +1,122 @@
+﻿
+*, html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+/* btnsubmit  */
+.btnsubmit {
+    border: none;
+    margin: 2px;
+    padding: 5px;
+    font-family: "montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-size: 200%;
+    transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+    width: 100%;
+}
+
+.btnsubmit {
+    background-image: linear-gradient(to left, #12cbc4, #0652dd, #12cbc4);
+}
+
+    .btnsubmit:hover {
+        background-position: right;
+    }
+
+/* :checked */
+
+
+
+section {
+    width: 100%;
+}
+
+.sec1, .sec2 {
+    height: auto;
+    box-sizing: border-box
+}
+
+.title {
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 22px;
+}
+label,pre {
+padding:0 !important; 
+margin:0;
+}
+pre {
+    margin: 0;
+    display: block;
+    margin-inline-start: 1px;
+    margin-inline-end: 0px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    white-space: pre-line;
+    text-align: left;
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 568px) {
+    .title {
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    pre {
+        font-size: 12px;
+        font-weight: bold
+    }
+
+    .label {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+ 
+    .btnsubmit {
+        font-size: 12px;
+    }
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 600px) {
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
+
+
+
+.blue {
+    color: #0652dd
+}
+
+.checkright {
+    background: paleturquoise;
+    padding: 10px;
+}
+
+.checkwrong {
+    background: antiquewhite;
+    padding: 10px;
+}

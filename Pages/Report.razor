@@ -1,0 +1,69 @@
+﻿@page "/Download"
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@code{
+    private void NavigateToComponent(string Report) =>NavigationManager.NavigateTo(Report);
+        int QNumber = 0;
+            protected override async Task OnAfterRenderAsync(bool firstRender) =>       await JSRuntime.InvokeAsync<bool>("printwindow", null);
+
+    }
+
+
+
+       <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
+
+
+ @foreach(var Qeustion in ExamMTA.Exams98_361 ){
+     <div>
+     <h5 style="padding:20px">Qeustion Number @(1+QNumber++) </h5>
+<pre style="padding-left:20px"> @Qeustion.Value </pre><br />
+<div style="padding-left: 20px;">
+    @if (Qeustion.Type == ControlType.RadioButton)
+    {
+        foreach (var item in Qeustion.Answers)
+        {
+            if (Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == item.ID)].IsSelected)
+            {
+                <label for="@item.ID" class="blue">	<pre class="checkright">@item.Value </pre> </label>
+                }
+            else
+            {
+                <label for="@item.ID">	<pre>@item.Value </pre> </label>
+                }
+         }
+    }
+    else if (Qeustion.Type == ControlType.CheackBox)
+    {
+        foreach (var item in Qeustion.Answers)
+        {
+            if (Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == item.ID)].IsSelected)
+            {
+                <label for="@item.ID" class="blue">	<pre class="checkright">@item.Value </pre> </label> 
+                }
+            else
+            {
+                <label for="@item.ID">	<pre>@item.Value </pre> </label> 
+                }
+        }
+    }
+    @if ( Qeustion.Answers.Count(x => x.IsSelected) > 0)
+    {
+        @if ( ExamMTA.scores98_361[(QNumber-1) % 79].IsCorrect)
+        {
+            <h5>CORRECT</h5> 
+            }
+        else
+        {
+            <h5>WRONG</h5>
+            }
+    }
+    else
+    {
+        <h5>Not Answered</h5>
+        }
+</div>
+</div>
+     <br clear="all" style="page-break-before:always" />
+
+}
+ 

@@ -138,29 +138,21 @@ What action should you take?",ControlType.RadioButton),
             new(7, new()
             {
                 new(1, @"int count = 1; 
-while (count <= 7)
-{
+while (count <= 7) {
 Console.WriteLine(""The value of count = {0}"" , count);
-count++;
-}", true),
+count++; }", true),
                 new(2, @"int count = 0; 
-while (count <= 7)
-{
+while (count <= 7){
 Console.WriteLine(""The value of count = {7}"" , count);
-count++;
-}", false),
+count++; }", false),
                 new(3, @"int count = 1; 
-while (count <= 7)
-{
+while (count <= 7) {
 Console.WriteLine(""The value of count = {7}"" , count);
-count++;
-}", false),
+count++; }", false),
                 new(4, @"int count = 0; 
-while (count <= 7)
-{
+while (count <= 7) {
 Console.WriteLine(""The value of count = {0}"" , count);
-count++;
-}", false),
+count++; }", false),
             }, @"You are employed as a developer at TestKing.com. 
 You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a new application for TestKing.com using C#. 
@@ -204,29 +196,25 @@ What line of code should be inserted?",ControlType.RadioButton),
             new(10, new()
             {
                 new(1, @"int count = O; 
-while (count < 6)
-{
+while (count < 6) {
 when (count == 6)
 break;
 count++;
 }", false),
                 new(2, @"int count = O; 
-while (count < 7)
-{
+while (count < 7) {
 if (count == 5)
 break;
 count++;
 }", true),
                 new(3, @"int count = 1; 
-while (count < 6)
-{
+while (count < 6) {
 if (count == 6)
 break;
 count++;
 }", false),
                 new(4, @"int count = 1; 
-while (count < 7)
-{
+while (count < 7) {
 when (count == 5)
 break;
 count++;
@@ -359,82 +347,46 @@ You want to make sure that the Area method in the Shape class allows for new ope
 What option should you use?",ControlType.RadioButton),
             new(21, new()
             {
-                new(1, @"class Rectangle : IConvertible
-{
+                new(1, @"class Rectangle : IConvertible {
 public double Length { get; set; }
 public double Width { get; set; }
-public double GetArea()
-{
-return Length * Width;
-}
-public intCompareTo(object obj)
-{
+public double GetArea(){ return Length * Width;}
+public intCompareTo(object obj){
 Rectangle target = (Rectangle)obj;
 double diff = this.GetArea() - target.GetArea();
-if (diff == 0)
-return 0;
-else if (diff > 0)
-return 1;
-else return -1;
-}
-}", true),
-                new(2, @"class Rectangle : IComparable
-{
+if (diff == 0) return 0;
+else if (diff > 0) return 1;
+else return -1; }}", true),
+                new(2, @"class Rectangle : IComparable {
 public  Length { get; set; }
 public  Width { get; set; }
-public double GetArea()
-{
-return Area;
-}
-public intCompareTo(object obj)
-{
+public double GetArea(){return Area;}
+public intCompareTo(object obj){
 Rectangle target = (Rectangle)obj;
 double diff = this.GetArea() - target.GetArea();
-if (diff == 0)
-return 0;
-else if (diff > 0)
-return 1;
-else return -1;
-}
-}", false),
-                new(3, @"class Rectangle : IComparable
-{
+if (diff == 0) return 0;
+else if (diff > 0) return 1;
+else return -1;}}", false),
+                new(3, @"class Rectangle : IComparable {
 public double Length { get; set; }
 public double Width { get; set; }
-public double GetArea()
-{
-return Length * Width;
-}
-public intCompareTo(object obj)
-{
+public double GetArea() {return Length * Width;}
+public intCompareTo(object obj){
 Rectangle target = (Rectangle)obj;
 double diff = this.GetArea() - target.GetArea();
-if (diff == 0)
-return 0;
-else if (diff > 0)
-return 1;
-else return -1;
-}
-}", false),
-                new(4, @"class Rectangle : IComparable
-{
+if (diff == 0) return 0;
+else if (diff > 0) return 1;
+else return -1;}}", false),
+                new(4, @"class Rectangle : IComparable {
 public  Length { get; set; }
 public  Width { get; set; }
-public double GetArea()
-{
-return Area;
-}
-public intCompareTo(object obj)
-{
+public double GetArea() {return Area;}
+public intCompareTo(object obj){
 Rectangle target = (Rectangle)obj;
 double diff = this.GetArea() - target.GetArea();
-if (diff == 0)
-return 0;
-else if (diff > 0)
-return 1;
-else return -1;
-}
-}", false),
+if (diff == 0) return 0;
+else if (diff > 0) return 1;
+else return -1;}}", false),
             }, @"You are employed as a developer at TestKing.com. 
 You make use of C# and ASP.NET for development purposes.
 You are instructed to develop a new Rectangle class. 
