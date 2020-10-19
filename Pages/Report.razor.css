@@ -38,9 +38,15 @@
     }
 
 /* :checked */
-
-
-
+ 
+.print label {
+    margin: 0;
+    font-size: 15px !important;
+}
+.print pre {
+    margin: 0;
+    font-size: 15px !important;
+}
 section {
     width: 100%;
 }
@@ -68,28 +74,25 @@ pre {
     word-wrap: break-word;
     white-space: pre-line;
     text-align: left;
-    font-size: 15px;
+    font-size: 27px;
 }
 
 @media only screen and (max-width: 568px) {
     .title {
-        font-size: 12px;
+        font-size: 22px;
         font-weight: bold
     }
 
     pre {
-        font-size: 12px;
+        font-size: 17px;
         font-weight: bold
     }
 
-    .label {
-        font-size: 12px;
-        font-weight: bold;
-    }
+ 
 
  
     .btnsubmit {
-        font-size: 12px;
+        font-size: 17px;
     }
 }
 /* Extra small devices (phones, 600px and down) */

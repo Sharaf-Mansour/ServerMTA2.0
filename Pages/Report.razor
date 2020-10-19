@@ -3,18 +3,23 @@
 @inject IJSRuntime JSRuntime
 @code{
     private void NavigateToComponent(string Report) =>NavigationManager.NavigateTo(Report);
-        int QNumber = 0;
-            protected override async Task OnAfterRenderAsync(bool firstRender) =>       await JSRuntime.InvokeAsync<bool>("printwindow", null);
+    string printCSS = "";
+    int QNumber = 0;
+    async void print() { 
+    printCSS ="print";
+    StateHasChanged();
+        QNumber = 0;
+    await JSRuntime.InvokeAsync<bool>("printwindow", null); }
 
     }
 
 
 
-       <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
+       <button class="btnsubmit" @onclick='print'>Print</button>
 
 
  @foreach(var Qeustion in ExamMTA.Exams98_361 ){
-     <div>
+     <div class="@printCSS">
      <h5 style="padding:20px">Qeustion Number @(1+QNumber++) </h5>
 <pre style="padding-left:20px"> @Qeustion.Value </pre><br />
 <div style="padding-left: 20px;">
