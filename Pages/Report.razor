@@ -3,9 +3,11 @@
 @inject IJSRuntime JSRuntime
 @code{
     private void NavigateToComponent(string Report) =>NavigationManager.NavigateTo(Report);
+
     string printCSS = "";
     int QNumber = 0;
-    async void print() { 
+    async void print() {
+        NavigateToComponent("Download");
     printCSS ="print";
     StateHasChanged();
         QNumber = 0;
@@ -16,7 +18,8 @@
 
 
        <button class="btnsubmit" @onclick='print'>Print</button>
-
+       
+       <button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
 
  @foreach(var Qeustion in ExamMTA.Exams98_361 ){
      <div class="@printCSS">
