@@ -86,8 +86,27 @@ else
                 {
                     <h1>WRONG</h1>}}
     </div>
-    </section>}
 
+    </section>}
+    <footer>
+	 	<div class="scrollmenu">
+		@foreach(var i in ExamMTA.MarkForReviewList){
+            @if( ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) > 0 && i.IsMarked){
+                       <button  @onclick='()=>NavigateToComponent($"{i.Num}")' class="btnnav btnnavcolorcheck"><span class="spancheck mark"></span><span class="spannav">@i.Num</span></button>
+                                   }
+            else if( ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) == 0 && i.IsMarked){
+                         <button @onclick='()=>NavigateToComponent($"{i.Num}")' class="btnnav "><span class="spancheck mark"> </span><span class="spannav">@i.Num</span></button>
+            }
+
+        else   if( ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) > 0 && !i.IsMarked){
+                             <button @onclick='()=>NavigateToComponent($"{i.Num}")' class="btnnav btnnavcolorcheck"><span class="spancheck"></span><span class="spannav">@i.Num</span></button>
+        }
+        else         if( ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) == 0 && !i.IsMarked){
+                     <button @onclick='()=>NavigateToComponent($"{i.Num}")' class="btnnav"><span class="spancheck"></span><span class="spannav">@i.Num</span></button>
+                                     }
+        }
+ 	</div>
+        </footer>
 
 
 

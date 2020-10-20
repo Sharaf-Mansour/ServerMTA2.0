@@ -198,3 +198,60 @@ pre {
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
 }
+
+
+.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.btnnav {
+    display: inline-block;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    background: #ddd;
+    position: relative;
+}
+
+.btnnavcolorcheck {
+    background-color: #3498db;
+}
+
+.btnnavcolorrigth {
+    background-color: rgb(250, 104, 104);
+}
+
+.btnnavcolorwrong {
+    background-color: rgb(66, 201, 122);
+}
+
+.spancheck {
+    position: absolute;
+    width: 10px;
+    font-size: 14px;
+    font-weight: bolder;
+    top: 18%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+
+.spannav {
+    position: relative;
+    color: black;
+    background: transparent;
+    cursor: pointer;
+}
+
+ 
+    .mark:before {
+        color: rgb(243, 165, 47);
+        content: 'ƒ';
+        width: 10px;
+        font-size: 14px;
+        font-weight: bolder;
+        top: 18%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    } 
