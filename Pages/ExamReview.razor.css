@@ -40,6 +40,10 @@ html, body {
     background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
     background: -moz-linear-gradient(top, #ededed, #ebebeb);
     position: sticky;
+    top: 0;
+    font-size: 25px;
+    font-weight: bold;
+    color: #000;
 }
     .thtitle:first-child {
         text-align: center;
@@ -143,7 +147,7 @@ html, body {
     font-weight: bolder;
 }
 .answer:before {
-    color: #E71D06;
+    color: #F01717;
     content: '★';
     font-size: 30px;
     font-weight: bolder;
