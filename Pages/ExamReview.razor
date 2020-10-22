@@ -1,0 +1,46 @@
+﻿@page "/Review"
+@inject NavigationManager NavigationManager
+@code{
+    private void NavigateToComponent(string Report) {
+    NavigationManager.NavigateTo(Report);
+
+}}  
+<table cellspacing='0' class="tbl">
+            <caption style="color: #000;font-weight: bold;margin-right: 30px;">
+                <span class="spntbl">Not answered @ExamMTA.Exams98_361.Count(x => x.Answers.Count(i=> i.IsSelected == true) == 0) <span style="color: #ddd;">|</span></span>
+                <span class="spntbl">Marked @ExamMTA.MarkForReviewList.Count(x=> x.IsMarked) <span style="color: #ddd;">|</span></span>
+                <span class="spntbl">Count  @ExamMTA.Exams98_361.Count() &nbsp;</span>
+                <button class="btnend" @onclick='()=>NavigateToComponent("Score")' >End</button>
+            </caption>
+               <thead class="theadtbl">        
+                <tr class="trheadtbl">
+                    <th class="thtitle">ID</th>
+                    <th class="thtitle">Marked</th>
+                    <th class="thtitle">Not Answerd</th>
+                    <th class="thtitle">Go to Qestion</th>
+                </tr>
+            </thead>
+            <tbody class="tbodytbl">
+		@foreach(var i in ExamMTA.MarkForReviewList){
+                <tr class="trbodytbl">
+                    <td class="tddata">1</td>
+                           @if( i.IsMarked){
+                <td class="tddata mark"></td>
+                }
+                else{
+                                <td class="tddata "></td>
+                }
+                 @if( ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) == 0){
+                       <td class="tddata answer"></td>
+                 }
+                   else{
+                                              <td class="tddata "></td>
+                   }
+                                       <td class="tddata"><button class="btndone" @onclick='()=>NavigateToComponent($"{i.Num}")'  >@i.Num</button></td>
+                </tr>
+                }
+           </tbody>
+        </table>
+    
+        <!-- Scroll  -->
+        <button class="gotopbtn" href="#" @onclick='()=>NavigateToComponent("Review")'><i class="fas fa-arrow-up">↑</i></button>

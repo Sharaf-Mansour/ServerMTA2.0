@@ -1,0 +1,212 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    font: 20px sans-serif;
+}
+
+.tbl {
+    color: #666;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px #fff;
+    background: #eaebec;
+    margin: 5px;
+    border: #ccc 1px solid;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+    box-shadow: 0 1px 2px #d1d1d1;
+    margin-right: 20px;
+}
+
+.thtitle {
+    padding: 21px 25px 22px 25px;
+    border-top: 1px solid #fafafa;
+    border-bottom: 1px solid #e0e0e0;
+    background: #ededed;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+    background: -moz-linear-gradient(top, #ededed, #ebebeb);
+}
+
+    .thtitle:first-child {
+        text-align: left;
+        padding-left: 20px;
+    }
+
+.trbodytbl:first-child th:first-child {
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.trbodytbl:first-child th:last-child {
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.trbodytbl {
+    text-align: center;
+    padding-left: 20px;
+}
+
+.tddata:first-child {
+    text-align: center;
+    border-left: 0;
+}
+
+.tddata {
+    padding: 18px;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    background: #fafafa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+    background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+}
+
+.trbodytbl:last-child .tddata {
+    border-bottom: 0;
+}
+
+    .trbodytbl:last-child .tddata:first-child {
+        -moz-border-radius-bottomleft: 3px;
+        -webkit-border-bottom-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .trbodytbl:last-child .tddata:last-child {
+        -moz-border-radius-bottomright: 3px;
+        -webkit-border-bottom-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+.trbodytbl:hover .tddata {
+    background: #f2f2f2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+    background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+}
+
+.spntbl:first-child {
+    margin-left: 10px;
+}
+
+.spntbl {
+    font-size: 14px;
+}
+/* btnend  */
+.btnend {
+    border: none;
+    margin: 2px;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-size: 200%;
+    transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+    width: 40px;
+}
+
+.btnend {
+    background-image: linear-gradient(to left, #12cbc4, #0652dd, #12cbc4);
+}
+
+    .btnend:hover {
+        background-position: right;
+    }
+/* btndone  */
+.btndone {
+    border: none;
+    margin: 2px;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-size: 200%;
+    transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+    width: 60px;
+}
+
+.btndone {
+    background-image: linear-gradient(to left, #c4e538, #009432, #c4e538);
+}
+
+    .btndone:hover {
+        background-position: right;
+    }
+
+.mark:before {
+    color: rgb(243, 165, 47);
+    content: 'ƒ';
+    width: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.answer:before {
+    color: #3498db;
+    content: '⋆';
+    font-size: 27px;
+    font-weight: bolder;
+}
+/* Scroll */
+.gotopbtn {
+    position: fixed;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 25px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 50%;
+      outline: none;
+    transition: .5s;
+    bottom: 20px;
+    right: 25px;
+}
+
+    .gotopbtn:hover {
+        background: #196ba1;
+    }
+
+@media only screen and (max-width: 568px) {
+    .gotopbtn {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 18px;
+        bottom: 25px;
+        right: 12px;
+          outline: none;
+    }
+}

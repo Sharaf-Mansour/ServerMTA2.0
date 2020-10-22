@@ -54,20 +54,21 @@
                 }
         }
     }
+    <br/>
     @if ( Qeustion.Answers.Count(x => x.IsSelected) > 0)
     {
         @if ( ExamMTA.scores98_361[(QNumber-1) % 79].IsCorrect)
         {
-            <h5>CORRECT</h5> 
+        <strong>CORRECT</strong>
             }
         else
         {
-            <h5>WRONG</h5>
+                  <strong>WRONG</strong>
             }
     }
     else
     {
-        <h5>Not Answered</h5>
+          <strong>Not Answered</strong>
         }
 </div>
 </div>
