@@ -88,8 +88,8 @@ input[type="radio"] + .label:before {
 
 input[type=radio] + .label:after {
     content: '';
-    top: 4px;
-    left: 4px;
+    top: 4.5px;
+    left: 4.5px;
     width: 15px;
     height: 15px;
     background: #3498db;
@@ -153,31 +153,18 @@ input[type="checkbox"]:checked + .label:after, input[type=radio]:checked + .labe
     -o-transition: 05s;
     outline: none;
 }
-
-    .arrow:focus {
-        outline: none
-    }
-
-    .arrow:hover {
-        background: #12cbc4;
-        outline: none
-    }
-
-section {
-    width: 100%;
-}
-
+.arrow:focus {outline: none}
+.arrow:hover {background: #12cbc4;outline: none}
+section {width: 100%;}
 .sec1, .sec2 {
     height: auto;
     box-sizing: border-box
 }
-
 .title {
     padding: 0;
     font-family: sans-serif;
     font-size: 18px;
 }
-
 pre {
     margin: 0;
     color: #000;
@@ -192,28 +179,18 @@ pre {
 }
 
 @media only screen and (max-width: 568px) {
-    .title {
-        font-size: 16px;
-    }
-
+    .title {font-size: 16px;}
     pre {
         font-size: 16px;
     }
-
-    .label {
-        font-size: 16px;
-    }
-
+    .label {font-size: 16px;}
     input[type=radio] + .label:after {
-        top: 4px;
-        left: 4px;
+        top: 3.4px;
+        left: 3.4px;
         width: 15px;
         height: 15px;
     }
-
-    .btnsubmit {
-        font-size: 16px;
-    }
+    .btnsubmit {font-size: 16px;}
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (min-width: 600px) {

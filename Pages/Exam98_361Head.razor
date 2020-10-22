@@ -11,7 +11,7 @@ else
         <table border="0" style="margin-right: 20px;">
             <tr>
                 <td style="width: 100px;"><span class="title">Q @QNumber  of 79 </span></td>
-                <td style="width: 100px;">
+                <td>
                     @if (ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)].IsMarked)
                     {<input type="checkbox" id="cbmark" checked @onchange="@( (ChangeEventArgs e) => Marker(e))" /> }
                     else
