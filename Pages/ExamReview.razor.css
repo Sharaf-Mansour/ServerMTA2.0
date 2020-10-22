@@ -137,13 +137,13 @@ html, body {
 .btndone {background-image: linear-gradient(to left, #12cbc4, #0652dd, #12cbc4);}
 .btndone:hover {background-position: right;}
 .mark:before {
-    color: #D81E0B;
+    color: #3498db;
     content: '⚑';
     font-size: 30px;
     font-weight: bolder;
 }
 .answer:before {
-    color: #3498db;
+    color: #D81E0B;
     content: '★';
     font-size: 30px;
     font-weight: bolder;
