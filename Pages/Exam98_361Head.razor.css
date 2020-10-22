@@ -9,7 +9,7 @@
     margin: 2px;
     padding: 5px;
     font-family: "montserrat", sans-serif;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 5px;
@@ -50,26 +50,25 @@ input[type="checkbox"], input[type="radio"] {
     line-height: 1.5;
     cursor: pointer;
     font-size: 18px;
+    font-weight: bolder;
 }
-
-    .label:before, .label:after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 1.5em;
-        height: 1.5em;
-    }
-
-    .label:before {
-        content: '';
-        border: 2px solid #aaa;
-        border-radius: 20%;
-        -webkit-border-radius: 20%;
-        -moz-border-radius: 20%;
-        -ms-border-radius: 20%;
-        -o-border-radius: 20%;
-    }
+.label:before, .label:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+}
+.label:before {
+    content: '';
+    border: 2px solid #aaa;
+    border-radius: 20%;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    -ms-border-radius: 20%;
+    -o-border-radius: 20%;
+}
 /* Checkbox */
 input[type="checkbox"] + .label:after {
     content: "\2714";
@@ -163,7 +162,8 @@ section {width: 100%;}
 .title {
     padding: 0;
     font-family: sans-serif;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bolder;
 }
 pre {
     margin: 0;
@@ -179,7 +179,7 @@ pre {
 }
 
 @media only screen and (max-width: 568px) {
-    .title {font-size: 16px;}
+    .title {font-size: 18px;}
     pre {
         font-size: 16px;
     }
@@ -190,7 +190,7 @@ pre {
         width: 15px;
         height: 15px;
     }
-    .btnsubmit {font-size: 16px;}
+    .btnsubmit {font-size: 22px;}
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (min-width: 600px) {
@@ -204,12 +204,10 @@ pre {
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
 }
-
 .scrollmenu {
     overflow: auto;
     white-space: nowrap;
 }
-
 .btnnav {
     display: inline-block;
     text-align: center;
@@ -218,29 +216,17 @@ pre {
     cursor: pointer;
     background: #ddd;
     position: relative;
+    height: 50px;
+    width: 50px;
 }
-
-    .btnnav:active, .btnnav:focus, .btnnav:visited {
-        padding-top: 20px;
-        box-shadow: inset 4px 0 4px rgba(0,0,0,.3);
-    }
-.active {
-    padding-top: 20px;
+.btnnav:active, .btnnav:focus, .btnnav:visited, .active {
+    padding-top: 23px;
     box-shadow: inset 4px 0 4px rgba(0,0,0,.3);
-}
-        
-.btnnavcolorcheck {
-    background-color: #3498db;
-}
-
-.btnnavcolorrigth {
-    background-color: rgb(250, 104, 104);
-}
-
-.btnnavcolorwrong {
-    background-color: rgb(66, 201, 122);
-}
-
+    height: 61px;
+}  
+.btnnavcolorcheck {background-color: #3498db;}
+.btnnavcolorrigth {background-color: rgb(250, 104, 104);}
+.btnnavcolorwrong {background-color: rgb(66, 201, 122);}
 .spancheck {
     position: absolute;
     width: 10px;
@@ -250,21 +236,113 @@ pre {
     left: 80%;
     transform: translate(-50%, -50%);
 }
-
 .spannav {
     position: relative;
     color: black;
     background: transparent;
     cursor: pointer;
 }
-
 .mark:before {
-    color: rgb(243, 165, 47);
     content: 'ƒ';
-    width: 10px;
-    font-size: 14px;
+    position: absolute;
+    left: -5px;
+    bottom: -11px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 23px;
     font-weight: bolder;
-    top: 18%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    color: orange;
 }
+/* ⚑ */
+.ls {position: relative;padding: 20px;}
+.inpchb {display: none;}
+.spns1 {position: relative;}
+.spns1 {
+    width: 80px;
+    height: 40px;
+    background: #ccc;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-right: 2px;
+}
+.spns1:before {
+    content: '⚑';
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    text-align: center;
+    font-size: 25px;
+    color: orange;  
+}
+.inpchb:checked + .spns1 {background: #03a9f4;}
+.inpchb:checked + .spns1:before {left: 44px;}
+
+
+/* 👁 */
+.ls {position: relative;padding: 20px;}
+.inpchb {display: none;}
+.spns2 {position: relative;}
+.spns2 {
+    width: 80px;
+    height: 40px;
+    background: #ccc;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-right: 2px;
+}
+.spns2:before {
+    content: '👁';
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    text-align: center;
+    font-size: 32px;
+}
+.inpchb:checked + .spns2 {background: #03a9f4;}
+.inpchb:checked + .spns2:before {left: 44px;}

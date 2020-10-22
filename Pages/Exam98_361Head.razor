@@ -8,23 +8,31 @@ else
 
 <section class="sec1" style="margin: 10px;">
     <section class="sec2">
-        <table border="0" style="margin-right: 20px;">
+        <table border="0" style="margin-left: 10px;">
             <tr>
-                <td style="width: 100px;"><span class="title">Q @QNumber  of 79 </span></td>
+                <td><span class="title">@QNumber : 79 &nbsp;</span></td>
                 <td>
                     @if (ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)].IsMarked)
-                    {<input type="checkbox" id="cbmark" checked @onchange="@( (ChangeEventArgs e) => Marker(e))" /> }
-                    else
-                    {<input type="checkbox" id="cbmark" @onchange="@( ( ChangeEventArgs e) => Marker(e))" />}
-                    <label class="label" for="cbmark">Flag</label>
+                    {
+            <label class="ls">
+                <input type="checkbox" class="inpchb" id="cbmark" checked @onchange="@( (ChangeEventArgs e) => Marker(e))" />
+                <span class="spns1"></span>
+            </label> }
+                            else
+                            {
+            <label class="ls">
+                <input type="checkbox" class="inpchb" id="cbmark" @onchange="@( ( ChangeEventArgs e) => Marker(e))" />
+                <span class="spns1"></span>
+            </label>}
                 </td>
-                <td style="width: 170px;">
-                    <input type="checkbox" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
-                    <label class="label"  for="cbshow1">Show Answer</label>
-                </td>
-
                 <td>
-                    <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Review")'>Done</button>
+                    <label class="ls" for="cbshow1">
+                        <input type="checkbox" class="inpchb" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
+                        <span class="spns2"></span>
+                    </label>
+                </td>
+                <td>
+                    <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Review")'>End</button>
                 </td>
             </tr>
         </table>
