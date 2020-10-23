@@ -45,10 +45,10 @@ html, body {
     font-weight: bold;
     color: #000;
 }
-    .thtitle:first-child {
-        text-align: center;
-        padding-left: 20px;
-    }
+.thtitle:first-child {
+    text-align: center;
+    padding-left: 20px;
+}
 .trbodytbl:first-child th:first-child {
     -moz-border-radius-topleft: 3px;
     -webkit-border-top-left-radius: 3px;
@@ -84,9 +84,9 @@ html, body {
     border-bottom-right-radius: 3px;
 }
 .trbodytbl:hover .tddata {
-    background: #f2f2f2;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-    background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+    background: #d1d1d1;
+    background: -webkit-gradient(linear, left top, left bottom, from(#d1d1d1), to(#f0f0f0));
+    background: -moz-linear-gradient(top, #d1d1d1, #f0f0f0);
 }
 .spntbl:first-child {margin-left: 10px;}
 .spntbl {font-size: 18px;}
@@ -180,8 +180,13 @@ html, body {
         right: 12px;
         outline: none;
     }
-    .tbl {font-size: 12px;}
+    .tbl {font-size: 12px;width: 97%;}
     .spntbl {font-size: 12px;}
     .btnend {font-size: 12px;width: 40px;}
     .btndone {font-size: 12px;}
- }
+    .thtitle {font-size: 12px;}
+    .tddata {padding: 5px;}
+    .table-box {width: 104.5%;}
+    .answer:before {font-size: 20px;}
+    .mark:before {font-size: 20px;}
+}
