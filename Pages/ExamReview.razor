@@ -27,7 +27,7 @@
     <td class="tddata" style="width:10%">@i.Num</td>
     @if (i.IsMarked)
     {
-<td class="tddata mark" style="width:20%"></td>
+<td class="tddata mark" style="width:10%"></td>
  }
 else
 {
@@ -35,7 +35,7 @@ else
 }
     @if (ExamMTA.Exams98_361[i.Num - 1].Answers.Count(x => x.IsSelected) == 0)
     {
-<td class="tddata answer" style="width:32%"></td>
+<td class="tddata answer" style="width:42%"></td>
  }
 else
 {

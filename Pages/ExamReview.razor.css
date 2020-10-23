@@ -33,7 +33,7 @@ html, body {
     top: 0;
 }
 .thtitle {
-    padding: 21px 25px 22px 25px;
+    padding: 20px 17px;
     border-top: 1px solid #fafafa;
     border-bottom: 1px solid #e0e0e0;
     background: #ededed;
@@ -189,4 +189,5 @@ html, body {
     .table-box {width: 104.5%;}
     .answer:before {font-size: 20px;}
     .mark:before {font-size: 22px;}
+    .table-box {height: 520px;}
 }
