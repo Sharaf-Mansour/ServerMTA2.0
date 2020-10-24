@@ -25,52 +25,40 @@
      <div class="@printCSS">
      <h2 style="padding:20px">Qeustion Number @(1+QNumber++) </h2>
 <pre style="padding-left:20px"> @Qeustion.Value </pre><br />
-<div style="padding-left: 20px;">
-    @if (Qeustion.Type == ControlType.RadioButton)
-    {
-        foreach (var item in Qeustion.Answers)
-        {
-            if (Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected)
-            {
-                <label for="@item.ID" class="blue">	<pre class="checkright">@item.Value </pre> </label>
-                }
-            else
-            {
-                <label for="@item.ID">	<pre>@item.Value </pre> </label>
-                }
-         }
-    }
-    else if (Qeustion.Type == ControlType.CheackBox)
-    {
-        foreach (var item in Qeustion.Answers)
-        {
-            if (Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected)
-            {
-                <label for="@item.ID" class="blue">	<pre class="checkright">@item.Value </pre> </label> 
-                }
-            else
-            {
-                <label for="@item.ID">	<pre>@item.Value </pre> </label> 
-                }
-        }
-    }
-    <br/>
-    @if ( Qeustion.Answers.Count(x => x.IsSelected) > 0)
-    {
-        @if ( ExamMTA.scores98_361[(QNumber-1) % 79].IsCorrect)
-        {
-        <strong>CORRECT</strong>
-            }
-        else
-        {
-                  <strong>WRONG</strong>
-            }
-    }
-    else
-    {
-          <strong>Not Answered</strong>
-        }
-</div>
+                                                      <div style="padding-left: 20px;">
+
+                                                          @foreach (var item in Qeustion.Answers)
+                                                          {
+                                                              if (Qeustion.Type == ControlType.RadioButton)
+                                                              {                                                               
+                                                                      <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">	<pre class="@((Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected) ? "checkright":"")">@item.Value </pre> </label>
+                                                                  }
+                                                                 
+                                                      else if (Qeustion.Type == ControlType.CheackBox)
+                                                                  {       
+                                                                  <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">	<pre class="@((Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected) ? "checkright":"")">@item.Value </pre> </label>
+                                                                   }
+                                                     
+
+
+                                                          }
+                                                          <br />
+                                                          @if (Qeustion.Answers.Count(x => x.IsSelected) > 0)
+                                                          {
+                                                              @if (ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect)
+                                                              {
+                                                                  <strong>CORRECT</strong>
+                                                              }
+                                                              else
+                                                              {
+                                                                  <strong>WRONG</strong>
+                                                              }
+                                                          }
+                                                          else
+                                                          {
+                                                              <strong>Not Answered</strong>
+                                                          }
+                                                      </div>
 </div>
      <br clear="all" style="page-break-before:always" />
 

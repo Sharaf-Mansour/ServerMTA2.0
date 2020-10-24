@@ -24,8 +24,30 @@ else{
       <progress class="progress" id="file" value="@ScorePerc" max="100" data-label="@StringScore">  </progress>
     </div>
        <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
-         <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
+        <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
+    //√ Χ
+    <div class="table-box">
+        <table cellspacing='0' class="tbl">
+            <tbody class="tbodytbl">
+              @foreach(var item in ExamMTA.scores98_361)
+              {
 
+                <tr class="trbodytbl">
+                    <td class="tddata">@item.ID</td>
+                    @if (item.IsCorrect)
+                    {
+                <td class="tddata right"></td> }
+                                    else
+                                    {
+                <td class="tddata wrong"></td>                    
+                }
+                 </tr>
+
+              }
+        
+            </tbody>
+        </table>
+    </div>
 }
 </div>
  

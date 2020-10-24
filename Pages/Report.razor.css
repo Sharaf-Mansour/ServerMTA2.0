@@ -111,11 +111,12 @@ pre {
 
 
 .blue {
-    color: #0652dd
+    color: darkgreen;
+    font-weight: bolder;
 }
 
 .checkright {
-    background: paleturquoise;
+    background: #AAE2E2;
     padding: 10px;
 }
 
