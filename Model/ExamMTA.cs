@@ -42,23 +42,31 @@ namespace ServerMTA.Model
         public static List<MarkForReview> MarkForReviewList = Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
         public static void ClearMark() => MarkForReviewList = Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
         public static void ClearRadioAnswer(Exam exam) {
-            for (int item = 0; item < exam.Answers.Count; item++)
-            {
-
-                Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item] = new(Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item].ID,
-                    Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item].Value, Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item].IsCorrect, false);
+            foreach (var Elment in exam.Answers) { 
+            Elment.IsSelected = false;
             }
+            //for (int item = 0; item < exam.Answers.Count; item++)
+            //{
+
+            //    Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item] = new(Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item].ID,
+            //        Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item].Value, Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item].IsCorrect, false);
+            //}
 
         }
         public static void RestartExam()
         {
-            for (int i = 0; i < Exams98_361.Count; i++) {
-                for (int item = 0; item < Exams98_361[i].Answers.Count; item++)
-                {
 
-                    Exams98_361[i].Answers[item] = new(Exams98_361[i].Answers[item].ID,
-                        Exams98_361[i].Answers[item].Value, Exams98_361[i].Answers[item].IsCorrect, false);
+            for (int i = 0; i < Exams98_361.Count; i++) {
+                foreach (var Elment in Exams98_361[i].Answers)
+                                    {
+                    Elment.IsSelected = false;
                 }
+                //for (int item = 0; item < Exams98_361[i].Answers.Count; item++)
+                //{
+
+                //    Exams98_361[i].Answers[item] = new(Exams98_361[i].Answers[item].ID,
+                //        Exams98_361[i].Answers[item].Value, Exams98_361[i].Answers[item].IsCorrect, false);
+                //}
             }
         }
 

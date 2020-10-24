@@ -12,7 +12,7 @@ else
             <tr>
                 <td><span class="title">@QNumber : 79 &nbsp;</span></td>
                 <td>
-                    @if (ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)].IsMarked)
+                    @if (ExamMTA.MarkForReviewList.Where(x => x.Num == QNumber).Single().IsMarked)
                     {
             <label class="ls">
                 <input type="checkbox" class="inpchb" id="cbmark" checked @onchange="@( (ChangeEventArgs e) => Marker(e))" />
@@ -44,7 +44,7 @@ else
         {
             foreach (var item in Qeustion.Answers)
             {
-                if (Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == item.ID)].IsSelected)
+                if (Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected)
                 {
 <input type="radio" id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e, item)" checked /> }
 else
@@ -57,7 +57,7 @@ else
                 {
                     foreach (var item in Qeustion.Answers)
                     {
-                        if (Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == item.ID)].IsSelected)
+                        if (Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected)
                         {
 <input type="checkbox" id="@item.ID" checked value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> }
 else
@@ -126,7 +126,8 @@ else
 
 
 
-@code { [Parameter] public int QNumber { get; set; }
+@code {
+    [Parameter] public int QNumber { get; set; }
 
     public bool showAnswer = false;
     string RadioValue = "";
@@ -158,20 +159,20 @@ else
             ExamMTA.SortAnswer();
         }
     }
-    void Marker(ChangeEventArgs args) => ExamMTA.MarkForReviewList[ExamMTA.MarkForReviewList.FindIndex(x => x.Num == QNumber)] = new(QNumber, (bool)args.Value);
+    void Marker(ChangeEventArgs args) => ExamMTA.MarkForReviewList.Where(x => x.Num == QNumber).Single().IsMarked = (bool)args.Value;
     void RadioSelection(ChangeEventArgs args, Answer I)
     {
         ExamMTA.ClearRadioAnswer(Qeustion);
-        Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == I.ID)] = new(I.ID, I.Value, I.IsCorrect, true);
-
+       // Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == I.ID)].IsSelected =true;
+        Qeustion.Answers.Where(x => x.ID == I.ID).Single().IsSelected = true;
         (showAnswer, RadioValue) = (true, args.Value.ToString());
         CorrectAnswer = (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>();
-        ExamMTA.scores98_361[(QNumber - 1) % 79] = new((QNumber - 1) % 79, CorrectAnswer);
+        ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
     }
     void CheckSelection(ChangeEventArgs __e, Answer I)
     {
         (CorrectAnswer, showAnswer) = (false, true);
-        Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == I.ID)] = new(I.ID, I.Value, I.IsCorrect, (bool)__e.Value);
+        Qeustion.Answers.Where(x => x.ID == I.ID).Single().IsSelected = (bool)__e.Value;
         var CorrectAnswersCount = (from item in Qeustion.Answers where item.IsCorrect == true select item).ToList().Count();
         var SelectsAnswers = (from item in Qeustion.Answers where item.IsSelected == true select item).ToList();
 
@@ -188,5 +189,5 @@ else
         {
             CorrectAnswer = false;
         }
-        ExamMTA.scores98_361[(QNumber - 1) % 79] = new((QNumber - 1) % 79, CorrectAnswer);
+        ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
     } }

@@ -30,7 +30,7 @@
     {
         foreach (var item in Qeustion.Answers)
         {
-            if (Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == item.ID)].IsSelected)
+            if (Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected)
             {
                 <label for="@item.ID" class="blue">	<pre class="checkright">@item.Value </pre> </label>
                 }
@@ -44,7 +44,7 @@
     {
         foreach (var item in Qeustion.Answers)
         {
-            if (Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == item.ID)].IsSelected)
+            if (Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected)
             {
                 <label for="@item.ID" class="blue">	<pre class="checkright">@item.Value </pre> </label> 
                 }
