@@ -1,59 +1,27 @@
 ﻿@page "/Score"
-@inject NavigationManager NavigationManager
-@code{
-    private void NavigateToComponent(string Report) =>NavigationManager.NavigateTo(Report);
-void EndExam(){
-        ExamMTA.ClearMark();
-    NavigationManager.NavigateTo("Score");
-
-}
-}
-<div class="container">
+ <div class="container">
 @if(ExamMTA.MarkForReviewList.Count(x =>x.IsMarked) > 0){
     @foreach(var i in ExamMTA.MarkForReviewList.Where(x =>x.IsMarked) ){
   <button class="btnsubmit" @onclick='()=>NavigateToComponent($"/{i.Num}")'>Go to Number @i.Num</button>
-
-    }
+      }
   <button class="btnsubmit" @onclick='()=>EndExam()'>END EXAM</button>
 } 
 else{
-
-
 <div class="wrapper">
      <h1>You scored  @Score out of 79</h1>
       <progress class="progress" id="file" value="@ScorePerc" max="100" data-label="@StringScore">  </progress>
     </div>
        <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
         <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
-    //√ Χ
+ 
     <div class="table-box">
         <table cellspacing='0' class="tbl">
             <tbody class="tbodytbl">
-              @foreach(var item in ExamMTA.scores98_361)
-              {
-
+              @foreach(var item in ExamMTA.scores98_361){
                 <tr class="trbodytbl">
                     <td class="tddata">@item.ID</td>
-                    @if (item.IsCorrect)
-                    {
-                <td class="tddata right"></td> }
-                                    else
-                                    {
-                <td class="tddata wrong"></td>                    
-                }
-                 </tr>
-
-              }
-        
-            </tbody>
-        </table>
-    </div>
-}
+                 <td class="tddata @(item.IsCorrect ?"right" :"wrong" )   "></td> 
+                 </tr>           }
+                    </tbody>      </table>   </div>}
 </div>
  
-
-@code{
-    string StringScore => ScorePerc.ToString("0.##") + "%";
-    double ScorePerc => (Score / 79) * 100;
-    double Score => ExamMTA.scores98_361.Count(x => x.IsCorrect == true);
-}

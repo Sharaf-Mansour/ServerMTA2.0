@@ -136,12 +136,13 @@
 }
 .right:before {
     color: green;
-    content: '√';
-    font-weight: bolder;
+    content: '✔';
+     font-weight: bolder;
 }
 .wrong:before {
     color: red;
-    content: 'Χ';
+    content: '✘';
+        font-weight: bolder;
 }
 @media only screen and (max-width: 568px) and (max-width: 600px) {
     .wrapper {

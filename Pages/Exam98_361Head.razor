@@ -1,193 +1,42 @@
 ﻿@page "/{QNumber:int}"
-@inject NavigationManager NavigationManager
-@if (QNumber > 79 || QNumber < 1)
-{
-<h1>Error 404 Page not Found :( </h1> }
-else
-{
-
-<section class="sec1" style="margin: 10px;">
-    <section class="sec2">
-        <table border="0" style="margin-left: 10px;">
-            <tr>
+@if (QNumber > 79 || QNumber < 1){<h1>Error 404 Page not Found :( </h1> }
+else{<section class="sec1" style="margin: 10px;">  <section class="sec2">
+        <table border="0" style="margin-left: 10px;"> <tr>
                 <td><span class="title">@QNumber : 79 &nbsp;</span></td>
-                <td>
-                    @if (ExamMTA.MarkForReviewList.Where(x => x.Num == QNumber).Single().IsMarked)
-                    {
-            <label class="ls">
-                <input type="checkbox" class="inpchb" id="cbmark" checked @onchange="@( (ChangeEventArgs e) => Marker(e))" />
-                <span class="spns1"></span>
-            </label> }
-                            else
-                            {
-            <label class="ls">
-                <input type="checkbox" class="inpchb" id="cbmark" @onchange="@( ( ChangeEventArgs e) => Marker(e))" />
-                <span class="spns1"></span>
-            </label>}
-                </td>
-                <td>
-                    <label class="ls" for="cbshow1">
+                <td> <label class="ls">
+                <input type="checkbox" class="inpchb" id="cbmark"   @onchange="@( (ChangeEventArgs e) => Marker(e))"  checked='@ExamMTA.MarkForReviewList.Where(x => x.Num == QNumber).Single().IsMarked'  />
+                <span class="spns1"></span>    </label>  </td>
+                <td> <label class="ls" for="cbshow1">
                         <input type="checkbox" class="inpchb" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
-                        <span class="spns2"></span>
-                    </label>
-                </td>
-                <td>
-                    <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Review")'>End</button>
-                </td>
-            </tr>
-        </table>
+                        <span class="spns2"></span> </label>  </td>
+                <td>      <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Review")'>End</button>     </td>
+    </tr> </table>
     </section>
-    <pre style="padding:20px"> @Qeustion.Value </pre>
-    <br />
+    <pre style="padding:20px"> @Qeustion.Value </pre> <br />
     <div style="padding: 20px;">
-        @if (Qeustion.Type == ControlType.RadioButton)
-        {
-            foreach (var item in Qeustion.Answers)
-            {
-                if (Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected)
-                {
-<input type="radio" id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e, item)" checked /> }
-else
-{
-<input type="radio" id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e, item)" checked=@(RadioValue.Equals(item.Value, StringComparison.OrdinalIgnoreCase)) /> }
+            @foreach (var item in Qeustion.Answers) {
+                   if (Qeustion.Type == ControlType.RadioButton)     {
+<input type="radio" id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e, item)" checked="@Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected" /> 
 <label class="label" for="@item.ID">	<pre>@item.Value </pre> </label>
-                        <br /><br /> }
-                }
-                else if (Qeustion.Type == ControlType.CheackBox)
-                {
-                    foreach (var item in Qeustion.Answers)
-                    {
-                        if (Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected)
-                        {
-<input type="checkbox" id="@item.ID" checked value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> }
-else
-{
-<input type="checkbox" id="@item.ID" value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> }
-<label class="label" for="@item.ID">	<pre>@item.Value </pre> </label><br /><br />}
-}
-        @if (ExamMTA.allowShowAnswer)
-@if (showAnswer || Qeustion.Answers.Count(x => x.IsSelected) > 0)
-{
-@if (CorrectAnswer || ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect)
-{
-<h1>CORRECT</h1> }
-else
-{
-<h1>WRONG</h1>}}
-</div>
+      <br /><br /> }
+  
+else if(Qeustion.Type == ControlType.CheackBox) {                     
+<input type="checkbox" id="@item.ID" checked="@Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected" value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> 
+<label class="label" for="@item.ID">	<pre>@item.Value </pre> </label><br /><br />} }
 
-<table border="0">
-    <tr>
-        <td>
-            @if (QNumber == 1)
-            {
-            <button class="arrow">&larr;</button> }
-            else
-            {
-            <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>&larr;</button>}
 
-                        @if (QNumber == 79)
-                        {
-            <button class="arrow">&rarr;</button> }
-            else
-            {
-            <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button>
-            }
-        </td>
-    </tr>
-</table>
-
-</section>}
-    <footer>
-	 	<div class="scrollmenu" >
-		@foreach(var i in ExamMTA.MarkForReviewList){
-            @if( ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) > 0 && i.IsMarked){
-                       <button   @onclick='()=>NavigateToComponent($"{i.Num}")' class="btnnav btnnavcolorcheck  @((i.Num == QNumber) ? "active" : "" )  "><span class="spancheck mark"></span><span class="spannav">@i.Num</span></button>
-                                    }
-            else if( ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) == 0 && i.IsMarked){
-                         <button @onclick='()=>NavigateToComponent($"{i.Num}")' class="btnnav @((i.Num == QNumber) ? "active" : "" ) "><span class="spancheck mark"> </span><span class="spannav">@i.Num</span></button>
-            }
-
-        else   if( ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) > 0 && !i.IsMarked){
-                             <button @onclick='()=>NavigateToComponent($"{i.Num}")' class="btnnav btnnavcolorcheck @((i.Num == QNumber) ? "active" : "" ) "><span class="spancheck"></span><span class="spannav">@i.Num</span></button>
-        }
-        else         if( ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) == 0 && !i.IsMarked){
-                     <button @onclick='()=>NavigateToComponent($"{i.Num}")' class="btnnav @((i.Num == QNumber) ? "active" : "" ) "><span class="spancheck"></span><span class="spannav">@i.Num</span></button>
-                                     }
-        }
- 	</div>
-        </footer>
+ 
 
 
 
-
-
-
-
-
-
-@code {
-    [Parameter] public int QNumber { get; set; }
-
-    public bool showAnswer = false;
-    string RadioValue = "";
-    public bool CorrectAnswer = false;
-    public Exam Qeustion => ExamMTA.Exams98_361[(QNumber - 1) % 79];
-
-    private void NavigateToComponent(string Report)
-    {
-        (showAnswer, CorrectAnswer) = (false, false);
-        NavigationManager.NavigateTo(Report);
-    }
-/*    protected override void OnInitialized()
-    {
-
-        if (ExamMTA.ShuffleQeustion)
-        {
-            ExamMTA.shuffleQeustions();
-        }
-        else
-        {
-            ExamMTA.SortQeustion();
-        }
-        if (ExamMTA.ShuffleAnswer)
-        {
-            ExamMTA.shuffleAnswers();
-        }
-        else
-        {
-            ExamMTA.SortAnswer();
-        }
-        */
-    void Marker(ChangeEventArgs args) => ExamMTA.MarkForReviewList.Where(x => x.Num == QNumber).Single().IsMarked = (bool)args.Value;
-    void RadioSelection(ChangeEventArgs args, Answer I)
-    {
-        ExamMTA.ClearRadioAnswer(Qeustion);
-       // Qeustion.Answers[Qeustion.Answers.FindIndex(x => x.ID == I.ID)].IsSelected =true;
-        Qeustion.Answers.Where(x => x.ID == I.ID).Single().IsSelected = true;
-        (showAnswer, RadioValue) = (true, args.Value.ToString());
-        CorrectAnswer = (from item in Qeustion.Answers where item.Value == RadioValue select item.IsCorrect).FirstOrDefault<bool>();
-        ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
-    }
-    void CheckSelection(ChangeEventArgs __e, Answer I)
-    {
-        (CorrectAnswer, showAnswer) = (false, true);
-        Qeustion.Answers.Where(x => x.ID == I.ID).Single().IsSelected = (bool)__e.Value;
-        var CorrectAnswersCount = (from item in Qeustion.Answers where item.IsCorrect == true select item).ToList().Count();
-        var SelectsAnswers = (from item in Qeustion.Answers where item.IsSelected == true select item).ToList();
-
-        foreach (var item in SelectsAnswers)
-        {
-            if (!item.IsCorrect)
-            {
-                CorrectAnswer = false;
-                break;
-            }
-            CorrectAnswer = true;
-        }
-        if (SelectsAnswers.Count != CorrectAnswersCount)
-        {
-            CorrectAnswer = false;
-        }
-        ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
-    } }
+   <h1> @(ExamMTA.allowShowAnswer ? (showAnswer || Qeustion.Answers.Count(x => x.IsSelected) > 0) ?
+(CorrectAnswer || ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect) ? "CORRECT" :"WRONG" :" " :"") </h1></div>
+<table border="0"> <tr>  <td>
+            @if (QNumber == 1)  {    <button class="arrow">&larr;</button> }
+            else{ <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>&larr;</button>}
+            @if (QNumber == 79)       {  <button class="arrow">&rarr;</button> }
+            else {  <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button> }
+        </td>  </tr></table></section> 
+        <footer> <div class="scrollmenu" >
+     @foreach(var i in ExamMTA.MarkForReviewList){ <button  @onclick='()=>NavigateToComponent($"{i.Num}")' class='btnnav  @(ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) > 0 ? "btnnavcolorcheck" : "")  @((i.Num == QNumber) ? "active" : "" )'  ><span class="spancheck  @(i.IsMarked ? "mark" : "")  "></span><span class="spannav">@i.Num</span></button> }
+    </div> </footer>  }   
