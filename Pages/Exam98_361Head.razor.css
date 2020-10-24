@@ -243,7 +243,7 @@ pre {
     cursor: pointer;
 }
 .mark:before {
-    content: 'ƒ';
+    content: '⚑';
     position: absolute;
     left: -5px;
     bottom: -11px;
