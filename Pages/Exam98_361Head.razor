@@ -139,7 +139,7 @@ else
         (showAnswer, CorrectAnswer) = (false, false);
         NavigationManager.NavigateTo(Report);
     }
-    protected override void OnInitialized()
+/*    protected override void OnInitialized()
     {
 
         if (ExamMTA.ShuffleQeustion)
@@ -158,7 +158,7 @@ else
         {
             ExamMTA.SortAnswer();
         }
-    }
+        */
     void Marker(ChangeEventArgs args) => ExamMTA.MarkForReviewList.Where(x => x.Num == QNumber).Single().IsMarked = (bool)args.Value;
     void RadioSelection(ChangeEventArgs args, Answer I)
     {
