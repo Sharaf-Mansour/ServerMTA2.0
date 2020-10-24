@@ -8,6 +8,8 @@
     <!-- Normally the linker automatically strips any features we aren't using, but these two otherwise stay on by default. -->
     <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
     <BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
+	  <InvariantGlobalization>true</InvariantGlobalization>
+
 	  <UseBlazorWebAssembly>true</UseBlazorWebAssembly>
     <AssemblyName>ServerMTA</AssemblyName>
     <RootNamespace>ServerMTA</RootNamespace>
