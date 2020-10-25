@@ -21,8 +21,7 @@ namespace ServerMTA.Pages
         [Inject] protected NavigationManager NavigationManager { get; set; }
 [Inject] protected IJSRuntime JSRuntime { get; set; }
         private void NavigateToComponent(string Report) => NavigationManager.NavigateTo(Report);
-        string printCSS = "";
-        int QNumber = 0;
+         int QNumber = 0;
         void print()
         {
             StateHasChanged();
