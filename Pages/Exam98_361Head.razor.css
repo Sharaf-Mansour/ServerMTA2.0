@@ -298,7 +298,7 @@ pre {
     -o-border-radius: 50%;
     text-align: center;
     font-size: 25px;
-    color: orange;  
+    color: black;  
 }
 .inpchb:checked + .spns1 {background: #03a9f4;}
 .inpchb:checked + .spns1:before {left: 44px;}
