@@ -1,66 +1,13 @@
 ﻿@page "/Download"
-@inject NavigationManager NavigationManager
-@inject IJSRuntime JSRuntime
-@code{
-    private void NavigateToComponent(string Report) =>NavigationManager.NavigateTo(Report);
-
-    string printCSS = "";
-    int QNumber = 0;
-    async void print() {
-        NavigateToComponent("Download");
-    printCSS ="print";
-    StateHasChanged();
-        QNumber = 0;
-    await JSRuntime.InvokeAsync<bool>("printwindow", null); }
-
-    }
-
-
-
-       <button class="btnsubmit" @onclick='print'>Print</button>
-       
-       <button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
-
+ <button class="btnsubmit" @onclick='print'>Print</button>
+<button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
  @foreach(var Qeustion in ExamMTA.Exams98_361 ){
-     <div class="@printCSS">
-     <h2 style="padding:20px">Qeustion Number @(1+QNumber++) </h2>
+     <div> <h2 style="padding:20px">Qeustion Number @(1+QNumber++) </h2>
 <pre style="padding-left:20px"> @Qeustion.Value </pre><br />
-                                                      <div style="padding-left: 20px;">
-
-                                                          @foreach (var item in Qeustion.Answers)
-                                                          {
-                                                              if (Qeustion.Type == ControlType.RadioButton)
-                                                              {                                                               
-                                                                      <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">	<pre class="@((Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected) ? "checkright":"")">@item.Value </pre> </label>
-                                                                  }
-                                                                 
-                                                      else if (Qeustion.Type == ControlType.CheackBox)
-                                                                  {       
-                                                                  <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">	<pre class="@((Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected) ? "checkright":"")">@item.Value </pre> </label>
-                                                                   }
-                                                     
-
-
-                                                          }
-                                                          <br />
-                                                          @if (Qeustion.Answers.Count(x => x.IsSelected) > 0)
-                                                          {
-                                                              @if (ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect)
-                                                              {
-                                                                  <strong>CORRECT</strong>
-                                                              }
-                                                              else
-                                                              {
-                                                                  <strong>WRONG</strong>
-                                                              }
-                                                          }
-                                                          else
-                                                          {
-                                                              <strong>Not Answered</strong>
-                                                          }
-                                                      </div>
-</div>
-     <br clear="all" style="page-break-before:always" />
-
-}
- 
+   <div style="padding-left: 20px;">
+      @foreach (var item in Qeustion.Answers) {
+         <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">	
+         <pre class="@((Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected) ? "checkright":"")">@item.Value </pre> </label>  }
+       <br />     <label>    <strong>
+   @(Qeustion.Answers.Count(x => x.IsSelected) > 0 ? ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect ? "CORRECT" : "WRONG" :"Not Answered")
+</strong> </label> </div> </div>   <br clear="all" style="page-break-before:always" />}

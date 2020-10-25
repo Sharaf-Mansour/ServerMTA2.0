@@ -38,15 +38,17 @@
     }
 
 /* :checked */
- 
-.print label {
-    margin: 0;
-    font-size: 15px !important;
+  @media print {
+    pre {
+        margin: 0;
+        font-size: 15px !important;
+    }
+    label {
+        margin: 0;
+        font-size: 15px !important;
+    }
 }
-.print pre {
-    margin: 0;
-    font-size: 15px !important;
-}
+
 section {
     width: 100%;
 }
