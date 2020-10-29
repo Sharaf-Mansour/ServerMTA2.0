@@ -21,7 +21,7 @@ namespace ServerMTA.Pages
         [Inject] protected NavigationManager NavigationManager { get; set; }
         static string StringScore => ScorePerc.ToString("0.##") + "%";
         static double ScorePerc => (Score / 79) * 100;
-        static double Score => ExamMTA.Scores98361.Count(x => x.IsCorrect == true);
+        static double Score => ExamMTA.Scores98_361.Count(x => x.IsCorrect == true);
         private void NavigateToComponent(string Report) => NavigationManager.NavigateTo(Report);
         void EndExam()
         {

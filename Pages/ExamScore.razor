@@ -10,7 +10,7 @@ else{<div class="wrapper">
        <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
         <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
  <div  class="table-box"><table cellspacing='0' class="tbl"><tbody class="tbodytbl">
- @foreach(var item in ExamMTA.Scores98361){
+ @foreach(var item in ExamMTA.Scores98_361){
      <tr class="trbodytbl">
          <td class="tddata">@item.ID</td>
          <td class="tddata @(item.IsCorrect ? "right" : "wrong")   "></td></tr>}</tbody></table></div>}</div>

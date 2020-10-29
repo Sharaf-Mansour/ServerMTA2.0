@@ -23,7 +23,7 @@ else{<section class="sec1" style="margin: 10px;">  <section class="sec2">
 <input type="checkbox" id="@item.ID" checked="@Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected" value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> 
 <label class="label" for="@item.ID">	<pre>@item.Value </pre> </label><br /><br />} }
    <h1> @(ExamMTA.AllowShowAnswer ? (ShowAnswer || Qeustion.Answers.Count(x => x.IsSelected) > 0) ?
-(CorrectAnswer || ExamMTA.Scores98361[(QNumber - 1) % 79].IsCorrect) ? "CORRECT" :"WRONG" :" " :"") </h1></div>
+(CorrectAnswer || ExamMTA.Scores98_361[(QNumber - 1) % 79].IsCorrect) ? "CORRECT" :"WRONG" :" " :"") </h1></div>
 <table border="0"> <tr>  <td>
             @if (QNumber == 1)  {    <button class="arrow">&larr;</button> }
             else{ <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>&larr;</button>}

@@ -40,10 +40,26 @@ namespace ServerMTA.Model
                 item.Answers.Shuffle();
             }
         }
-        public static List<MarkForReview> MarkForReviewList = Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
-        public static void ClearMark() => MarkForReviewList = Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
-        public static List<Score> Scores98361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
-        private static void ClearScore() => Scores98361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
+        public static List<MarkForReview> MarkForReviewList => Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
+
+        public static void ClearMark()
+        {
+            foreach (var item in MarkForReviewList)
+            {
+                item.IsMarked = false;
+            }
+        }
+
+        public static List<Score> Scores98_361 => Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
+
+        private static void ClearScore()
+        {
+            foreach (var item in Scores98_361)
+            {
+                item.IsCorrect = false;
+            }
+        }
+
         public static void ClearRadioAnswer(Exam exam)
         {
             foreach (var Elment in exam.Answers)

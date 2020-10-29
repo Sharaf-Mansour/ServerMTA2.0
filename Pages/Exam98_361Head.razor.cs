@@ -41,7 +41,7 @@ namespace ServerMTA.Pages
                 from item in Qeustion.Answers
                 where item.Value == RadioValue
                 select item.IsCorrect).FirstOrDefault<bool>();
-            ExamMTA.Scores98361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
+            ExamMTA.Scores98_361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
         }
 
         void CheckSelection(ChangeEventArgs __e, Answer I)
@@ -72,7 +72,7 @@ namespace ServerMTA.Pages
                 CorrectAnswer = false;
             }
 
-            ExamMTA.Scores98361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
+            ExamMTA.Scores98_361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
         }
     }
 }
