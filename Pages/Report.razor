@@ -1,5 +1,5 @@
 ﻿@page "/Download"
- <button class="btnsubmit" @onclick='print'>Print</button>
+ <button class="btnsubmit" @onclick='Print'>Print</button>
 <button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
  @foreach(var Qeustion in ExamMTA.Exams98_361 ){
      <div> <h2 style="padding:20px">Qeustion Number @(1+QNumber++) </h2>
@@ -9,5 +9,5 @@
          <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">	
          <pre class="@((Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected) ? "checkright":"")">@item.Value </pre> </label>  }
        <br />     <label>    <strong>
-   @(Qeustion.Answers.Count(x => x.IsSelected) > 0 ? ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect ? "CORRECT" : "WRONG" :"Not Answered")
+   @(Qeustion.Answers.Count(x => x.IsSelected) > 0 ? ExamMTA.Scores98361[(QNumber - 1) % 79].IsCorrect ? "CORRECT" : "WRONG" :"Not Answered")
 </strong> </label> </div> </div>   <br clear="all" style="page-break-before:always" />}

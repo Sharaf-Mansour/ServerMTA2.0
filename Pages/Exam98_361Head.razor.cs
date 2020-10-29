@@ -20,14 +20,14 @@ namespace ServerMTA.Pages
     {
         [Inject] protected NavigationManager NavigationManager { get; set; }
 
-        [Parameter]  public int QNumber    {  get;   set;  }
-                public bool showAnswer = false;
+        [Parameter] public int QNumber { get; set; }
+        public bool ShowAnswer;
         string RadioValue = "";
-        public bool CorrectAnswer = false;
+        public bool CorrectAnswer;
         public Exam Qeustion => ExamMTA.Exams98_361[(QNumber - 1) % 79];
         private void NavigateToComponent(string Report)
         {
-            (showAnswer, CorrectAnswer) = (false, false);
+            (ShowAnswer, CorrectAnswer) = (false, false);
             NavigationManager.NavigateTo(Report);
         }
 
@@ -36,22 +36,22 @@ namespace ServerMTA.Pages
         {
             ExamMTA.ClearRadioAnswer(Qeustion);
             Qeustion.Answers.Where(x => x.ID == I.ID).Single().IsSelected = true;
-            (showAnswer, RadioValue) = (true, args.Value.ToString());
+            (ShowAnswer, RadioValue) = (true, args.Value.ToString());
             CorrectAnswer = (
                 from item in Qeustion.Answers
                 where item.Value == RadioValue
                 select item.IsCorrect).FirstOrDefault<bool>();
-            ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
+            ExamMTA.Scores98361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
         }
 
         void CheckSelection(ChangeEventArgs __e, Answer I)
         {
-            (CorrectAnswer, showAnswer) = (false, true);
+            (CorrectAnswer, ShowAnswer) = (false, true);
             Qeustion.Answers.Where(x => x.ID == I.ID).Single().IsSelected = (bool)__e.Value;
             var CorrectAnswersCount = (
                 from item in Qeustion.Answers
                 where item.IsCorrect == true
-                select item).ToList().Count();
+                select item).Count();
             var SelectsAnswers = (
                 from item in Qeustion.Answers
                 where item.IsSelected == true
@@ -72,7 +72,7 @@ namespace ServerMTA.Pages
                 CorrectAnswer = false;
             }
 
-            ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
+            ExamMTA.Scores98361[(QNumber - 1) % 79].IsCorrect = CorrectAnswer;
         }
     }
 }

@@ -1,75 +1,72 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ServerMTA.Model
 {
     public static class ExamMTA
     {
-        public static bool allowShowAnswer { get; set; }
+        public static bool AllowShowAnswer { get; set; }
         public static bool ShuffleAnswer { get; set; }
         public static bool ShuffleQeustion { get; set; }
-        static Random rng = new Random();
+        private static Random Random => new();
         public static void SortQeustion() => Exams98_361.Sort((x, y) => x.ID.CompareTo(y.ID));
-        public static void SortAnswer() {
+        public static void SortAnswer()
+        {
             foreach (var item in Exams98_361)
             {
-               item.Answers.Sort((x, y) => x.ID.CompareTo(y.ID));
+                item.Answers.Sort((x, y) => x.ID.CompareTo(y.ID));
             }
-        } 
-
-        static void Shuffle<T>(this IList<T> list)
+        }
+        private static void Shuffle<T>(this IList<T> list)
         {
             int n = list.Count;
             while (n > 1)
             {
                 n--;
-                int k = rng.Next(n + 1);
+                int k = Random.Next(n + 1);
                 T value = list[k];
                 list[k] = list[n];
                 list[n] = value;
             }
         }
-        public static void shuffleQeustions() => Exams98_361.Shuffle();
-        public static void shuffleAnswers() {
+        public static void ShuffleQeustions() => Exams98_361.Shuffle();
+        public static void ShuffleAnswers()
+        {
             foreach (var item in Exams98_361)
             {
                 item.Answers.Shuffle();
             }
         }
-   
-        public static List<Score> scores98_361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
         public static List<MarkForReview> MarkForReviewList = Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
         public static void ClearMark() => MarkForReviewList = Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
-        public static void ClearRadioAnswer(Exam exam) {
-            foreach (var Elment in exam.Answers) { 
-            Elment.IsSelected = false;
-            }
-            //for (int item = 0; item < exam.Answers.Count; item++)
-            //{
-
-            //    Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item] = new(Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item].ID,
-            //        Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item].Value, Exams98_361[Exams98_361.FindIndex(x => x.ID == exam.ID)].Answers[item].IsCorrect, false);
-            //}
-
-        }
-        public static void RestartExam()
+        public static List<Score> Scores98361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
+        private static void ClearScore() => Scores98361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
+        public static void ClearRadioAnswer(Exam exam)
         {
-
-            for (int i = 0; i < Exams98_361.Count; i++) {
+            foreach (var Elment in exam.Answers)
+            {
+                Elment.IsSelected = false;
+            }
+        }
+        private static void ClearExam()
+        {
+            for (int i = 0; i < Exams98_361.Count; i++)
+            {
                 foreach (var Elment in Exams98_361[i].Answers)
-                                    {
+                {
                     Elment.IsSelected = false;
                 }
-                //for (int item = 0; item < Exams98_361[i].Answers.Count; item++)
-                //{
-
-                //    Exams98_361[i].Answers[item] = new(Exams98_361[i].Answers[item].ID,
-                //        Exams98_361[i].Answers[item].Value, Exams98_361[i].Answers[item].IsCorrect, false);
-                //}
             }
         }
-
+        public static void ResetExam()
+        {
+            ClearScore();
+            ClearMark();
+            ClearExam();
+        }
         public static List<Exam> Exams98_361 { get; set; } = new()
         {
             new(1, new()
@@ -93,7 +90,7 @@ What option should you use?", ControlType.RadioButton),
                 new(4, @"CIL is an object-oriented assembly language, but is not stack-based.", false),
             }, @"You are employed as a developer at TestKing.com. You are creating a .NET Framework application.
 You have been instructed to make sure that you make use of Common Intermediate Language (CLI) for programming the application.
-What options are TRUE with regards to CLI? (Choose all that apply.)",ControlType.CheackBox),
+What options are TRUE with regards to CLI? (Choose all that apply.)", ControlType.CheackBox),
             new(3, new()
             {
                 new(1, @"myArray[1]", false),
@@ -106,7 +103,7 @@ What options are TRUE with regards to CLI? (Choose all that apply.)",ControlType
 You have written the code shown below for declaring an array of a new application:
 Dim myArray as String = { apples, pears, plums, grapes, oranges, bananas}
 You want to return the third item in your array.
-What code would you employ?",ControlType.RadioButton),
+What code would you employ?", ControlType.RadioButton),
             new(4, new()
             {
                 new(1, @"You should consider making use of the void keyword in the method declaration.", true),
@@ -117,7 +114,7 @@ What code would you employ?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You are in the process of creating code for a method that does not retrieve a value for the calling code.
 You want to make sure that this is reflected when declaring the method.
-What option should you use?",ControlType.RadioButton),
+What option should you use?", ControlType.RadioButton),
             new(5, new()
             {
                 new(1, @"You should consider making use of the foreach C# statement.", false),
@@ -129,7 +126,7 @@ You make use of C# and ASP.NET for development purposes.
 You have received instructions to create a new program for TestKing.com using C#.
 You are informed that the new program should allow for intricate multi-way branching.
 Furthermore, the code used must not be difficult to make sense of.
-What is the option you should use?",ControlType.RadioButton),
+What is the option you should use?", ControlType.RadioButton),
             new(6, new()
             {
                 new(1, @"You should consider making use of the switch C# statement as part of your code.", false),
@@ -142,7 +139,7 @@ You have been tasked with creating a new program for TestKing.com using C#.
 The new program will iterate throughout an assortment of lists and arrays.
 Every element in this assortment must be processed just one time.
 You are then informed that reading and debugging your code should not be difficult.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(7, new()
             {
                 new(1, @"int count = 1; 
@@ -165,7 +162,7 @@ count++; }", false),
 You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a new application for TestKing.com using C#. 
 The new application must process a loop repeatedly for precisely 7 times.
-Which of the following represents the code you should write?",ControlType.RadioButton),
+Which of the following represents the code you should write?", ControlType.RadioButton),
             new(8, new()
             {
                 new(1, @"You should consider making use of the static data type.", false),
@@ -177,7 +174,7 @@ You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a new program for TestKing.com. 
 The program should be able to affect integer values, which may be positive or negative and be greater than twelve characters.
 You have to make sure that you are able to store this type of variable.
-What is the option you should take?",ControlType.RadioButton),
+What is the option you should take?", ControlType.RadioButton),
             new(9, new()
             {
                 new(1, @"return n * Factorial(n - 1);", true),
@@ -200,7 +197,7 @@ You have written the following code for the method:
 10:}    
 11:}
 You have to insert suitable code at line 09 to make sure that the proper outcome is reached.
-What line of code should be inserted?",ControlType.RadioButton),
+What line of code should be inserted?", ControlType.RadioButton),
             new(10, new()
             {
                 new(1, @"int count = O; 
@@ -232,7 +229,7 @@ You make use of C# and ASP.NET for development purposes.
 You are writing code for a new TestKing.com application. 
 The code includes the while statement.
 You want to make sure that a control enters the while loop six times.
-VVhich of the following suitably represents the written code?",ControlType.RadioButton),
+VVhich of the following suitably represents the written code?", ControlType.RadioButton),
             new(11, new()
             {
                 new(1, @"You should consider making use of the public C# statement.", false),
@@ -243,7 +240,7 @@ VVhich of the following suitably represents the written code?",ControlType.Radio
 You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a new program for TestKing.com.
 You have to include a repetition structure that allows for the termination condition test to execute at the bottom of the loop not the top.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(12, new()
             {
                 new(1, @"You should consider making use of the public C# statement.", false),
@@ -254,7 +251,7 @@ What action should you take?",ControlType.RadioButton),
 You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a program that includes code that allows the program to iterate a set amount of times.
 Regardless of whether the loop body includes complex code, the written code should be understandable and easily maintainable.
-What option should you use?",ControlType.RadioButton),
+What option should you use?", ControlType.RadioButton),
             new(13, new()
             {
                 new(1, @"You should consider making use of the private access modifier for distinguishing the percentValue variable.", true),
@@ -265,7 +262,7 @@ What option should you use?",ControlType.RadioButton),
 You make use of C# and ASP.NET for development purposes.
 You have received instructions to create a method for determining the concession for products TestKing.com sold.
 A variable, named percentValue, is of the type double and must be only be available in the method.
-Which of the following actions should you take?",ControlType.RadioButton),
+Which of the following actions should you take?", ControlType.RadioButton),
             new(14, new()
             {
                 new(1, @"{
@@ -286,7 +283,7 @@ You make use of C# and ASP.NET for development purposes.
 You are planning to make use of an InitFields method that obtains two parameters of data type double, but does not retrieve a value for the calling code.
 You start writing code to define the InitFields method as shown below:
 public void InitFields(double l, double w)
-What code should you use to complete the code?",ControlType.RadioButton),
+What code should you use to complete the code?", ControlType.RadioButton),
             new(15, new()
             {
                 new(1, @"You are unable to make use of the virtual modifier with the static, abstract, private or override modifiers.", true),
@@ -296,7 +293,7 @@ What code should you use to complete the code?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You make use of C# and ASP.NET for development purposes.
 You are in the process of creating a class that makes use of a method using the virtual modifier.
-Which of the following is TRUE with regards to the virtual modifier? (Choose all that apply.)",ControlType.RadioButton),
+Which of the following is TRUE with regards to the virtual modifier? (Choose all that apply.)", ControlType.RadioButton),
             new(16, new()
             {
                 new(1, @"You should consider making use of the sealed keyword.", true),
@@ -307,7 +304,7 @@ Which of the following is TRUE with regards to the virtual modifier? (Choose all
 You make use of C# and ASP.NET for development purposes.
 You are in the process of defining a class to provide functionality for executing custom pivot transforms on big data sets.
 You have been informed that derived classes should be prevented from inheriting the functionality of the class.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(17, new()
             {
                 new(1, @"You should consider developing a classified interface that is employed by all of the classes.", false),
@@ -317,7 +314,7 @@ What action should you take?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You are in the process of creating a new application that includes numerous classes, with dissimilar algorithms.
 You have been instructed to make sure that these classes are configured to print, regardless of their dissimilar algorithms.
-Which of the following actions should you take?",ControlType.RadioButton),
+Which of the following actions should you take?", ControlType.RadioButton),
             new(18, new()
             {
                 new(1, @"You should consider making use of a method.", true),
@@ -329,7 +326,7 @@ You make use of C# and ASP.NET for development purposes.
 You are in the process creating a class, named TKMovies. 
 You want to make sure that you have the ability to retrieve a list of all movies, which are arranged by the producer's surname.
 You have to make sure that this feature of the class is suitably classified by the code you insert.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(19, new()
             {
                 new(1, @"You should consider creating an element in the class.", false),
@@ -340,7 +337,7 @@ What action should you take?",ControlType.RadioButton),
 You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a new class.
 The new class must allow for the immediate initialization of its data members every time an object of the class is created.
-Which of the following actions should you take?",ControlType.RadioButton),
+Which of the following actions should you take?", ControlType.RadioButton),
             new(20, new()
             {
                 new(1, @"You should consider defining the Area method for the derivative of the Shape class using public new void.", true),
@@ -352,7 +349,7 @@ You make use of C# and ASP.NET for development purposes.
 You are in the process of developing a new derivative of the Shape class. 
 The Shape class makes use of public virtual void to define the Area method.
 You want to make sure that the Area method in the Shape class allows for new operations, while keeping the execution of the Area method of the Shape class concealed.
-What option should you use?",ControlType.RadioButton),
+What option should you use?", ControlType.RadioButton),
             new(21, new()
             {
                 new(1, @"class Rectangle : IConvertible {
@@ -399,7 +396,7 @@ else return -1;}}", false),
 You make use of C# and ASP.NET for development purposes.
 You are instructed to develop a new Rectangle class. 
 The new class should allow for Rectangle objects to be compared.
-What option suitably represents the necessary code?",ControlType.RadioButton),
+What option suitably represents the necessary code?", ControlType.RadioButton),
             new(22, new()
             {
                 new(1, @"You should consider including the namespace C# keyword in your code.", true),
@@ -411,7 +408,7 @@ You make use of C# and ASP.NET for development purposes.
 You are in the process of creating an application using C#.
 You have just developed a class that has the same name as a class in a third-party library you are using.
 You are informed that making use of this class in your code should not affect the clarity of your code.
-VVhat action should you take?",ControlType.RadioButton),
+VVhat action should you take?", ControlType.RadioButton),
             new(23, new()
             {
                 new(1, @"You should consider making use of an abstract keyword.", false),
@@ -422,7 +419,7 @@ VVhat action should you take?",ControlType.RadioButton),
 You make use of C# and ASP.NET for development purposes.
 You have received instructions to create a new C# program for TestKing.com.
 You want to write code that declares members that belong to the actual class, not to specific objects.
-What is the action you should take?",ControlType.RadioButton),
+What is the action you should take?", ControlType.RadioButton),
             new(24, new()
             {
                 new(1, @"You should consider including a class.", true),
@@ -435,7 +432,7 @@ You are in the process of creating a new program using C#.
 Your code has to include an element that meets the following requirements:
 *Specifies the template for an object.
 *Must be a characterization of a new data type.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(25, new()
             {
                 new(1, @"You should consider declaring the class using the public access modifier", false),
@@ -447,7 +444,7 @@ You make use of C# and ASP.NET for development purposes.
 You have been instructed to develop a new Windows application for TestKing.com. 
 You are in the process of defining a new class. You want to make sure that code outside the assembly is prevented from accessing the class.
 Code packaged in the same assembly should however have the ability to access this class, regardless of whether they inherit directly or indirectly from the class.
-action should you take?",ControlType.RadioButton),
+action should you take?", ControlType.RadioButton),
             new(26, new()
             {
                 new(1, @"You should consider making use of the actual keyword.", false),
@@ -459,7 +456,7 @@ You make use of C# and ASP.NET for development purposes.
 You have been instructed to develop a new Windows application for TestKing.com.
 You are in the process of defining a new common base class that must be used by various derived classes. 
 You want to declare the new base class.
-What is the option you should use?",ControlType.RadioButton),
+What is the option you should use?", ControlType.RadioButton),
             new(27, new()
             {
                 new(1, @"It will enable derived classes to share common functionality with base classes, but prevent them from defining their own unique behavior.", false),
@@ -470,7 +467,7 @@ What is the option you should use?",ControlType.RadioButton),
 You make use of C# and ASP.NET for development purposes.
 You have been instructed to develop a new Windows application for TestKing.com. 
 You have decided to make use of the inheritance object oriented programming concept.
-What will this allow for?",ControlType.RadioButton),
+What will this allow for?", ControlType.RadioButton),
             new(28, new()
             {
                 new(1, @"You should consider performing a requirements analysis.", true),
@@ -480,7 +477,7 @@ What will this allow for?",ControlType.RadioButton),
             }, @"You are employed as a software system developer at TestKing.com.
 You are in the process of developing a new software system for TestKing.com.
 You are asked to identify the steps required in the development process.
-What option suitably describes the FIRST step?",ControlType.RadioButton),
+What option suitably describes the FIRST step?", ControlType.RadioButton),
             new(29, new()
             {
                 new(1, @"Plans.", true),
@@ -490,7 +487,7 @@ What option suitably describes the FIRST step?",ControlType.RadioButton),
             }, @"You are employed as a software system developer at TestKing.com.
 You are preparing the development of a new software system for TestKing.com.
 You are currently analyzing the results of the design process, prior to development.
-What options form part of the results you are analyzing?",ControlType.CheackBox),
+What options form part of the results you are analyzing?", ControlType.CheackBox),
             new(30, new()
             {
                 new(1, @"An architect develops system content.", false),
@@ -500,7 +497,7 @@ What options form part of the results you are analyzing?",ControlType.CheackBox)
             }, @"You are employed as a software system developer at TestKing.com.
 You have received a request for the development of a new software system. 
 You require the assistance of various types of developers during the development process, of which one is an architect.
-What is the purpose of an architect?",ControlType.RadioButton),
+What is the purpose of an architect?", ControlType.RadioButton),
             new(31, new()
             {
                 new(1, @"A technical writer develops system content.", false),
@@ -510,7 +507,7 @@ What is the purpose of an architect?",ControlType.RadioButton),
             }, @"You are employed as a software system developer at TestKing.com.
 You have received a request for the development of a new software system.
 You require the assistance of various types of developers during the development process, of which one is a technical writer.
-What is the purpose of a technical writer?",ControlType.RadioButton),
+What is the purpose of a technical writer?", ControlType.RadioButton),
             new(32, new()
             {
                 new(1, @"It allows you to ascertain whether the program execution meets the initial requirements.", true),
@@ -521,7 +518,7 @@ What is the purpose of a technical writer?",ControlType.RadioButton),
 You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a new program for TestKing.com.
 You have reached the testing stage of the development process.
-What is the reason for the testing stage?",ControlType.RadioButton),
+What is the reason for the testing stage?", ControlType.RadioButton),
             new(33, new()
             {
                 new(1, @"A release manager develops system content.", false),
@@ -531,7 +528,7 @@ What is the reason for the testing stage?",ControlType.RadioButton),
             }, @"You are employed as a software system developer at TestKing.com.
 You have received a request for the development of a new software system.
 You require the assistance of various people during the development process, ofwhich one is a release manager.
-What is the purpose of a release manager?",ControlType.RadioButton),
+What is the purpose of a release manager?", ControlType.RadioButton),
             new(34, new()
             {
                 new(1, @"Merger.", false),
@@ -542,7 +539,7 @@ What is the purpose of a release manager?",ControlType.RadioButton),
 You have been instructed to create a new program for TestKing.com.
 You want to make sure that when you fix a problem with the program, it does not negatively affect the rest of the program.
 You need to employ a suitable testing strategy.
-What option should you use?",ControlType.RadioButton),
+What option should you use?", ControlType.RadioButton),
             new(35, new()
             {
                 new(1, @"White-box testing allows for testing every imaginable combination of end-user activities.", false),
@@ -552,7 +549,7 @@ What option should you use?",ControlType.RadioButton),
             }, @"You are employed as a senior developer at TestKing.com. 
 You are responsible for running training exercises for junior developers.
 During one of the training exercises, you are discussing testing. You are explaining what white-box testing entails.
-What is TRUE with regards to white-box testing? (Choose all that apply.)",ControlType.CheackBox),
+What is TRUE with regards to white-box testing? (Choose all that apply.)", ControlType.CheackBox),
             new(36, new()
             {
                 new(1, @"Black-box testing allows for testing every imaginable combination of end-user activities.", true),
@@ -563,7 +560,7 @@ What is TRUE with regards to white-box testing? (Choose all that apply.)",Contro
 You are responsible for running training exercises for junior developers.
 During one of the training exercises, you are discussing testing. 
 You are explaining what black-box testing entails.
-What is TRUE with regards to black-box testing? (Choose all that apply.)",ControlType.CheackBox),
+What is TRUE with regards to black-box testing? (Choose all that apply.)", ControlType.CheackBox),
             new(37, new()
             {
                 new(1, @"It is a contiguous collection of data items that can be accessed by an ordinal index.", false),
@@ -574,7 +571,7 @@ What is TRUE with regards to black-box testing? (Choose all that apply.)",Contro
 You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a new program for TestKing.com. 
 You are planning to make use of a queue data structure.
-Which of the following options are TRUE with regards to the queue data structure?",ControlType.RadioButton),
+Which of the following options are TRUE with regards to the queue data structure?", ControlType.RadioButton),
             new(38, new()
             {
                 new(1, @"It is a contiguous collection of data items that can be accessed by an ordinal index.", false),
@@ -585,7 +582,7 @@ Which of the following options are TRUE with regards to the queue data structure
 You make use of C# and ASP.NET for development purposes.
 You have been instructed to create a new program for TestKing.com.
 You are planning to make use of a stack data structure.
-which of the following options are TRUE with regards to the stack data structure?",ControlType.RadioButton), 
+which of the following options are TRUE with regards to the stack data structure?", ControlType.RadioButton),
             new(39, new()
             {
                 new(1, @"You should consider making use of the contains queue operation.", true),
@@ -596,7 +593,7 @@ which of the following options are TRUE with regards to the stack data structure
 TestKing.com makes use of SQL Server databases in their environment.
 TestKing.com has an application that employs a queue data structure for influencing data. 
 A fellow developer, named Kara Lang, wants to know if the queue includes a data item without having to process the data item.
-What option would you use?",ControlType.RadioButton),
+What option would you use?", ControlType.RadioButton),
             new(40, new()
             {
                 new(1, @"You should consider making use of the view queue operation.", false),
@@ -607,7 +604,7 @@ What option would you use?",ControlType.RadioButton),
 You have created a new application for TestKing.com.
 The new application makes use of a stack data structure to handle data.
 You want to perform a queue operation that enables you to locate the data item that is next in line for processing, without processing that data item.
-VVhat option should you make use of?",ControlType.RadioButton),
+VVhat option should you make use of?", ControlType.RadioButton),
             new(41, new()
             {
                 new(1, @"MergeSort", false),
@@ -618,7 +615,7 @@ VVhat option should you make use of?",ControlType.RadioButton),
 You make use of C# and ASP.NET for development purposes.
 You are in the process of developing a new application. 
 You are making use of an algorithm in your code that requires making use of the comparison and swap techniques.
-What algorithm are you using?",ControlType.RadioButton),
+What algorithm are you using?", ControlType.RadioButton),
             new(42, new()
             {
                 new(1, @"It allows you to navigate all of the list's nodes.", true),
@@ -630,7 +627,7 @@ You make use of C# and ASP.NET for development purposes.
 You are in the process of developing a new application for TestKing.com.
 The application must make use of a list that has multiple nodes.
 You link the application to only the head node.
-What is TRUE for this scenario?",ControlType.RadioButton),
+What is TRUE for this scenario?", ControlType.RadioButton),
             new(43, new()
             {
                 new(1, @"An array data structure.", false),
@@ -643,7 +640,7 @@ You have been instructed to create a new TestKing.com application that makes use
 *Prohibits random access to its items.
 *Are extremely fast in executing insert and delete operations.
 *Are not stored in contiguous memory locations.
-What data structure should you make use of?",ControlType.RadioButton),
+What data structure should you make use of?", ControlType.RadioButton),
             new(44, new()
             {
                 new(1, @"Doubly linked lists are able to store each of the elements they contain in different and unrelated storage locations.", true),
@@ -653,7 +650,7 @@ What data structure should you make use of?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com. 
 You make use of C# and ASP.NET for development purposes.
 You are creating a new application using a doubly linked list data structure.
-What is a TRUE statement with regards to this type of data structure?",ControlType.RadioButton),
+What is a TRUE statement with regards to this type of data structure?", ControlType.RadioButton),
             new(45, new()
             {
                 new(1, @"It defines how elements are presented and where they are placed on the Web page.", true),
@@ -664,7 +661,7 @@ What is a TRUE statement with regards to this type of data structure?",ControlTy
 You make use of C# and ASP.NET for development purposes.
 You have received instructions to create a Web page for TestKing.com. 
 You are planning to make use of Cascading Style Sheet (CSS) for the Web page.
-What is TRUE with regards to using Cascading Style Sheet (CSS)?",ControlType.RadioButton),
+What is TRUE with regards to using Cascading Style Sheet (CSS)?", ControlType.RadioButton),
             new(46, new()
             {
                 new(1, @"You should consider making use of the <IMG> HTML tag.", true),
@@ -676,7 +673,7 @@ You make use of C# and ASP.NET for development purposes.
 You have recently developed a Web page for TestKing.com. 
 TestKing.com has informed that a picture that resides on a different web server must be presented to users when they access the Web page. 
 The picture can be retrieved via a public URL.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(47, new()
             {
                 new(1, @"It defines the shape, coordinates, and related URL of a single hyperlink region within a client-side image map", false),
@@ -686,7 +683,7 @@ What action should you take?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com. 
 You are in the process of creating a new Web page for TestKing.com.
 You are planning to set the HREF attribute of an anchor element.
-What is TRUE with this setting?",ControlType.RadioButton),
+What is TRUE with this setting?", ControlType.RadioButton),
             new(48, new()
             {
                 new(1, @"It will allow you to make sure that Web pages take the least time to load.", true),
@@ -696,7 +693,7 @@ What is TRUE with this setting?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You are in the process of creating a new Web page for TestKing.com.
 You have written JavaScript code for your Web site in a different file.
-You then set the SRC attribute of the",ControlType.CheackBox),
+You then set the SRC attribute of the", ControlType.CheackBox),
             new(49, new()
             {
                 new(1, @"It is only used in 11S 6.0.", false),
@@ -707,7 +704,7 @@ You then set the SRC attribute of the",ControlType.CheackBox),
 TestKing.com makes use of ASP .NET for developing Web applications.
 You are currently running a training exercise for potential developers. 
 You are discussing the aspnet_wp.exe worker process.
-What is TRUE with regards to the aspnet_wp.exe worker process? (Choose all that apply.)",ControlType.CheackBox),
+What is TRUE with regards to the aspnet_wp.exe worker process? (Choose all that apply.)", ControlType.CheackBox),
             new(50, new()
             {
                 new(1, @"An architect develops system content.", true),
@@ -718,7 +715,7 @@ What is TRUE with regards to the aspnet_wp.exe worker process? (Choose all that 
            You are using ASP.NET to develop a new Web page for TestKing.com.
 You have recently written code for a Page Load method.
 You then configured the AutoEventWireup attribute of the @page directive to be TRUE.
-which of the following describes the results of this configuration?",ControlType.RadioButton),
+which of the following describes the results of this configuration?", ControlType.RadioButton),
             new(51, new()
             {
                 new(1, @"You should consider making use of the browser's History tab.", false),
@@ -731,7 +728,7 @@ The Web site will be used to find places of interest.
 You are instructed to make sure that the Web pages presents a list, in the bottom left-hand side, of the places of interest that were browsed in recent times.
 Furthermore, you are infonned that the browsing data should be accessible to all Web pages, even if the user restarts the browser.
 You want to complete your task using as little administrative effort, and without making use of server side resources.
-What option should you take?",ControlType.RadioButton),
+What option should you take?", ControlType.RadioButton),
             new(52, new()
             {
                 new(1, @"You should consider making sure that all client workstations have Windows 7 installed.", false),
@@ -742,7 +739,7 @@ What option should you take?",ControlType.RadioButton),
 You make use of ASP.NET and C# for development purposes.
 TestKing.com has an Internet Information Services (IIS) server, named TESTKING-SR07, which hosts a newly developed Web application.
 You are then informed that you must ensure that all TestKing.com's staff is able to make use of the new Web application.
-Which of the following actions should you take?",ControlType.RadioButton),
+Which of the following actions should you take?", ControlType.RadioButton),
             new(53, new()
             {
                 new(1, @"It specifies that you want to expose the method as part of the Web service.", true),
@@ -752,7 +749,7 @@ Which of the following actions should you take?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You are in the process of creating a Web service using ASP.NET.
 You have attached the WebMethod attribute to a Public method.
-Which of the following options describe your reasons for doing this? (Choose all that apply.)",ControlType.CheackBox),
+Which of the following options describe your reasons for doing this? (Choose all that apply.)", ControlType.CheackBox),
             new(54, new()
             {
                 new(1, @"You should analyze the test page that is shown in the Web browser after using Visual Studio to execute the Web services project.", true),
@@ -763,7 +760,7 @@ Which of the following options describe your reasons for doing this? (Choose all
 TestKing.com uses Visual Studio in their business.
 You recently made use of C# to develop a new Web service that supports mapping data.
 You want to make sure that the Web service produces the proper output using the least amount of effort.
-Which of the following actions should you take?",ControlType.RadioButton),
+Which of the following actions should you take?", ControlType.RadioButton),
             new(55, new()
             {
                 new(1, @"You should consider inserting the reference in the machine.config file", false),
@@ -774,7 +771,7 @@ Which of the following actions should you take?",ControlType.RadioButton),
 You are using ASP.NET to develop a new Web application, named TKWebApp for TestKing.com.
 TKWebApp makes use of a Web service to obtain data.
 You want to make sure that you are able to make use of the methods of this Web service inside TKWebApp by creating the client-side proxy classes.
-Which of the following actions should you take?",ControlType.RadioButton),
+Which of the following actions should you take?", ControlType.RadioButton),
             new(56, new()
             {
                 new(1, @"You should consider generating a custom control for the unique user interface.", true),
@@ -787,7 +784,7 @@ You are informed that the application should include a unique user interface ele
 Furthermore, you are informed that a number of additional applications will be employing this unique user interface.
 You have noticed that the Visual Studio toolbox does not have suitable tools to complete your task. 
 You then decide to create the necessary code from scratch.
-What option should you make use of?",ControlType.RadioButton),
+What option should you make use of?", ControlType.RadioButton),
             new(57, new()
             {
                 new(1, @"It allows the user interface component the react to user actions.", true),
@@ -797,7 +794,7 @@ What option should you make use of?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You have been instructed to create a user interface component for a new TestKing.com application.
 You are required to make use of an event programming construct.
-What is the reason for this?",ControlType.RadioButton),
+What is the reason for this?", ControlType.RadioButton),
             new(58, new()
             {
                 new(1, @"It is made up of one or more independent windows, which appears separately on the Windows desktop.", true),
@@ -807,7 +804,7 @@ What is the reason for this?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com. 
 You have received instructions to create a new Windows application for TestKing.com.
 You are planning to create a Single Document Interface (SDI) application.
-What option is TRUE with regards to using Single Document Interface (SDI)?",ControlType.RadioButton),
+What option is TRUE with regards to using Single Document Interface (SDI)?", ControlType.RadioButton),
             new(59, new()
             {
                 new(1, @"You should consider developing a custom control.", false),
@@ -820,7 +817,7 @@ The application must be configured to update records on a daily basis.
 The application should be configured to store error messages that take place while the application is running in a .txt file.
 You should also make sure that the application starts automatically, without human input.
 You have been informed that your solution should reduce the amount of processes required for development, installation, and updates.
-What option should you use?",ControlType.RadioButton),
+What option should you use?", ControlType.RadioButton),
             new(60, new()
             {
                 new(1, @"You should consider creating a Windows Service application project, and configuring the Output type as Console Application.", false),
@@ -832,7 +829,7 @@ You have received instructions to create a new application for entering data.
 You have been informed that users will enter data via a keyboard or a bar-code scanner.
 Furthermore, an image of an item must be displayed onscreen as soon as a code is entered.
 To keep an eye on communication with the bar-code scanner, the application must log its operation to a console window.
-Which of the following actions should you take?",ControlType.RadioButton),
+Which of the following actions should you take?", ControlType.RadioButton),
             new(61, new()
             {
                 new(1, @"You should consider creating a Windows Service application.", true),
@@ -846,7 +843,7 @@ You want to make sure that the application allows for:
 *Continual execution in the background.
 *Messages to be written to the Windows application event log, and has no user interface.
 *A user to log off without interrupting the application's processes.
-What option should you make use of?",ControlType.RadioButton),
+What option should you make use of?", ControlType.RadioButton),
             new(62, new()
             {
                 new(1, @"You should consider accessing the Event Viewer on the local workstation.", true),
@@ -857,7 +854,7 @@ What option should you make use of?",ControlType.RadioButton),
 You have recently created a new application for TestKing.com.
 Messages written by the new application will be stored in the Windows application event log of the local workstation.
 You want to examine these messages on a daily basis.
-What option should you make use of?",ControlType.RadioButton),
+What option should you make use of?", ControlType.RadioButton),
             new(63, new()
             {
                 new(1, @"It installs an executable containing classes that expand ServiceBase.", false),
@@ -868,7 +865,7 @@ What option should you make use of?",ControlType.RadioButton),
 You are making use of .NET Framework 4.5 to develop Windows service applications.
 You have been instructed to create a new service application for TestKing.com.
 Your code will include the System.ServiceProcess.ServiceInstaller class.
-VVhat is a TRUE statement with regards to this class?",ControlType.RadioButton),
+VVhat is a TRUE statement with regards to this class?", ControlType.RadioButton),
             new(64, new()
             {
                 new(1, @"You should consider configuring the CanPauseAndContinue property of the service to true.", true),
@@ -879,7 +876,7 @@ VVhat is a TRUE statement with regards to this class?",ControlType.RadioButton),
 You have been instructed to create an order processing Windows service application.
 Your solution should allow for the postponement of the process when system maintenance is required, as well as the resumption
 of the process subsequent to the maintenance being completed.
-Which of the following actions should you take?",ControlType.RadioButton),
+Which of the following actions should you take?", ControlType.RadioButton),
             new(65, new()
             {
                 new(1, @"You should consider configuring the Windows service project to include an application installer.", false),
@@ -892,7 +889,7 @@ You have been instructed to create a Windows service application for TestKing.co
 The application will include a trio of Windows services that are dissimilar.
 You want to make sure that the services are operational by installing them prior to use.
 You are then informed that the services must be installed using a suitable Windows installer tool.
-Which of the following actions should you take?",ControlType.RadioButton),
+Which of the following actions should you take?", ControlType.RadioButton),
             new(66, new()
             {
                 new(1, @"The Source property is used to set the source name to register and use when writing to the event log.", true),
@@ -904,7 +901,7 @@ TestKing.com makes use of SQL Server databases in their environment.
 You have been instructed to create a new windows program for TestKing.com. 
 The program must be able to record messages in the event log. 
 You have decided to include the Source property of the EventLog class in your code.
-Which of the following best describes the purpose of the Source property in the EventLog class?",ControlType.RadioButton),
+Which of the following best describes the purpose of the Source property in the EventLog class?", ControlType.RadioButton),
             new(67, new()
             {
                 new(1, @"You should consider executing this service using the LocalSystem account.", true),
@@ -915,7 +912,7 @@ Which of the following best describes the purpose of the Source property in the 
 TestKing.com makes use of SQL Server in their environment.
 You have been instructed to create a Windows service.
 This Windows service must have the ability to retrieve data hosted by the Windows Registry.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(68, new()
             {
                 new(1, @"It enables you to alter the display and performance of the form to an MDI parent form.", true),
@@ -926,7 +923,7 @@ What action should you take?",ControlType.RadioButton),
 You are making use of .NET Framework 4.5 to develop Windows Forms applications.
 You have just completed creating a new Windows Forms application for TestKing.com.
 You are preparing to configure the IsMdiContainer property of the form.
-Which of the following is TRUE with regards to this configuration?",ControlType.RadioButton),
+Which of the following is TRUE with regards to this configuration?", ControlType.RadioButton),
             new(69, new()
             {
                 new(1, @"You should consider making use of MdiLayout.TileVertical.", true),
@@ -936,7 +933,7 @@ Which of the following is TRUE with regards to this configuration?",ControlType.
             }, @"You are employed as a developer at TestKing.com.
 You have receive instructions to create a new multiple document interface (MDI) Windows Form.
 You want to make sure that the code you create allows for the child windows to be displayed perpendicularly inside the client area of the MDI parent form.
-What option should you use in your code?",ControlType.RadioButton),
+What option should you use in your code?", ControlType.RadioButton),
             new(70, new()
             {
                 new(1, @"You should consider making use of the Fill method.", false),
@@ -946,7 +943,7 @@ What option should you use in your code?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You have been instructed to create a new command-line application for TestKing.com.
 You want to make sure that you are able to retrieve a response from the command-line.
-What option should you make use of?",ControlType.RadioButton),
+What option should you make use of?", ControlType.RadioButton),
             new(71, new()
             {
                 new(1, @"You should consider making use of the net start command.", true),
@@ -957,7 +954,7 @@ What option should you make use of?",ControlType.RadioButton),
 TestKing.com makes use of SQL Server databases in their environment.
 You have recently created a Windows service for TestKing.com. 
 You are then instructed to run a newly created Windows service from the command-line.
-What is the option you should take?",ControlType.RadioButton),
+What is the option you should take?", ControlType.RadioButton),
             new(72, new()
             {
                 new(1, @"You should consider executing the Snmputil.exe command.", false),
@@ -967,7 +964,7 @@ What is the option you should take?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You have just completed the creation of a Windows service.
 You are now preparing to apply the service by installing it.
-What option should you use?",ControlType.RadioButton),
+What option should you use?", ControlType.RadioButton),
             new(73, new()
             {
                 new(1, @"You should consider making use of the DMLWriter class.", false),
@@ -980,7 +977,7 @@ You are creating a new application for TestKing.com.
 The new application should be configured to TestKing.com's client list in a .txt file.
 You have been informed that your solution should allow for the file to be accessed by ordinary text editors.
 You have also been informed that the file should take up as little space as possible.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(74, new()
             {
                 new(1, @"You should consider making use of the SqlCommand.ExecuteReader method.", false),
@@ -992,7 +989,7 @@ You are using ASP.NET and C# to develop a new Web site for TestKing.com.
 You have created a new application for TestKing.com using C#. 
 The new application must be able to retrieve a single value from a TestKing.com SQL Server database.
 You want to make sure that this process takes as little time as possible.
-What option should you make use of?",ControlType.RadioButton),
+What option should you make use of?", ControlType.RadioButton),
             new(75, new()
             {
                 new(1, @"You should consider making use of the FILL SQL statement.", false),
@@ -1003,7 +1000,7 @@ What option should you make use of?",ControlType.RadioButton),
 TestKing.com makes use of SQL Server in their environment.
 TestKing.com has a database table, named TKItems. 
 You want to make sure that obsolete items are expunged from TKItems when you update it.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(76, new()
             {
                 new(1, @"You should consider configuring the DataTable class to store the data.", false),
@@ -1015,7 +1012,7 @@ TestKing.com makes use of SQL Server databases in their environment.
 You have been instructed to create a new program for TestKing.com. 
 the program must be able to return a list of data from a TestKing.com database and allow you to view the returned data,
 regardless of whether you are linked to the SQL server or not.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(77, new()
             {
                 new(1, @"It writes characters using an encoding value to convert the characters to bytes.", false),
@@ -1027,7 +1024,7 @@ TestKing.com makes use of SQL Server databases in their environment.
 You have been instructed to create a new program for TestKing.com.
 This new program must be able to write information to a flat file.
 You decide to include a BinaryWriter class in your code.
-What is TRUE with regards to the BinaryWriter class?",ControlType.RadioButton),
+What is TRUE with regards to the BinaryWriter class?", ControlType.RadioButton),
             new(78, new()
             {
                 new(1, @"You should consider making use of the Fill method in the written code.", true),
@@ -1037,7 +1034,7 @@ What is TRUE with regards to the BinaryWriter class?",ControlType.RadioButton),
             }, @"You are employed as a developer at TestKing.com.
 You have received instructions to create a new application for TestKing.com. 
 The new application must have the ability to duplicate information hosted by a TestKing.com SQL server data table in a Dataset.
-What action should you take?",ControlType.RadioButton),
+What action should you take?", ControlType.RadioButton),
             new(79, new()
             {
                 new(1, @"Stored procedures can improve the security of your application.", true),
@@ -1048,7 +1045,7 @@ What action should you take?",ControlType.RadioButton),
 TestKing.com makes use of SQL Server databases in their environment.
 You are currently running a training exercise for potential developers.
 You are in the process of discussing stored procedures.
-That are options that suitably describe the advantages of making use of stored procedures in SQL Server? (Choose all that apply.)",ControlType.CheackBox),
+That are options that suitably describe the advantages of making use of stored procedures in SQL Server? (Choose all that apply.)", ControlType.CheackBox),
         };
 
     }

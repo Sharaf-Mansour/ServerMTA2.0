@@ -7,7 +7,7 @@ else{<section class="sec1" style="margin: 10px;">  <section class="sec2">
                 <input type="checkbox" class="inpchb" id="cbmark"   @onchange="@( (ChangeEventArgs e) => Marker(e))"  checked='@ExamMTA.MarkForReviewList.Where(x => x.Num == QNumber).Single().IsMarked'  />
                 <span class="spns1"></span>    </label>  </td>
                 <td> <label class="ls" for="cbshow1">
-                        <input type="checkbox" class="inpchb" id="cbshow1" @bind="ExamMTA.allowShowAnswer" />
+                        <input type="checkbox" class="inpchb" id="cbshow1" @bind="ExamMTA.AllowShowAnswer" />
                         <span class="spns2"></span> </label>  </td>
                 <td>      <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Review")'>End</button>     </td>
     </tr > </table>
@@ -19,18 +19,11 @@ else{<section class="sec1" style="margin: 10px;">  <section class="sec2">
 <input type="radio" id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e, item)" checked="@Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected" /> 
 <label class="label" for="@item.ID">	<pre>@item.Value </pre> </label>
       <br /><br /> }
-  
-else if(Qeustion.Type == ControlType.CheackBox) {                     
+  else if(Qeustion.Type == ControlType.CheackBox) {                     
 <input type="checkbox" id="@item.ID" checked="@Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected" value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> 
 <label class="label" for="@item.ID">	<pre>@item.Value </pre> </label><br /><br />} }
-
-
- 
-
-
-
-   <h1> @(ExamMTA.allowShowAnswer ? (showAnswer || Qeustion.Answers.Count(x => x.IsSelected) > 0) ?
-(CorrectAnswer || ExamMTA.scores98_361[(QNumber - 1) % 79].IsCorrect) ? "CORRECT" :"WRONG" :" " :"") </h1></div>
+   <h1> @(ExamMTA.AllowShowAnswer ? (ShowAnswer || Qeustion.Answers.Count(x => x.IsSelected) > 0) ?
+(CorrectAnswer || ExamMTA.Scores98361[(QNumber - 1) % 79].IsCorrect) ? "CORRECT" :"WRONG" :" " :"") </h1></div>
 <table border="0"> <tr>  <td>
             @if (QNumber == 1)  {    <button class="arrow">&larr;</button> }
             else{ <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>&larr;</button>}

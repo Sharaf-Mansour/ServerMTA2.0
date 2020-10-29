@@ -1,28 +1,4 @@
 ﻿@page "/"
-@inject NavigationManager NavigationManager
-@code{
-    private void NavigateToComponent(string Report) {
-    NavigationManager.NavigateTo(Report);
-    ExamMTA.scores98_361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
-    ExamMTA.ClearMark();
-        ExamMTA.RestartExam();
-                if (ExamMTA.ShuffleQeustion)
-        {
-            ExamMTA.shuffleQeustions();
-        }
-        else
-        {
-            ExamMTA.SortQeustion();
-        }
-        if (ExamMTA.ShuffleAnswer)
-        {
-            ExamMTA.shuffleAnswers();
-        }
-        else
-        {
-            ExamMTA.SortAnswer();
-        }
-}}
 <div class="container">
     <h1>Welcome to the Microsoft 98-361 Exam </h1>
        <button class="btn btnindex" style="margin: 50px auto;" @onclick='()=>NavigateToComponent("1")'>Click to Start</button>
@@ -32,7 +8,7 @@
         <table border="0" style="text-align: left;margin: auto;">
             <tr>
                 <td>
-                    <input type="checkbox" name="cb" id="cb1" @bind="ExamMTA.allowShowAnswer" /><label class="label" for="cb1">&nbsp; Show Answer</label>
+                    <input type="checkbox" name="cb" id="cb1" @bind="ExamMTA.AllowShowAnswer" /><label class="label" for="cb1">&nbsp; Show Answer</label>
                 </td>
              </tr><br />
             <tr>

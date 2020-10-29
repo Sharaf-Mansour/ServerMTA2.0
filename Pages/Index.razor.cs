@@ -16,18 +16,32 @@ using ServerMTA.Model;
 
 namespace ServerMTA.Pages
 {
-    public partial class Report
+    public partial class Index
     {
         [Inject] protected NavigationManager NavigationManager { get; set; }
-        [Inject] protected IJSRuntime JSRuntime { get; set; }
-        private void NavigateToComponent(string Report) => NavigationManager.NavigateTo(Report);
-        int QNumber;
-        void Print()
+
+        private void NavigateToComponent(string Report)
         {
-            StateHasChanged();
-            QNumber = 0;
-            var jsInProcess = (IJSInProcessRuntime)JSRuntime;
-            jsInProcess.InvokeVoid("window.printwindow", null);
+            NavigationManager.NavigateTo(Report);
+            ExamMTA.ResetExam();
+
+            if (ExamMTA.ShuffleQeustion)
+            {
+                ExamMTA.ShuffleQeustions();
+            }
+            else
+            {
+                ExamMTA.SortQeustion();
+            }
+
+            if (ExamMTA.ShuffleAnswer)
+            {
+                ExamMTA.ShuffleAnswers();
+            }
+            else
+            {
+                ExamMTA.SortAnswer();
+            }
         }
     }
 }

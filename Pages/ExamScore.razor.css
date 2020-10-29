@@ -5,12 +5,36 @@
 }
 .progress {
     text-align: center;
-    height: 45px;
+    /*   height: 50px;*/
+    height: 1.5em;
     width: 100%;
-    /* Set the progressbar to relative */
+    -webkit-appearance: none;
+     /* Set the progressbar to relative */
     position: relative;
     margin: 20px auto;
     margin-bottom: -30px;
+}
+progress:before {
+    content: attr(data-label);
+    font-size: 77%;
+    vertical-align: 0;
+    /*Position text over the progress bar */
+    position: absolute;
+    left: 0;
+    padding-top: 5px;
+    right: 0;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #c9c9c9;
+}
+
+progress::-webkit-progress-value {
+    background-color: #7cc4ff;
+}
+
+progress::-moz-progress-bar {
+    background-color: #7cc4ff;
 }
 .wrapper {
     width: 50%;
@@ -154,7 +178,10 @@
         margin-bottom: -10px;
         font-size: 19px;
     }
-    .progress {margin-bottom: 10px;}
+ 
+    .progress {
+        margin-bottom: 10px;
+    }
     .btnsubmit{font-size: 17px;}
     .table-box {width:50%; height: 322px;}
     .tbl {width: 93%;}
