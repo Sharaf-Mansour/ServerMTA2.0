@@ -19,10 +19,10 @@ namespace ServerMTA.Pages
     public partial class ExamScore
     {
         [Inject] protected NavigationManager NavigationManager { get; set; }
-        static string StringScore => ScorePerc.ToString("0.##") + "%";
-        static double ScorePerc => (Score / 79) * 100;
-        static double Score => ExamMTA.Scores98_361.Count(x => x.IsCorrect == true);
-        private void NavigateToComponent(string Report) => NavigationManager.NavigateTo(Report);
+          string StringScore => ScorePerc.ToString("0.##") + "%";
+          double ScorePerc => (Score / 79) * 100;
+          double Score => ExamMTA.Scores98_361.Count(x => x.IsCorrect == true);
+          void NavigateToComponent(string Report) => NavigationManager.NavigateTo(Report);
         void EndExam()
         {
             ExamMTA.ClearMark();
