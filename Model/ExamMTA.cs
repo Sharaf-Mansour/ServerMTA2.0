@@ -40,7 +40,7 @@ namespace ServerMTA.Model
                 item.Answers.Shuffle();
             }
         }
-        public static List<MarkForReview> MarkForReviewList => Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
+        public static List<MarkForReview> MarkForReviewList = Enumerable.Range(1, 79).Select(i => new MarkForReview(i)).ToList();
 
         public static void ClearMark()
         {
@@ -50,7 +50,7 @@ namespace ServerMTA.Model
             }
         }
 
-        public static List<Score> Scores98_361 => Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
+        public static List<Score> Scores98_361 = Enumerable.Range(1, 79).Select(i => new Score(i)).ToList();
 
         private static void ClearScore()
         {
