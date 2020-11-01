@@ -21,13 +21,8 @@ namespace ServerMTA.Pages
         [Inject] protected NavigationManager NavigationManager { get; set; }
         [Inject] protected IJSRuntime JSRuntime { get; set; }
         private void NavigateToComponent(string Report) => NavigationManager.NavigateTo(Report);
-        int QNumber;
-        void Print()
-        {
-            StateHasChanged();
-            QNumber = 0;
-            var jsInProcess = (IJSInProcessRuntime)JSRuntime;
-            jsInProcess.InvokeVoid("window.printwindow", null);
-        }
+        private IJSInProcessRuntime JsInProcess => (IJSInProcessRuntime)JSRuntime;
+        private void Print() => JsInProcess.InvokeVoid("window.printwindow", null);
+
     }
 }

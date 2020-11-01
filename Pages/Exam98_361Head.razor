@@ -1,10 +1,12 @@
 ﻿@page "/{QNumber:int}"
-@if (QNumber > 79 || QNumber < 1){<h1>Error 404 Page not Found :( </h1> }
-else{<section class="sec1" style="margin: 10px;">  <section class="sec2">
+@if (QNumber > ExamMTA.CountAll || QNumber < 1){<h1>Error 404 Page not Found :( </h1> }
+else{
+    <section class="sec1" style="margin: 10px;">  
+        <section class="sec2"> 
         <table border="0" style="margin-left: 10px;"> <tr>
-                <td><span class="title">@QNumber : 79 &nbsp;</span></td>
+                <td><span class="title">@QNumber : @ExamMTA.CountAll &nbsp;</span></td>
                 <td> <label class="ls">
-                <input type="checkbox" class="inpchb" id="cbmark"   @onchange="@( (ChangeEventArgs e) => Marker(e))"  checked='@ExamMTA.MarkForReviewList.Where(x => x.Num == QNumber).Single().IsMarked'  />
+                <input type="checkbox" class="inpchb" id="cbmark"   @onchange="@( (ChangeEventArgs e) => Marker(e))"  checked='@Qeustion.IsFlagged'  />
                 <span class="spns1"></span>    </label>  </td>
                 <td> <label class="ls" for="cbshow1">
                         <input type="checkbox" class="inpchb" id="cbshow1" @bind="ExamMTA.AllowShowAnswer" />
@@ -16,20 +18,23 @@ else{<section class="sec1" style="margin: 10px;">  <section class="sec2">
     <div style="padding: 20px;">
             @foreach (var item in Qeustion.Answers) {
                    if (Qeustion.Type == ControlType.RadioButton)     {
-<input type="radio" id="@item.ID" value="@item.Value" @onchange="(ChangeEventArgs __e) => RadioSelection(__e, item)" checked="@Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected" /> 
+<input type="radio" id="@item.ID" value="@item.Value" @onchange="() => RadioSelection(item)" checked="@item.IsSelected" /> 
 <label class="label" for="@item.ID">	<pre>@item.Value </pre> </label>
       <br /><br /> }
   else if(Qeustion.Type == ControlType.CheackBox) {                     
-<input type="checkbox" id="@item.ID" checked="@Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected" value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> 
+<input type="checkbox" id="@item.ID" checked="@item.IsSelected" value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> 
 <label class="label" for="@item.ID">	<pre>@item.Value </pre> </label><br /><br />} }
-   <h1> @(ExamMTA.AllowShowAnswer ? (ShowAnswer || Qeustion.Answers.Count(x => x.IsSelected) > 0) ?
-(CorrectAnswer || ExamMTA.Scores98_361[(QNumber - 1) % 79].IsCorrect) ? "CORRECT" :"WRONG" :" " :"") </h1></div>
+   <h1> @(ExamMTA.AllowShowAnswer ? (ShowAnswer || Qeustion.Answers.Any(x => x.IsSelected) == true) ?
+(CorrectAnswer || Qeustion.IsCorrect) ? "CORRECT" :"WRONG" :" " :"") </h1></div>
 <table border="0"> <tr>  <td>
             @if (QNumber == 1)  {    <button class="arrow">&larr;</button> }
             else{ <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>&larr;</button>}
-            @if (QNumber == 79)       {  <button class="arrow">&rarr;</button> }
+            @if (QNumber == ExamMTA.CountAll)       {  <button class="arrow">&rarr;</button> }
             else {  <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button> }
         </td>  </tr></table></section> 
         <footer> <div class="scrollmenu" >
-     @foreach(var i in ExamMTA.MarkForReviewList){ <button  @onclick='()=>NavigateToComponent($"{i.Num}")' class='btnnav  @(ExamMTA.Exams98_361[i.Num-1].Answers.Count(x => x.IsSelected) > 0 ? "btnnavcolorcheck" : "")  @((i.Num == QNumber) ? "active" : "" )'  ><span class="spancheck  @(i.IsMarked ? "mark" : "")  "></span><span class="spannav">@i.Num</span></button> }
+     @foreach (var i in ExamMTA.Exams98_361)
+     {
+         <button  @onclick='()=>NavigateToComponent($"{i.Num}")' class='btnnav  @(ExamMTA.Exams98_361[i.Num-1].Answers.Any(x => x.IsSelected) == true ? "btnnavcolorcheck" : "")  @((i.Num == QNumber) ? "active" : "" )'  ><span class="spancheck  @(i.IsFlagged ? "mark" : "")  "></span><span class="spannav">@i.Num</span></button>
+     }
     </div> </footer>  }   

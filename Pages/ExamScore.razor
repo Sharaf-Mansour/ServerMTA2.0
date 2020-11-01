@@ -1,16 +1,12 @@
 ﻿@page "/Score"
  <div class="container">
-@if(ExamMTA.MarkForReviewList.Count(x =>x.IsMarked) > 0){
-    @foreach(var i in ExamMTA.MarkForReviewList.Where(x =>x.IsMarked) ){
-  <button class="btnsubmit" @onclick='()=>NavigateToComponent($"/{i.Num}")'>Go to Number @i.Num</button>}
-  <button class="btnsubmit" @onclick='()=>EndExam()'>END EXAM</button>} 
-else{<div class="wrapper">
-     <h1>You scored  @Score out of 79</h1>
+<div class="wrapper">
+     <h1>You scored  @ExamMTA.Score out of @ExamMTA.CountAll</h1>
       <progress  class="progress" id="file" value="@ScorePerc" max="100" data-label="@StringScore">  </progress></div>
        <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
         <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
  <div  class="table-box"><table cellspacing='0' class="tbl"><tbody class="tbodytbl">
- @foreach(var item in ExamMTA.Scores98_361){
+ @foreach(var item in ExamMTA.Exams98_361){
      <tr class="trbodytbl">
-         <td class="tddata">@item.ID</td>
-         <td class="tddata @(item.IsCorrect ? "right" : "wrong")   "></td></tr>}</tbody></table></div>}</div>
+         <td class="tddata">@item.Num</td>
+         <td class="tddata @(item.IsCorrect ? "right" : "wrong")   "></td></tr>}</tbody></table></div></div>

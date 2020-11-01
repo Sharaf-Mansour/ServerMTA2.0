@@ -1,12 +1,10 @@
 ﻿@page "/Review"
 @inject NavigationManager NavigationManager
-@code{ private void NavigateToComponent(string Report)  {
-        NavigationManager.NavigateTo(Report);}
-}
+@code{ private void NavigateToComponent(string Report)=> NavigationManager.NavigateTo(Report);}
 <p style="text-align: center;color: #000;font-weight: bold;margin: 10px;">
-    <span class="spntbl">Not answered @ExamMTA.Exams98_361.Count(x => x.Answers.Count(i => i.IsSelected == true) == 0) <span style="color: #ddd;">|</span></span>
-    <span class="spntbl">Marked @ExamMTA.MarkForReviewList.Count(x => x.IsMarked) <span style="color: #ddd;">|</span></span>
-    <span class="spntbl">Count  @ExamMTA.Exams98_361.Count() &nbsp;</span>
+    <span class="spntbl">Not answered @ExamMTA.CountNotAnswered<span style="color: #ddd;">|</span></span>
+    <span class="spntbl">Marked @ExamMTA.CountFlagged <span style="color: #ddd;">|</span></span>
+    <span class="spntbl">Count  @ExamMTA.CountAll &nbsp;</span>
     <button class="btnend" @onclick='()=>NavigateToComponent("Score")'>End</button></p>
 <div class="table-box">
     <table cellspacing='0' class="tbl">
@@ -19,11 +17,10 @@
             </tr>
         </thead>
         <tbody class="tbodytbl">
-            @foreach (var i in ExamMTA.MarkForReviewList) {
+            @foreach (var i in ExamMTA.Exams98_361) {
 <tr class="trbodytbl">
     <td class="tddata" style="width:10%">@i.Num</td>
- <td class="tddata @(i.IsMarked ? "mark" : "") " style="width:32%"></td>
-<td class="tddata @(ExamMTA.Exams98_361[i.Num - 1].Answers.Count(x => x.IsSelected) == 0 ?  "answer" : "" )" style="width:42%"></td>
+ <td class="tddata @(i.IsFlagged ? "mark" : "") " style="width:32%"></td>
+<td class="tddata @(i.Answers.Any(x => x.IsSelected) == false?  "answer" : "" )" style="width:42%"></td>
     <td class="tddata"><button class="btndone" @onclick='()=>NavigateToComponent($"{i.Num}")'>@i.Num</button></td>
-</tr>}
-    </tbody>    </table></div>
+</tr>}  </tbody>    </table></div>

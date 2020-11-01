@@ -42,6 +42,7 @@ namespace ServerMTA.Pages
             {
                 ExamMTA.SortAnswer();
             }
+            ExamMTA.Numrize();
         }
     }
 }

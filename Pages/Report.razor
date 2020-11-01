@@ -2,12 +2,12 @@
  <button class="btnsubmit" @onclick='Print'>Print</button>
 <button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
  @foreach(var Qeustion in ExamMTA.Exams98_361 ){
-     <div> <h2 style="padding:20px">Qeustion Number @(1+QNumber++) </h2>
+     <div> <h2 style="padding:20px">Qeustion Number @Qeustion.Num </h2>
 <pre style="padding-left:20px"> @Qeustion.Value </pre><br />
    <div style="padding-left: 20px;">
       @foreach (var item in Qeustion.Answers) {
          <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">	
-         <pre class="@((Qeustion.Answers.Where(x => x.ID == item.ID).Single().IsSelected) ? "checkright":"")">@item.Value </pre> </label>  }
+         <pre class="@((item.IsSelected) ? "checkright":"")">@item.Value </pre> </label>  }
        <br />     <label>    <strong>
-   @(Qeustion.Answers.Count(x => x.IsSelected) > 0 ? ExamMTA.Scores98_361[(QNumber - 1) % 79].IsCorrect ? "CORRECT" : "WRONG" :"Not Answered")
+   @(Qeustion.Answers.Any(x => x.IsSelected) == true ? Qeustion.IsCorrect ? "CORRECT" : "WRONG" :"Not Answered")
 </strong> </label> </div> </div>   <br clear="all" style="page-break-before:always" />}
