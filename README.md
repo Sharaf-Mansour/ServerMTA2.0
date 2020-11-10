@@ -3,7 +3,7 @@
 
 ### A list of ServerMTA's features:
 * Online exams
-* Pintable questions & answers
+* Printable questions & answers
 
 [comment]: <> (## Screenshots)
 
