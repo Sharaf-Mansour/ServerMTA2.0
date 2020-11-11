@@ -15,8 +15,8 @@ namespace ServerMTA.Model
         public static bool ShuffleAnswer { get; set; }
         public static bool ShuffleQeustion { get; set; }
         private static Random Random => new();
-        public static void SortQeustion() => Exams98_361.Sort((x, y) => x.ID.CompareTo(y.ID));
-        public static void SortAnswer() => Exams98_361.ForEach(x => x.Answers.Sort((x, y) => x.ID.CompareTo(y.ID)));
+        public static void SortQeustion() => Exams98_361.OrderBy(x => x.ID);
+        public static void SortAnswer() => Exams98_361.ForEach(x => x.Answers.OrderBy(x => x.ID));
         public static void ShuffleQeustions() => Exams98_361.Shuffle();
         public static void ShuffleAnswers() => Exams98_361.ForEach(x => x.Answers.Shuffle());
         public static void ClearRadioAnswer(Exam exam) => exam.Answers.ForEach(x => x.IsSelected = false);
