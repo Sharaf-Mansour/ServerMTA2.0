@@ -1,4 +1,5 @@
 ﻿@page "/{QNumber:int}"
+@inject ExamMTA ExamMTA;
 @if (QNumber > ExamMTA.CountAll || QNumber < 1){<h1>Error 404 Page not Found :( </h1> }
 else{
     <section class="sec1" style="margin: 10px;">  
@@ -11,9 +12,7 @@ else{
                 <td> <label class="ls" for="cbshow1">
                         <input type="checkbox" class="inpchb" id="cbshow1" @bind="ExamMTA.AllowShowAnswer" />
                         <span class="spns2"></span> </label>  </td>
-                <td>      <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Review")'>End</button>     </td>
-    </tr > </table>
-    </section>
+ <td>      <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Review")'>End</button>  </td></tr > </table></section>
     <pre style="padding:20px"> @Qeustion.Value </pre> <br />
     <div style="padding: 20px;">
             @foreach (var item in Qeustion.Answers) {
@@ -32,9 +31,8 @@ else{
             @if (QNumber == ExamMTA.CountAll)       {  <button class="arrow">&rarr;</button> }
             else {  <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button> }
         </td>  </tr></table></section> 
-        <footer> <div class="scrollmenu" >
-     @foreach (var i in ExamMTA.Exams98_361)
-     {
-         <button  @onclick='()=>NavigateToComponent($"{i.Num}")' class='btnnav  @(ExamMTA.Exams98_361[i.Num-1].Answers.Any(x => x.IsSelected) == true ? "btnnavcolorcheck" : "")  @((i.Num == QNumber) ? "active" : "" )'  ><span class="spancheck  @(i.IsFlagged ? "mark" : "")  "></span><span class="spannav">@i.Num</span></button>
-     }
-    </div> </footer>  }   
+    <footer> <div class="scrollmenu">
+        @if (HasRefreshed) {    <h1>    There is an Error Please Restart the Application. </h1>   }
+        else {   @foreach (var i in ExamMTA.Exams98_361)
+   {<button @onclick='() => NavigateToComponent($"{i.Num}")' class='btnnav  @(ExamMTA.Exams98_361[i.Num - 1].Answers.Any(x => x.IsSelected) == true ? "btnnavcolorcheck" : "")  @((i.Num == QNumber) ? "active" : "")'><span class="spancheck  @(i.IsFlagged ? "mark" : "")  ">
+                </span><span class="spannav">@i.Num</span></button>}}    </div> </footer>  }   

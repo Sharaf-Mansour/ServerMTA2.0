@@ -8,7 +8,7 @@ namespace ServerMTA.Pages
 
         private void NavigateToComponent(string Report)
         {
-            NavigationManager.NavigateTo(Report);
+          
             ExamMTA.ResetExam();
 
             if (ExamMTA.ShuffleQeustion)
@@ -29,6 +29,8 @@ namespace ServerMTA.Pages
                 ExamMTA.SortAnswer();
             }
             ExamMTA.Numrize();
+            Exam98_361Head.HasRefreshed = false;
+            NavigationManager.NavigateTo(Report);
         }
     }
 }

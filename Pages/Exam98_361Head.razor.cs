@@ -5,6 +5,7 @@ namespace ServerMTA.Pages
 {
     public partial class Exam98_361Head
     {
+        public static bool HasRefreshed = true;
         [Inject] protected NavigationManager NavigationManager { get; set; }
 
         [Parameter] public int QNumber { get; set; }
@@ -17,7 +18,14 @@ namespace ServerMTA.Pages
             NavigationManager.NavigateTo(Report);
         }
 
-        // protected override void OnInitialized() => Qeustion.Num = QNumber;
+        protected override void OnInitialized()
+        {
+            if (HasRefreshed)
+            {
+                NavigationManager.NavigateTo("/");
+                StateHasChanged();
+            }
+        }
 
         private void Marker(ChangeEventArgs args) => Qeustion.IsFlagged = (bool)args.Value;
         private void RadioSelection(Answer I)

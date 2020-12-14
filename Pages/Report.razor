@@ -1,4 +1,5 @@
 ﻿@page "/Download"
+@inject ExamMTA ExamMTA;
  <button class="btnsubmit" @onclick='Print'>Print</button>
 <button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
  @foreach(var Qeustion in ExamMTA.Exams98_361 ){

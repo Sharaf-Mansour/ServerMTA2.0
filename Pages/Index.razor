@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject ExamMTA ExamMTA;
 <div class="container">
     <h1>Welcome to the Microsoft @ExamMTA.ExamName Exam </h1>
        <button class="btn btnindex" style="margin: 50px auto;" @onclick='()=>NavigateToComponent("1")'>Click to Start</button>

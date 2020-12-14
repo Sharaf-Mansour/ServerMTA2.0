@@ -1,5 +1,6 @@
 ﻿@page "/Review"
 @inject NavigationManager NavigationManager
+@inject ExamMTA ExamMTA;
 @code{ private void NavigateToComponent(string Report)=> NavigationManager.NavigateTo(Report);}
 <p style="text-align: center;color: #000;font-weight: bold;margin: 10px;">
     <span class="spntbl">Not answered @ExamMTA.CountNotAnswered<span style="color: #ddd;">|</span></span>
