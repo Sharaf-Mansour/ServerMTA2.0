@@ -14,7 +14,7 @@ steps:
   displayName: Use Latest .NET Core 5.0 SDK
   inputs:
     packageType: 'sdk'
-    version: '5.0.100'
+    version: '5.0.200'
 
 - task: DotNetCoreCLI@2
   displayName: Publish App
