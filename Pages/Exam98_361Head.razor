@@ -33,6 +33,6 @@ else{
         </td>  </tr></table></section> 
     <footer> <div class="scrollmenu">
         @if (HasRefreshed) {    <h1>    There is an Error Please Restart the Application. </h1>   }
-        else {   @foreach (var i in ExamMTA.Exams98_361)
-   {<button @onclick='() => NavigateToComponent($"{i.Num}")' class='btnnav  @(ExamMTA.Exams98_361[i.Num - 1].Answers.Any(x => x.IsSelected) == true ? "btnnavcolorcheck" : "")  @((i.Num == QNumber) ? "active" : "")'><span class="spancheck  @(i.IsFlagged ? "mark" : "")  ">
+        else {   @foreach (var i in ExamMTA.CurrentExam)
+   {<button @onclick='() => NavigateToComponent($"{i.Num}")' class='btnnav  @(ExamMTA.CurrentExam[i.Num - 1].Answers.Any(x => x.IsSelected) == true ? "btnnavcolorcheck" : "")  @((i.Num == QNumber) ? "active" : "")'><span class="spancheck  @(i.IsFlagged ? "mark" : "")  ">
                 </span><span class="spannav">@i.Num</span></button>}}    </div> </footer>  }   

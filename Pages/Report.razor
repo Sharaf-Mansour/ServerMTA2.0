@@ -2,7 +2,7 @@
 @inject ExamMTA ExamMTA;
  <button class="btnsubmit" @onclick='Print'>Print</button>
 <button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
- @foreach(var Qeustion in ExamMTA.Exams98_361 ){
+ @foreach(var Qeustion in ExamMTA.CurrentExam ){
      <div> <h2 style="padding:20px">Qeustion Number @Qeustion.Num </h2>
 <pre style="padding-left:20px"> @Qeustion.Value </pre><br />
    <div style="padding-left: 20px;">

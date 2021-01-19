@@ -11,7 +11,7 @@ namespace ServerMTA.Pages
         [Parameter] public int QNumber { get; set; }
         private bool ShowAnswer;
         private bool CorrectAnswer;
-        private Exam Qeustion => ExamMTA.Exams98_361[(QNumber - 1) % 79];
+        private Exam Qeustion => ExamMTA.CurrentExam[(QNumber - 1) % 79];
         private void NavigateToComponent(string Report)
         {
             (ShowAnswer, CorrectAnswer) = (false, false);

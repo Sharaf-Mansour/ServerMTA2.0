@@ -7,7 +7,7 @@
        <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
         <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
  <div  class="table-box"><table cellspacing='0' class="tbl"><tbody class="tbodytbl">
- @foreach(var item in ExamMTA.Exams98_361){
+ @foreach(var item in ExamMTA.CurrentExam){
      <tr class="trbodytbl">
          <td class="tddata">@item.Num</td>
          <td class="tddata @(item.IsCorrect ? "right" : "wrong")   "></td></tr>}</tbody></table></div></div>

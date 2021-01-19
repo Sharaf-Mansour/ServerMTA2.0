@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody class="tbodytbl">
-            @foreach (var i in ExamMTA.Exams98_361) {
+            @foreach (var i in ExamMTA.CurrentExam) {
 <tr class="trbodytbl">
     <td class="tddata" style="width:10%">@i.Num</td>
  <td class="tddata @(i.IsFlagged ? "mark" : "") " style="width:32%"></td>
