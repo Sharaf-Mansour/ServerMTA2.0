@@ -12,10 +12,10 @@ namespace ServerMTA.Model
         public static List<Exam> CurrentExam { get; set; } = Exams100Static;
 
         //   public void SetExam(List<Exam> Exam) => CurrentExam = Exams98_361Static = Exam;
-        public static double Score => CurrentExam.Count(x => x.IsCorrect);
-        public static double CountAll => CurrentExam.Count;
-        public static double CountFlagged => CurrentExam.Count(x => x.IsFlagged);
-        public static double CountNotAnswered => CurrentExam.Count(x => x.Answers.Any(i => i.IsSelected) == false);
+        public static int Score => CurrentExam.Count(x => x.IsCorrect);
+        public static int CountAll => CurrentExam.Count;
+        public static int CountFlagged => CurrentExam.Count(x => x.IsFlagged);
+        public static int CountNotAnswered => CurrentExam.Count(x => x.Answers.Any(i => i.IsSelected) == false);
         public static bool AllowShowAnswer { get; set; }
         public static bool ShuffleAnswer { get; set; }
         public static bool ShuffleQeustion { get; set; }

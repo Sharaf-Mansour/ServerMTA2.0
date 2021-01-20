@@ -442,7 +442,186 @@ and then add a thumbs up or thumbs down emoji to the reviews."),
 and then route the email messages to the correct person based on the content of the message."),
                 new(4, @"From a website interface,
 answer common questions about scheduled events and ticket purchases for a music festival.", true),
-            }, @"Which scenario is an example of a webchat bot?")
+            }, @"Which scenario is an example of a webchat bot?"),
+            new(54, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"Azure Machine Learning designer provides a drag-and-drop visual canvas to build, test, and deploy machine learning models", ControlType.YesNo),
+            new(55, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"Azure Machine Learning designer enables you to save your progress as a pipleline draft", ControlType.YesNo),
+            new(56, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"Azure Machine Learning designer enables you to include custom JavaScript functions", ControlType.YesNo),
+            new(57, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"Forecasting housing prices based on historical data is an example of anomaly detection", ControlType.YesNo),
+            new(58, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"Identifying suspicious sign-ins by looking for deviations from usual patterns is an example of anomaly detection", ControlType.YesNo),
+            new(59, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"Predicting whether a patient will develop diabetes based on the patient's medical history is an example of anomaly detection", ControlType.YesNo),
+            new(60, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"Automated machine learning is the process of automating the time-
+consuming, iterative tasks of machine learning model development", ControlType.YesNo),
+            new(61, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"Automated machine learning can automatically infer the training data
+from the use case provided", ControlType.YesNo),
+            new(62, new()
+            {
+                new(63, @"Yes", true),
+                new(2, @"No"),
+            }, @"Automated machine learning works by running multiple training
+iterations that are scored and ranked by the metrics you specify.", ControlType.YesNo),
+            new(64, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"Automated machine learning enables you to specify a dataset and will
+automatically understand which label to predict", ControlType.YesNo),
+            new(65, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"Labelling is the process of tagging training data with known values.", ControlType.YesNo),
+            new(66, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"You should evaluate a model by using the same data used to train the model.", ControlType.YesNo),
+            new(67, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"Accuracy is always the primary metric used to measure a model's performance.", ControlType.YesNo),
+            new(68, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"Azure Bot Service and Azure Congnitive Services can be integrated.", ControlType.YesNo),
+            new(69, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"Azure Bot Service engages with customers in a conversational manner.", ControlType.YesNo),
+            new(70, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"Azure Bot Service can import frequently asked questions (FAQ) to question and answer sets", ControlType.YesNo),
+            new(71, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"Monitoring online service reviews for profanities is an example of
+natural language processing.", ControlType.YesNo),
+            new(72, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"Identifying brand logos in an image is an example of natural
+languages processing.", ControlType.YesNo),
+            new(73, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"Monitoring public news sites for negative mentions of a product
+is an example of natural language processing.", ControlType.YesNo),
+            new(74, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"The Text Analytics service can identify in which language text is written.", ControlType.YesNo),
+            new(75, new()
+            {
+                new(1, @"Yes"),
+                new(2, @"No", true),
+            }, @"The Text Analytics service can detect handwritten signatures in a document", ControlType.YesNo),
+            new(76, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"The Text Analytics service can identify companies and organizations mentioned in a document.", ControlType.YesNo),
+            new(77, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"The Text Analytics service can identify companies and organizations mentioned in a document.", ControlType.YesNo),
+
+
+
+            new(78, new()
+            {
+                new(1, @"classification"),
+                new(2, @"regression", true),
+                new(3, @"clustring"),
+            }, @"80.jpg", ControlType.ImgRadio),
+            new(79, new()
+            {
+                new(1, @"Object Detection", true),
+                new(2, @"semantic segmentation"),
+                new(3, @"optical character recognition (OCR)"),
+                new(4, @"image classification"),
+            }, @"81.jpg", ControlType.ImgRadio),
+            new(80, new()
+            {
+                new(1, @"entity recognition", true),
+                new(2, @"key phrase extraction"),
+                new(3, @"sentiment analysis"),
+                new(4, @"translation"),
+            }, @"82.jpg", ControlType.ImgRadio),
+            new(81, new()
+            {
+                new(1, @"a sentiment analysis solution"),
+                new(2, @"a chatbot", true),
+                new(3, @"a machine learning model"),
+                new(4, @"a computer vision application"),
+            }, @"83.jpg", ControlType.ImgRadio),
+
+            new(82, new()
+            {
+                new(1, @"5"),
+                new(2, @"11", true),
+                new(3, @"1033"),
+                new(4, @"13951"),
+            }, @"84.jpg", ControlType.ImgRadio),
+            new(83, new()
+            {
+                new(1, @"5"),
+                new(2, @"11"),
+                new(3, @"1033", true),
+                new(4, @"13951"),
+            }, @"85.jpg", ControlType.ImgRadio),
+            new(84, new()
+            {
+                new(1, @"A feature", true),
+                new(2, @"A label"),
+            }, @"86.jpg", ControlType.ImgRadio),
+            new(85, new()
+            {
+                new(1, @"A feature"),
+                new(2, @"A label", true),
+
+            }, @"87.jpg", ControlType.ImgRadio),
+
         };
 
     }

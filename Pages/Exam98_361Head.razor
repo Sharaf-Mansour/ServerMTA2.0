@@ -13,23 +13,70 @@ else{
                         <input type="checkbox" class="inpchb" id="cbshow1" @bind="ExamMTA.AllowShowAnswer" />
                         <span class="spns2"></span> </label>  </td>
  <td>      <button class="btnsubmit" @onclick='()=>NavigateToComponent($"Review")'>End</button>  </td></tr > </table></section>
-    <pre style="padding:20px"> @Qeustion.Value </pre> <br />
-    <div style="padding: 20px;">
+  
+        @if (Qeustion.Type == ControlType.ImgRadio)
+        {
+            <img src="@Qeustion.Value" style="  max-width: 75%;  height: auto;"/>
+        }
+        else
+        {
+            <pre style="padding:20px"> @Qeustion.Value </pre> <br />
+        
+        }
+        
+        
+        <div style="padding: 20px;">
             @foreach (var item in Qeustion.Answers) {
-                   if (Qeustion.Type == ControlType.RadioButton)     {
+
+                   if (Qeustion.Type == ControlType.RadioButton || Qeustion.Type == ControlType.ImgRadio)     {
 <input type="radio" id="@item.ID" value="@item.Value" @onchange="() => RadioSelection(item)" checked="@item.IsSelected" /> 
 <label class="label" for="@item.ID">	<pre>@item.Value </pre> </label>
       <br /><br /> }
+
   else if(Qeustion.Type == ControlType.CheackBox) {                     
 <input type="checkbox" id="@item.ID" checked="@item.IsSelected" value="@item.IsSelected" @onchange="@((ChangeEventArgs __e) => CheckSelection(__e, item))" /> 
-<label class="label" for="@item.ID">	<pre>@item.Value </pre> </label><br /><br />} }
+<label class="label" for="@item.ID">	<pre>@item.Value </pre> </label><br /><br />}}
+   @if(Qeustion.Type == ControlType.YesNo)
+  {
+       <table>
+          <thead>
+          <tr>
+              <th>
+                 	<pre>@Qeustion.Answers[0].Value </pre> 
+              </th>
+              <th>
+              <pre>@Qeustion.Answers[1].Value </pre> 
+              </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td>
+               <input type="radio" id="@Qeustion.Answers[0].ID" value="@Qeustion.Answers[0].Value" @onchange="() => RadioSelection(Qeustion.Answers[0])" checked="@Qeustion.Answers[0].IsSelected"/>
+               <label class="label" for="@Qeustion.Answers[0].ID"><pre> </pre></label>  
+               </td>
+      <td>
+
+      <input type="radio" id="@Qeustion.Answers[1].ID"    value="@Qeustion.Answers[1].Value" @onchange="() =>      RadioSelection(Qeustion.Answers[1])" checked="@Qeustion.Answers[1].IsSelected" />
+      <label class="label" for="@Qeustion.Answers[1].ID"><pre></pre></label> 
+  </td>
+          </tr>
+          </tbody>
+          </table>                                <br /><br />
+ 
+
+  }
+
+
+
+            
    <h1> @(ExamMTA.AllowShowAnswer ? (ShowAnswer || Qeustion.Answers.Any(x => x.IsSelected) == true) ?
 (CorrectAnswer || Qeustion.IsCorrect) ? "CORRECT" :"WRONG" :" " :"") </h1></div>
 <table border="0"> <tr>  <td>
             @if (QNumber == 1)  {    <button class="arrow">&larr;</button> }
-            else{ <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber - 1) % 80}")'>&larr;</button>}
+            else{ <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber - 1) % (ExamMTA.CountAll  + 1)}")'>&larr;</button>}
             @if (QNumber == ExamMTA.CountAll)       {  <button class="arrow">&rarr;</button> }
-            else {  <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % 80}")'>&rarr;</button> }
+            else {  <button class="arrow" @onclick='()=>NavigateToComponent($"{(QNumber + 1) % (ExamMTA.CountAll  + 1)}")'>&rarr;</button> }
         </td>  </tr></table></section> 
     <footer> <div class="scrollmenu">
         @if (HasRefreshed) {    <h1>    There is an Error Please Restart the Application. </h1>   }

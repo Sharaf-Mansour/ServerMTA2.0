@@ -4,7 +4,18 @@
 <button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
  @foreach(var Qeustion in ExamMTA.CurrentExam ){
      <div> <h2 style="padding:20px">Qeustion Number @Qeustion.Num </h2>
-<pre style="padding-left:20px"> @Qeustion.Value </pre><br />
+         @if (Qeustion.Type == ControlType.ImgRadio)
+         {
+             <img src="@Qeustion.Value" style="  max-width: 75%;  height: auto;"/>
+         }
+         else
+         {
+             <pre style="padding:20px"> @Qeustion.Value </pre> <br />
+        
+         }
+
+          
+         <br />
    <div style="padding-left: 20px;">
       @foreach (var item in Qeustion.Answers) {
          <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">	
