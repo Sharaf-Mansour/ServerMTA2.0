@@ -8,7 +8,7 @@ namespace ServerMTA.Pages
     {
         [Inject] protected NavigationManager NavigationManager { get; set; }
         private static string StringScore => ScorePerc.ToString("0.##") + "%";
-        private static double ScorePerc => (ExamMTA.Score / 79) * 100;
+        private static double ScorePerc => ((double)ExamMTA.Score / (double)ExamMTA.CountAll) * 100;
         private void NavigateToComponent(string Report) => NavigationManager.NavigateTo(Report);
 
     }
