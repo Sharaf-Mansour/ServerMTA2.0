@@ -487,108 +487,106 @@ consuming, iterative tasks of machine learning model development", ControlType.Y
 from the use case provided", ControlType.YesNo),
             new(62, new()
             {
-                new(63, @"Yes", true),
+                new(1, @"Yes", true),
                 new(2, @"No"),
             }, @"Automated machine learning works by running multiple training
 iterations that are scored and ranked by the metrics you specify.", ControlType.YesNo),
-            new(64, new()
+            new(63, new()
             {
                 new(1, @"Yes"),
                 new(2, @"No", true),
             }, @"Automated machine learning enables you to specify a dataset and will
 automatically understand which label to predict", ControlType.YesNo),
-            new(65, new()
+            new(64, new()
             {
                 new(1, @"Yes", true),
                 new(2, @"No"),
             }, @"Labelling is the process of tagging training data with known values.", ControlType.YesNo),
-            new(66, new()
+            new(65, new()
             {
                 new(1, @"Yes"),
                 new(2, @"No", true),
             }, @"You should evaluate a model by using the same data used to train the model.", ControlType.YesNo),
-            new(67, new()
+            new(66, new()
             {
                 new(1, @"Yes"),
                 new(2, @"No", true),
             }, @"Accuracy is always the primary metric used to measure a model's performance.", ControlType.YesNo),
-            new(68, new()
+            new(67, new()
             {
                 new(1, @"Yes", true),
                 new(2, @"No"),
             }, @"Azure Bot Service and Azure Congnitive Services can be integrated.", ControlType.YesNo),
-            new(69, new()
+            new(68, new()
             {
                 new(1, @"Yes", true),
                 new(2, @"No"),
             }, @"Azure Bot Service engages with customers in a conversational manner.", ControlType.YesNo),
-            new(70, new()
+            new(69, new()
             {
                 new(1, @"Yes"),
                 new(2, @"No", true),
             }, @"Azure Bot Service can import frequently asked questions (FAQ) to question and answer sets", ControlType.YesNo),
-            new(71, new()
+            new(70, new()
             {
                 new(1, @"Yes", true),
                 new(2, @"No"),
             }, @"Monitoring online service reviews for profanities is an example of
 natural language processing.", ControlType.YesNo),
-            new(72, new()
+            new(71, new()
             {
                 new(1, @"Yes"),
                 new(2, @"No", true),
             }, @"Identifying brand logos in an image is an example of natural
 languages processing.", ControlType.YesNo),
-            new(73, new()
+            new(72, new()
             {
                 new(1, @"Yes", true),
                 new(2, @"No"),
             }, @"Monitoring public news sites for negative mentions of a product
 is an example of natural language processing.", ControlType.YesNo),
-            new(74, new()
+            new(73, new()
             {
                 new(1, @"Yes", true),
                 new(2, @"No"),
             }, @"The Text Analytics service can identify in which language text is written.", ControlType.YesNo),
-            new(75, new()
+            new(74, new()
             {
                 new(1, @"Yes"),
                 new(2, @"No", true),
             }, @"The Text Analytics service can detect handwritten signatures in a document", ControlType.YesNo),
+            new(75, new()
+            {
+                new(1, @"Yes", true),
+                new(2, @"No"),
+            }, @"The Text Analytics service can identify companies and organizations mentioned in a document.", ControlType.YesNo),
             new(76, new()
             {
                 new(1, @"Yes", true),
                 new(2, @"No"),
             }, @"The Text Analytics service can identify companies and organizations mentioned in a document.", ControlType.YesNo),
+
             new(77, new()
-            {
-                new(1, @"Yes", true),
-                new(2, @"No"),
-            }, @"The Text Analytics service can identify companies and organizations mentioned in a document.", ControlType.YesNo),
-
-
-
-            new(78, new()
             {
                 new(1, @"classification"),
                 new(2, @"regression", true),
                 new(3, @"clustring"),
             }, @"80.jpg", ControlType.ImgRadio),
-            new(79, new()
+            new(78, new()
             {
                 new(1, @"Object Detection", true),
                 new(2, @"semantic segmentation"),
                 new(3, @"optical character recognition (OCR)"),
                 new(4, @"image classification"),
             }, @"81.jpg", ControlType.ImgRadio),
-            new(80, new()
+            new(79, new()
             {
                 new(1, @"entity recognition", true),
                 new(2, @"key phrase extraction"),
                 new(3, @"sentiment analysis"),
                 new(4, @"translation"),
             }, @"82.jpg", ControlType.ImgRadio),
-            new(81, new()
+            new(80, new()
             {
                 new(1, @"a sentiment analysis solution"),
                 new(2, @"a chatbot", true),
@@ -596,32 +594,225 @@ is an example of natural language processing.", ControlType.YesNo),
                 new(4, @"a computer vision application"),
             }, @"83.jpg", ControlType.ImgRadio),
 
-            new(82, new()
+            new(81, new()
             {
                 new(1, @"5"),
                 new(2, @"11", true),
                 new(3, @"1033"),
                 new(4, @"13951"),
             }, @"84.jpg", ControlType.ImgRadio),
-            new(83, new()
+            new(82, new()
             {
                 new(1, @"5"),
                 new(2, @"11"),
                 new(3, @"1033", true),
                 new(4, @"13951"),
             }, @"85.jpg", ControlType.ImgRadio),
-            new(84, new()
+            new(83, new()
             {
                 new(1, @"A feature", true),
                 new(2, @"A label"),
             }, @"86.jpg", ControlType.ImgRadio),
-            new(85, new()
+            new(84, new()
             {
                 new(1, @"A feature"),
                 new(2, @"A label", true),
 
             }, @"87.jpg", ControlType.ImgRadio),
+            new(85, new()
+            {
+                new(1, @"Anomaly detection"),
+                new(2, @"Computer vision"),
+                new(3, @"Conversational AI", true),
+                new(4, @"Knowledge mining"),
+                new(5, @"Natural language processing"),
+            }, @"An automated chat to answer questions about refunds and exchange"),
+            new(86, new()
+            {
+                new(88, @"Anomaly detection"),
+                new(2, @"Computer vision", true),
+                new(3, @"Conversational AI"),
+                new(4, @"Knowledge mining"),
+                new(5, @"Natural language processing"),
+            }, @"Determining whether a photo contains a person"),
+            new(87, new()
+            {
+                new(1, @"Anomaly detection"),
+                new(2, @"Computer vision"),
+                new(3, @"Conversational AI"),
+                new(4, @"Knowledge mining"),
+                new(5, @"Natural language processing", true),
+            }, @"Determining whether a review is positive or negative"),
+            new(88, new()
+            {
+                new(1, @"Accountability"),
+                new(2, @"Fairness"),
+                new(3, @"Inclusiveness"),
+                new(4, @"Privacy and security"),
+                new(5, @"Reliability and safety", true),
+            }, @" Ensure that AI systems operate as they were originally designed,
+respond to unanticipated conditions, and resist harmful manipulation"),
+            new(89, new()
+            {
+                new(1, @"Accountability", true),
+                new(2, @"Fairness"),
+                new(3, @"Inclusiveness"),
+                new(4, @"Privacy and security"),
+                new(5, @"Reliability and safety"),
+            }, @"Implementing processes to ensure that decisions made by AI systems can be overridden by humans"),
+            new(90, new()
+            {
+                new(1, @"Accountability"),
+                new(2, @"Fairness"),
+                new(3, @"Inclusiveness"),
+                new(4, @"Privacy and security", true),
+                new(5, @"Reliability and safety"),
+            }, @"Provide consumers with information and controls over the collection, use, and storage of their data"),
+            new(91, new()
+            {
+                new(1, @"Classification"),
+                new(2, @"Clustering"),
+                new(3, @"Regression", true),
+            }, @"Predict how many minutes late a flight will arrive based on the amount of snowfall at an air point"),
+            new(92, new()
+            {
+                new(1, @"Classification"),
+                new(2, @"Clustering", true),
+                new(3, @"Regression"),
+            }, @"Segment customers into different groups to support a marketing department"),
+            new(93, new()
+            {
+                new(1, @"Classification", true),
+                new(2, @"Clustering"),
+                new(3, @"Regression"),
+            }, @"Predict whether a student will complete a university course "),
+            new(94, new()
+            {
+                new(1, @"Feature engineering"),
+                new(2, @"Feature selection"),
+                new(3, @"Model deployment"),
+                new(4, @"Model evaluation", true),
+                new(5, @"Model training"),
+            }, @"Examining the values of a confusion matrix"),
+            new(95, new()
+            {
+                new(1, @"Feature engineering", true),
+                new(2, @"Feature selection"),
+                new(3, @"Model deployment"),
+                new(4, @"Model evaluation"),
+                new(5, @"Model training"),
+            }, @"Splitting a data into month, day, and year fields"),
+            new(96, new()
+            {
+                new(1, @"Feature engineering"),
+                new(2, @"Feature selection", true),
+                new(3, @"Model deployment"),
+                new(4, @"Model evaluation"),
+                new(5, @"Model training"),
+            }, @"Picking temperature and pressure to train a weather model"),
+            new(97, new()
+            {
+                new(1, @"Grouping"),
+                new(2, @"Identification"),
+                new(3, @"Similarity"),
+                new(4, @"Verification", true),
+            }, @"Do two images of a face belong to the same person?"),
+            new(98, new()
+            {
+                new(1, @"Grouping"),
+                new(2, @"Identification"),
+                new(3, @"Similarity", true),
+                new(4, @"Verification"),
 
+            }, @"Does this person look like other people?"),
+            new(99, new()
+            {
+                new(1, @"Grouping", true),
+                new(2, @"Identification"),
+                new(3, @"Similarity"),
+                new(4, @"Verification"),
+
+            }, @"Do all the faces belong together?"),
+            new(100, new()
+            {
+                new(1, @"Grouping"),
+                new(2, @"Identification", true),
+                new(3, @"Similarity"),
+                new(4, @"Verification"),
+
+            }, @"Who is this person in this group of people?"),
+            new(101, new()
+            {
+                new(1, @"Facial recognition", true),
+                new(2, @"Image classification"),
+                new(3, @"Object detection"),
+                new(4, @"Optical character recognition (OCR)"),
+            }, @"Identify celebrities in images."),
+            new(102, new()
+            {
+                new(1, @"Facial recognition"),
+                new(2, @"Image classification"),
+                new(3, @"Object detection"),
+                new(4, @"Optical character recognition (OCR)", true),
+            }, @"Extract movie titles names from movie poster images."),
+            new(103, new()
+            {
+                new(1, @"Facial recognition"),
+                new(2, @"Image classification"),
+                new(3, @"Object detection", true),
+                new(4, @"Optical character recognition (OCR)"),
+            }, @"Locate vehicles in images"),
+            new(104, new()
+            {
+                new(1, @"Entity recognition", true),
+                new(2, @"Key phrase extraction"),
+                new(3, @"Language modeling"),
+                new(4, @"Sentiment analysis"),
+                new(5, @"Natural language processing"),
+                new(6, @"Translation"),
+                new(7, @"Speech recognition and speech synthesis"),
+            }, @"Extract persons, locations, and organizations from the text"),
+            new(105, new()
+            {
+                new(1, @"Entity recognition"),
+                new(2, @"Key phrase extraction"),
+                new(3, @"Language modeling"),
+                new(4, @"Sentiment analysis", true),
+                new(5, @"Natural language processing"),
+                new(6, @"Translation"),
+                new(7, @"Speech recognition and speech synthesis"),
+            }, @"Evaluates text along a positive-negative scale"),
+            new(106, new()
+            {
+                new(1, @"Entity recognition"),
+                new(2, @"Key phrase extraction"),
+                new(3, @"Language modeling"),
+                new(4, @"Sentiment analysis"),
+                new(5, @"Natural language processing"),
+                new(6, @"Translation", true),
+                new(7, @"Speech recognition and speech synthesis"),
+            }, @"Returns text translated to the specified target language"),
+            new(107, new()
+            {
+                new(1, @"Entity recognition"),
+                new(2, @"Key phrase extraction"),
+                new(3, @"Language detection"),
+                new(4, @"Sentiment analysis", true),
+            }, @"Understand how upset a customer is based on text contained in the supported ticket."),
+            new(108, new()
+            {
+                new(1, @"Entity recognition"),
+                new(2, @"Key phrase extraction", true),
+                new(3, @"Language detection"),
+                new(4, @"Sentiment analysis"),
+            }, @"Summarize important information from the support ticket."),
+            new(109, new()
+            {
+                new(1, @"Entity recognition", true),
+                new(2, @"Key phrase extraction"),
+                new(3, @"Language detection"),
+                new(4, @"Sentiment analysis"),
+            }, @"Extract key dates from the support ticket."),
         };
 
     }
