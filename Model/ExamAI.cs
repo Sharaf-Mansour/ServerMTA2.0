@@ -152,17 +152,13 @@ What should you use as a feature?"),
                 new(3, @"clustering"),
             }, @"You need to predict the sea level in meters for the next 10 years.
 Which type of machine learning should you use?"),
-            new(19, new()
+           new(19, new()
             {
-                new(1, @"You should consider creating an element in the class."),
-                new(2, @"You should consider creating a constructor in the class", true),
-                new(3, @"You should consider creating a customized interface for the class."),
-                new(4, @"You should consider developing a common interface for the class."),
-            }, @"You are employed as a developer at xyz.com.
-You make use of C# and ASP.NET for development purposes.
-You have been instructed to create a new class.
-The new class must allow for the immediate initialization of its data members every time an object of the class is created.
-Which of the following actions should you take?"),
+                new(1, @"Entity recognition", true),
+                new(2, @"Key phrase extraction"),
+                new(3, @"Language detection"),
+                new(4, @"Sentiment analysis"),
+            }, @"Extract key dates from the support ticket."),
             new(20, new()
             {
                 new(1, @"classification", true),
@@ -807,14 +803,7 @@ respond to unanticipated conditions, and resist harmful manipulation"),
                 new(3, @"Language detection"),
                 new(4, @"Sentiment analysis"),
             }, @"Summarize important information from the support ticket."),
-            new(109, new()
-            {
-                new(1, @"Entity recognition", true),
-                new(2, @"Key phrase extraction"),
-                new(3, @"Language detection"),
-                new(4, @"Sentiment analysis"),
-            }, @"Extract key dates from the support ticket."),
-        };
+           };
 
     }
 }
