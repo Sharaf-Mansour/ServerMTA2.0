@@ -58,7 +58,7 @@ This is an example of which Microsoft guiding principle for responsible AI?"),
                 new(2, @"accountability"),
                 new(3, @"reliability and safety", true),
                 new(4, @"fairness"),
-            }, @"Wen developing an AI system for self-driving cars, the Microsoft _Blank_ principle
+            }, @"When developing an AI system for self-driving cars, the Microsoft _Blank_ principle
 for responsible AI shloud be applied to ensure consistent operation of the
 system during unexpeceted circumstances."),
             new(7, new()
@@ -72,7 +72,7 @@ from scanned documents?"),
             new(8, new()
             {
                 new(1, @"Custom Vision"),
-                new(2, @"From Recognizer", true),
+                new(2, @"Form Recognizer", true),
                 new(3, @"Ink Recognizer"),
                 new(4, @"Text Analytics"),
             }, @"The ability to extract subtotals and totals from a receipt is a capability of the _Blank_ service"),
