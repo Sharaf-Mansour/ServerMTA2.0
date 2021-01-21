@@ -114,7 +114,7 @@ the number of order received is an example of _Blank_"),
                 new(3, @"pipeline"),
                 new(4, @"module", true),
             }, @"Which two components can you drag onto a canvas in Azure Machine Learning designer? Each correct answer presents a complete solution.
-NOTE: Each correct selection is worth one point."),
+NOTE: Each correct selection is worth one point.",ControlType.CheackBox),
             new(14, new()
             {
                 new(1, @"Select Columns in Dataset"),
