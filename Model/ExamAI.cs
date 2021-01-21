@@ -78,9 +78,9 @@ from scanned documents?"),
             }, @"The ability to extract subtotals and totals from a receipt is a capability of the _Blank_ service"),
             new(9, new()
             {
-                new(1, @"the model name", true),
+                new(1, @"the model name"),
                 new(2, @"the training endpoint"),
-                new(3, @"the authentication key"),
+                new(3, @"the authentication key",true),
                 new(4, @"the REST endpoint", true),
             }, @"You use Azure Machine Learning designer to publish an inference pipeline.
 Which two parameters should you use to consume the pipeline? Each correct answer presents part of the solution.
