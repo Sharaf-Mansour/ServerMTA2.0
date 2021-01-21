@@ -512,7 +512,7 @@ automatically understand which label to predict", ControlType.YesNo),
             {
                 new(1, @"Yes", true),
                 new(2, @"No"),
-            }, @"Azure Bot Service and Azure Congnitive Services can be integrated.", ControlType.YesNo),
+            }, @"Azure Bot Service and Azure Cognitive Services can be integrated.", ControlType.YesNo),
             new(68, new()
             {
                 new(1, @"Yes", true),
