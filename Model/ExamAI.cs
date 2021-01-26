@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Components;
 
 namespace ServerMTA.Model
 {
-    public class ExamAIData
+    public class ExamAIData : IExamData
     {
-
-        public static List<Exam> Exams100Static => new()
+        public string ExamName() => "AI-900";
+        public List<Exam> CurrentExam() => new()
         {
             new(1, new()
             {

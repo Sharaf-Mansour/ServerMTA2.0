@@ -6,29 +6,31 @@ namespace ServerMTA.Pages
     {
         [Inject] protected NavigationManager NavigationManager { get; set; }
 
+        private void SetExam(IExamData ExamSource) => ExamController.DataSource = ExamSource;
+
         private void NavigateToComponent(string Report)
         {
-          
-            ExamMTA.ResetExam();
 
-            if (ExamMTA.ShuffleQeustion)
+            ExamController.ResetExam();
+
+            if (ExamController.ShuffleQeustion)
             {
-                ExamMTA.ShuffleQeustions();
+                ExamController.ShuffleQeustions();
             }
             else
             {
-                ExamMTA.SortQeustion();
+                ExamController.SortQeustion();
             }
 
-            if (ExamMTA.ShuffleAnswer)
+            if (ExamController.ShuffleAnswer)
             {
-                ExamMTA.ShuffleAnswers();
+                ExamController.ShuffleAnswers();
             }
             else
             {
-                ExamMTA.SortAnswer();
+                ExamController.SortAnswer();
             }
-            ExamMTA.Numrize();
+            ExamController.Numrize();
             Exam98_361Head.HasRefreshed = false;
             NavigationManager.NavigateTo(Report);
         }

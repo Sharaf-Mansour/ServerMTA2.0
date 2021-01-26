@@ -70,8 +70,8 @@ input[type="checkbox"], input[type="radio"] {
         top: 0;
         left: 0;
         display: block;
-        width: 1.5em;
-        height: 1.5em;
+        width: 1.27em;
+        height: 1.27em;
     }
 
     .label:before {
@@ -90,8 +90,11 @@ input[type="checkbox"] + .label:after {
     line-height: 1.7em;
     text-align: center;
 }
+td {
+    vertical-align: middle;
+}
 /* Radio */
-input[type="radio"] + .label:before {
+/*input[type="radio"] + .label:before {
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -112,7 +115,7 @@ input[type=radio] + .label:after {
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-}
+}*/
 /* :checked */
 input[type="checkbox"]:checked + .label:before, input[type="radio"]:checked + .label:before {
     background: #3498db;
@@ -141,4 +144,80 @@ input[type="checkbox"]:checked + .label:after, input[type=radio]:checked + .labe
     -o-transition: .27s all ease;
     -moz-transition: .27s all ease;
     -ms-transition: .27s all ease;
+}
+
+
+.donate-now {
+    list-style-type: none;
+    margin: 25px 0 0 0;
+    padding: 0;
+}
+
+.donate-now li {
+    float: left;
+    margin: 0 5px 0 0;
+    width: 100px;
+    height: 40px;
+    position: relative;
+}
+
+.donate-now label,
+.donate-now input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.donate-now input[type="radio"] {
+    opacity: 0.01;
+    z-index: 100;
+}
+
+.donate-now input[type="radio"]:checked + label,
+.Checked + label {
+    background: yellow;
+}
+
+.donate-now label {
+    padding: 5px;
+    border: 1px solid #CCC;
+    cursor: pointer;
+    z-index: 90;
+}
+
+.donate-now label:hover {
+    background: #DDD;
+}
+
+.btnnav {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #359fe6;
+    border: 1px solid #3192d4;
+    position: relative;
+    height: 75px;
+    width: 100%;
+}
+    .btnnav:hover {
+        background-color: #3192d4;
+    }
+.btnnav:active, .btnnav:focus, .btnnav:visited, .active {
+     box-shadow: inset 2px 0 2px rgba(0,0,0,.2);
+ 
+}
+
+.btnnavcolorcheck {
+    background-color: #3498db;
+    color: white;
+}
+.spannav {
+    position: relative;
+    color: black;
+    background: transparent;
+    cursor: pointer;
 }

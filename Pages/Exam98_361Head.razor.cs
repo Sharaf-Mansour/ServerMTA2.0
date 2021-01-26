@@ -10,7 +10,7 @@ namespace ServerMTA.Pages
         [Parameter] public int QNumber { get; set; }
         private bool ShowAnswer;
         private bool CorrectAnswer;
-        private Exam Qeustion => ExamMTA.CurrentExam[(QNumber - 1) % (ExamMTA.CountAll + 1)];
+        private Exam Qeustion => ExamController.CurrentExam[(QNumber - 1) % (ExamController.CountAll + 1)];
         private void NavigateToComponent(string Report)
         {
             (ShowAnswer, CorrectAnswer) = (false, false);
@@ -29,7 +29,7 @@ namespace ServerMTA.Pages
         private void Marker(ChangeEventArgs args) => Qeustion.IsFlagged = (bool)args.Value;
         private void RadioSelection(Answer I)
         {
-            ExamMTA.ClearRadioAnswer(Qeustion);
+            ExamController.ClearRadioAnswer(Qeustion);
             (I.IsSelected, ShowAnswer) = (true, true);
             CorrectAnswer = I.IsSelected == I.IsCorrect;
             Qeustion.IsCorrect = CorrectAnswer;

@@ -9,6 +9,9 @@ html, body {
     padding: 0;
     font-family: 'Poppins', sans-serif;
  }
+td {
+    vertical-align: middle;
+}
 
     .container {
         text-align: center; 

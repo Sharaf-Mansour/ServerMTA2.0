@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace ServerMTA.Model
 {
-    public class ExamMTA : ExamAIData
+    public class ExamController
     {
-        public static string ExamName => "AI-900";
+        public static IExamData DataSource { get; set; } = new ExamAIData();
+        public static string ExamName() => DataSource.ExamName();
 
-        public static List<Exam> CurrentExam { get; set; } = Exams100Static;
+        public static List<Exam> CurrentExam { get; set; } = DataSource.CurrentExam();
 
         //   public void SetExam(List<Exam> Exam) => CurrentExam = Exams98_361Static = Exam;
         public static int Score => CurrentExam.Count(x => x.IsCorrect);
@@ -29,7 +30,7 @@ namespace ServerMTA.Model
         //     (x.IsCorrect, x.IsFlagged) = (false, false);
         //     x.Answers.ForEach(i => i.IsSelected = false);
         //  });
-        public static void ResetExam() => CurrentExam = Exams100Static;
+        public static void ResetExam() => CurrentExam = DataSource.CurrentExam();
 
         public static void Numrize(int Number = 1) => CurrentExam.ForEach(x => x.Num = Number++);
 

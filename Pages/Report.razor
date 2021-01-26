@@ -1,8 +1,8 @@
 ﻿@page "/Download"
-@inject ExamMTA ExamMTA;
+@inject ExamController ExamController;
  <button class="btnsubmit" @onclick='Print'>Print</button>
 <button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
- @foreach(var Qeustion in ExamMTA.CurrentExam ){
+ @foreach(var Qeustion in ExamController.CurrentExam ){
      <div> <h2 style="padding:20px">Qeustion Number @Qeustion.Num </h2>
          @if (Qeustion.Type == ControlType.ImgRadio)
          {
