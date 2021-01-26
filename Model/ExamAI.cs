@@ -58,7 +58,7 @@ This is an example of which Microsoft guiding principle for responsible AI?"),
                 new(2, @"accountability"),
                 new(3, @"reliability and safety", true),
                 new(4, @"fairness"),
-            }, @"Wen developing an AI system for self-driving cars, the Microsoft _Blank_ principle
+            }, @"When developing an AI system for self-driving cars, the Microsoft _Blank_ principle
 for responsible AI shloud be applied to ensure consistent operation of the
 system during unexpeceted circumstances."),
             new(7, new()
@@ -72,15 +72,15 @@ from scanned documents?"),
             new(8, new()
             {
                 new(1, @"Custom Vision"),
-                new(2, @"From Recognizer", true),
+                new(2, @"Form Recognizer", true),
                 new(3, @"Ink Recognizer"),
                 new(4, @"Text Analytics"),
             }, @"The ability to extract subtotals and totals from a receipt is a capability of the _Blank_ service"),
             new(9, new()
             {
-                new(1, @"the model name", true),
+                new(1, @"the model name"),
                 new(2, @"the training endpoint"),
-                new(3, @"the authentication key"),
+                new(3, @"the authentication key",true),
                 new(4, @"the REST endpoint", true),
             }, @"You use Azure Machine Learning designer to publish an inference pipeline.
 Which two parameters should you use to consume the pipeline? Each correct answer presents part of the solution.
@@ -114,7 +114,7 @@ the number of order received is an example of _Blank_"),
                 new(3, @"pipeline"),
                 new(4, @"module", true),
             }, @"Which two components can you drag onto a canvas in Azure Machine Learning designer? Each correct answer presents a complete solution.
-NOTE: Each correct selection is worth one point."),
+NOTE: Each correct selection is worth one point.",ControlType.CheackBox),
             new(14, new()
             {
                 new(1, @"Select Columns in Dataset"),
@@ -152,17 +152,13 @@ What should you use as a feature?"),
                 new(3, @"clustering"),
             }, @"You need to predict the sea level in meters for the next 10 years.
 Which type of machine learning should you use?"),
-            new(19, new()
+           new(19, new()
             {
-                new(1, @"You should consider creating an element in the class."),
-                new(2, @"You should consider creating a constructor in the class", true),
-                new(3, @"You should consider creating a customized interface for the class."),
-                new(4, @"You should consider developing a common interface for the class."),
-            }, @"You are employed as a developer at xyz.com.
-You make use of C# and ASP.NET for development purposes.
-You have been instructed to create a new class.
-The new class must allow for the immediate initialization of its data members every time an object of the class is created.
-Which of the following actions should you take?"),
+                new(1, @"Entity recognition", true),
+                new(2, @"Key phrase extraction"),
+                new(3, @"Language detection"),
+                new(4, @"Sentiment analysis"),
+            }, @"Extract key dates from the support ticket."),
             new(20, new()
             {
                 new(1, @"classification", true),
@@ -516,7 +512,7 @@ automatically understand which label to predict", ControlType.YesNo),
             {
                 new(1, @"Yes", true),
                 new(2, @"No"),
-            }, @"Azure Bot Service and Azure Congnitive Services can be integrated.", ControlType.YesNo),
+            }, @"Azure Bot Service and Azure Cognitive Services can be integrated.", ControlType.YesNo),
             new(68, new()
             {
                 new(1, @"Yes", true),
@@ -807,14 +803,7 @@ respond to unanticipated conditions, and resist harmful manipulation"),
                 new(3, @"Language detection"),
                 new(4, @"Sentiment analysis"),
             }, @"Summarize important information from the support ticket."),
-            new(109, new()
-            {
-                new(1, @"Entity recognition", true),
-                new(2, @"Key phrase extraction"),
-                new(3, @"Language detection"),
-                new(4, @"Sentiment analysis"),
-            }, @"Extract key dates from the support ticket."),
-        };
+           };
 
     }
 }
