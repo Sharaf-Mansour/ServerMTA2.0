@@ -38,14 +38,8 @@ namespace ServerMTA.Pages
         {
             (CorrectAnswer, ShowAnswer) = (false, true);
             Qeustion.Answers.Where(x => x.ID == I.ID).Single().IsSelected = (bool)__e.Value;
-            var CorrectAnswersCount = (
-                from item in Qeustion.Answers
-                where item.IsCorrect == true
-                select item).Count();
-            var SelectsAnswers = (
-                from item in Qeustion.Answers
-                where item.IsSelected == true
-                select item).ToList();
+            var CorrectAnswersCount = Qeustion.Answers.Count(x => x.IsCorrect);
+            var SelectsAnswers = Qeustion.Answers.Where(x => x.IsSelected).Select(_ => _).ToList();
             foreach (var item in SelectsAnswers)
             {
                 if (!item.IsCorrect)

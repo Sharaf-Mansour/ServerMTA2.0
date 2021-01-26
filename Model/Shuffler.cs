@@ -8,9 +8,9 @@ namespace ServerMTA.Model
     public static class Shuffler
     {
         private static Random Random => new();
-        public static void Shuffle<T>(this IList<T> list)
+        public static void Shuffle<T>(this T[] list)
         {
-            int n = list.Count;
+            int n = list.Length;
             while (n > 1)
             {
                 n--;

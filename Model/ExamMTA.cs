@@ -8,9 +8,9 @@ namespace ServerMTA.Model
     public class ExamMTAData : IExamData
     {
         public string ExamName() => "MTA 98-361";
-        public List<Exam> CurrentExam() => new()
+        public Exam[] CurrentExam() => new Exam[]
         {
-            new(1, new()
+            new(1, new Answer[]
             {
                 new(1, @"You should consider making use of the flowchart method.", true),
                 new(2, @"You should consider making use of the pivotchart method."),
@@ -23,7 +23,7 @@ namespace ServerMTA.Model
         The algorithm will list the required actions for completing a process in the appropriate sequence.  
         You are informed that your method for creating the algorithm should be as simple, and clear as possible.  
         What option should you use?"),
-            new(2, new()
+            new(2, new Answer[]
             {
                 new(1, @"CIL is the highest-level human-readable programming language defined by the Common Language Infrastructure specification.", true),
                 new(2, @"CIL is the lowest-level human-readable programming language defined by the Common Language Infrastructure specification."),
@@ -32,7 +32,7 @@ namespace ServerMTA.Model
             }, @"You are employed as a developer at xyz.com. You are creating a .NET Framework application.
         You have been instructed to make sure that you make use of Common Intermediate Language (CLI) for programming the application.
         What options are TRUE with regards to CLI? (Choose all that apply.)", ControlType.CheackBox),
-            new(3, new()
+            new(3, new Answer[]
             {
                 new(1, @"myArray[1]"),
                 new(2, @"myArray[2]", true),
@@ -45,7 +45,7 @@ namespace ServerMTA.Model
         Dim myArray as String = { apples, pears, plums, grapes, oranges, bananas}
         You want to return the third item in your array.
         What code would you employ?"),
-            new(4, new()
+            new(4, new Answer[]
             {
                 new(1, @"You should consider making use of the void keyword in the method declaration.", true),
                 new(2, @"You should consider making use of the sealed C# statement in the method declaration."),
@@ -56,7 +56,7 @@ namespace ServerMTA.Model
         You are in the process of creating code for a method that does not retrieve a value for the calling code.
         You want to make sure that this is reflected when declaring the method.
         What option should you use?"),
-            new(5, new()
+            new(5, new Answer[]
             {
                 new(1, @"You should consider making use of the foreach C# statement."),
                 new(2, @"You should consider making use of the while C# statement."),
@@ -68,7 +68,7 @@ namespace ServerMTA.Model
         You are informed that the new program should allow for intricate multi-way branching.
         Furthermore, the code used must not be difficult to make sense of.
         What is the option you should use?"),
-            new(6, new()
+            new(6, new Answer[]
             {
                 new(1, @"You should consider making use of the switch C# statement as part of your code."),
                 new(2, @"You should consider making use of the void keyword as part of your code."),
@@ -81,7 +81,7 @@ namespace ServerMTA.Model
         Every element in this assortment must be processed just one time.
         You are then informed that reading and debugging your code should not be difficult.
         What action should you take?"),
-            new(7, new()
+            new(7, new Answer[]
             {
                 new(1, @"int count = 1; 
         while (count <= 7) {
@@ -104,7 +104,7 @@ namespace ServerMTA.Model
         You have been instructed to create a new application for xyz.com using C#. 
         The new application must process a loop repeatedly for precisely 7 times.
         Which of the following represents the code you should write?"),
-            new(8, new()
+            new(8, new Answer[]
             {
                 new(1, @"You should consider making use of the static data type."),
                 new(2, @"You should consider making use of the string data type."),
@@ -116,7 +116,7 @@ namespace ServerMTA.Model
         The program should be able to affect integer values, which may be positive or negative and be greater than twelve characters.
         You have to make sure that you are able to store this type of variable.
         What is the option you should take?"),
-            new(9, new()
+            new(9, new Answer[]
             {
                 new(1, @"return n * Factorial(n - 1);", true),
                 new(2, @"return n;"),
@@ -139,7 +139,7 @@ namespace ServerMTA.Model
         11:}
         You have to insert suitable code at line 09 to make sure that the proper outcome is reached.
         What line of code should be inserted?"),
-            new(10, new()
+            new(10, new Answer[]
             {
                 new(1, @"int count = O; 
         while (count < 6) {
@@ -171,7 +171,7 @@ namespace ServerMTA.Model
         The code includes the while statement.
         You want to make sure that a control enters the while loop six times.
         VVhich of the following suitably represents the written code?"),
-            new(11, new()
+            new(11, new Answer[]
             {
                 new(1, @"You should consider making use of the public C# statement."),
                 new(2, @"You should consider making use of the sealed C# statement."),
@@ -182,7 +182,7 @@ namespace ServerMTA.Model
         You have been instructed to create a new program for xyz.com.
         You have to include a repetition structure that allows for the termination condition test to execute at the bottom of the loop not the top.
         What action should you take?"),
-            new(12, new()
+            new(12, new Answer[]
             {
                 new(1, @"You should consider making use of the public C# statement."),
                 new(2, @"You should consider making use of the for C# statement.", true),
@@ -193,7 +193,7 @@ namespace ServerMTA.Model
         You have been instructed to create a program that includes code that allows the program to iterate a set amount of times.
         Regardless of whether the loop body includes complex code, the written code should be understandable and easily maintainable.
         What option should you use?"),
-            new(13, new()
+            new(13, new Answer[]
             {
                 new(1, @"You should consider making use of the private access modifier for distinguishing the percentValue variable.", true),
                 new(2, @"You should consider making use of the void access modifier for distinguishing the percentValue variable."),
@@ -204,7 +204,7 @@ namespace ServerMTA.Model
         You have received instructions to create a method for determining the concession for products xyz.com sold.
         A variable, named percentValue, is of the type double and must be only be available in the method.
         Which of the following actions should you take?"),
-            new(14, new()
+            new(14, new Answer[]
             {
                 new(1, @"{
         retrieve length + width;
@@ -225,7 +225,7 @@ namespace ServerMTA.Model
         You start writing code to define the InitFields method as shown below:
         public void InitFields(double l, double w)
         What code should you use to complete the code?"),
-            new(15, new()
+            new(15, new Answer[]
             {
                 new(1, @"You are unable to make use of the virtual modifier with the static, abstract, private or override modifiers.", true),
                 new(2, @"You are able to make use of the virtual modifier with the static, abstract, private or override modifiers."),
@@ -235,7 +235,7 @@ namespace ServerMTA.Model
         You make use of C# and ASP.NET for development purposes.
         You are in the process of creating a class that makes use of a method using the virtual modifier.
         Which of the following is TRUE with regards to the virtual modifier? (Choose all that apply.)"),
-            new(16, new()
+            new(16, new Answer[]
             {
                 new(1, @"You should consider making use of the sealed keyword.", true),
                 new(2, @"You should consider making use of the static keyword."),
@@ -246,7 +246,7 @@ namespace ServerMTA.Model
         You are in the process of defining a class to provide functionality for executing custom pivot transforms on big data sets.
         You have been informed that derived classes should be prevented from inheriting the functionality of the class.
         What action should you take?"),
-            new(17, new()
+            new(17, new Answer[]
             {
                 new(1, @"You should consider developing a classified interface that is employed by all of the classes."),
                 new(2, @"You should consider configuring a customized interface for each class."),
@@ -256,7 +256,7 @@ namespace ServerMTA.Model
         You are in the process of creating a new application that includes numerous classes, with dissimilar algorithms.
         You have been instructed to make sure that these classes are configured to print, regardless of their dissimilar algorithms.
         Which of the following actions should you take?"),
-            new(18, new()
+            new(18, new Answer[]
             {
                 new(1, @"You should consider making use of a method.", true),
                 new(2, @"You should consider making use of an element."),
@@ -268,7 +268,7 @@ namespace ServerMTA.Model
         You want to make sure that you have the ability to retrieve a list of all movies, which are arranged by the producer's surname.
         You have to make sure that this feature of the class is suitably classified by the code you insert.
         What action should you take?"),
-            new(19, new()
+            new(19, new Answer[]
             {
                 new(1, @"You should consider creating an element in the class."),
                 new(2, @"You should consider creating a constructor in the class", true),
@@ -279,7 +279,7 @@ namespace ServerMTA.Model
         You have been instructed to create a new class.
         The new class must allow for the immediate initialization of its data members every time an object of the class is created.
         Which of the following actions should you take?"),
-            new(20, new()
+            new(20, new Answer[]
             {
                 new(1, @"You should consider defining the Area method for the derivative of the Shape class using public new void.", true),
                 new(2, @"You should consider defining the Area method for the derivative of the Shape class using private new void."),
@@ -291,7 +291,7 @@ namespace ServerMTA.Model
         The Shape class makes use of public virtual void to define the Area method.
         You want to make sure that the Area method in the Shape class allows for new operations, while keeping the execution of the Area method of the Shape class concealed.
         What option should you use?"),
-            new(21, new()
+            new(21, new Answer[]
             {
                 new(1, @"class Rectangle : IConvertible {
         public double Length { get; set; }
@@ -338,7 +338,7 @@ namespace ServerMTA.Model
         You are instructed to develop a new Rectangle class. 
         The new class should allow for Rectangle objects to be compared.
         What option suitably represents the necessary code?"),
-            new(22, new()
+            new(22, new Answer[]
             {
                 new(1, @"You should consider including the namespace C# keyword in your code.", true),
                 new(2, @"You should consider including the int C# keyword in your code."),
@@ -350,7 +350,7 @@ namespace ServerMTA.Model
         You have just developed a class that has the same name as a class in a third-party library you are using.
         You are informed that making use of this class in your code should not affect the clarity of your code.
         VVhat action should you take?"),
-            new(23, new()
+            new(23, new Answer[]
             {
                 new(1, @"You should consider making use of an abstract keyword."),
                 new(2, @"You should consider making use of a string keyword."),
@@ -361,7 +361,7 @@ namespace ServerMTA.Model
         You have received instructions to create a new C# program for xyz.com.
         You want to write code that declares members that belong to the actual class, not to specific objects.
         What is the action you should take?"),
-            new(24, new()
+            new(24, new Answer[]
             {
                 new(1, @"You should consider including a class.", true),
                 new(2, @"You should consider including a delegate."),
@@ -374,7 +374,7 @@ namespace ServerMTA.Model
         *Specifies the template for an object.
         *Must be a characterization of a new data type.
         What action should you take?"),
-            new(25, new()
+            new(25, new Answer[]
             {
                 new(1, @"You should consider declaring the class using the public access modifier"),
                 new(2, @"You should consider declaring the class using the void access modifier"),
@@ -386,7 +386,7 @@ namespace ServerMTA.Model
         You are in the process of defining a new class. You want to make sure that code outside the assembly is prevented from accessing the class.
         Code packaged in the same assembly should however have the ability to access this class, regardless of whether they inherit directly or indirectly from the class.
         action should you take?"),
-            new(26, new()
+            new(26, new Answer[]
             {
                 new(1, @"You should consider making use of the actual keyword."),
                 new(2, @"You should consider making use of the limit keyword."),
@@ -398,7 +398,7 @@ namespace ServerMTA.Model
         You are in the process of defining a new common base class that must be used by various derived classes. 
         You want to declare the new base class.
         What is the option you should use?"),
-            new(27, new()
+            new(27, new Answer[]
             {
                 new(1, @"It will enable derived classes to share common functionality with base classes, but prevent them from defining their own unique behavior."),
                 new(2, @"It will prevent derived classes from sharing common functionality with base classes, while allowing them to define their own unique behavior."),
@@ -409,7 +409,7 @@ namespace ServerMTA.Model
         You have been instructed to develop a new Windows application for xyz.com. 
         You have decided to make use of the inheritance object oriented programming concept.
         What will this allow for?"),
-            new(28, new()
+            new(28, new Answer[]
             {
                 new(1, @"You should consider performing a requirements analysis.", true),
                 new(2, @"You should consider choosing a suitable design model."),
@@ -419,7 +419,7 @@ namespace ServerMTA.Model
         You are in the process of developing a new software system for xyz.com.
         You are asked to identify the steps required in the development process.
         What option suitably describes the FIRST step?"),
-            new(29, new()
+            new(29, new Answer[]
             {
                 new(1, @"Plans.", true),
                 new(2, @"Modes", true),
@@ -429,7 +429,7 @@ namespace ServerMTA.Model
         You are preparing the development of a new software system for xyz.com.
         You are currently analyzing the results of the design process, prior to development.
         What options form part of the results you are analyzing?", ControlType.CheackBox),
-            new(30, new()
+            new(30, new Answer[]
             {
                 new(1, @"An architect develops system content."),
                 new(2, @"An architect develops the system's technical blueprint.", true),
@@ -439,7 +439,7 @@ namespace ServerMTA.Model
         You have received a request for the development of a new software system. 
         You require the assistance of various types of developers during the development process, of which one is an architect.
         What is the purpose of an architect?"),
-            new(31, new()
+            new(31, new Answer[]
             {
                 new(1, @"A technical writer develops system content."),
                 new(2, @"A technical writer develops the system's technical blueprint."),
@@ -449,7 +449,7 @@ namespace ServerMTA.Model
         You have received a request for the development of a new software system.
         You require the assistance of various types of developers during the development process, of which one is a technical writer.
         What is the purpose of a technical writer?"),
-            new(32, new()
+            new(32, new Answer[]
             {
                 new(1, @"It allows you to ascertain whether the program execution meets the initial requirements.", true),
                 new(2, @"It allows you to optimize the program for performance and security."),
@@ -460,7 +460,7 @@ namespace ServerMTA.Model
         You have been instructed to create a new program for xyz.com.
         You have reached the testing stage of the development process.
         What is the reason for the testing stage?"),
-            new(33, new()
+            new(33, new Answer[]
             {
                 new(1, @"A release manager develops system content."),
                 new(2, @"A release manager creates a rollout plan and certifies release candidates for shipment or deployment.", true),
@@ -470,7 +470,7 @@ namespace ServerMTA.Model
         You have received a request for the development of a new software system.
         You require the assistance of various people during the development process, ofwhich one is a release manager.
         What is the purpose of a release manager?"),
-            new(34, new()
+            new(34, new Answer[]
             {
                 new(1, @"Merger."),
                 new(2, @"Improvement."),
@@ -481,7 +481,7 @@ namespace ServerMTA.Model
         You want to make sure that when you fix a problem with the program, it does not negatively affect the rest of the program.
         You need to employ a suitable testing strategy.
         What option should you use?"),
-            new(35, new()
+            new(35, new Answer[]
             {
                 new(1, @"White-box testing allows for testing every imaginable combination of end-user activities."),
                 new(2, @"White-box testing requires the creation test cases by studying the code to identiW any possible failure scenarios.", true),
@@ -491,7 +491,7 @@ namespace ServerMTA.Model
         You are responsible for running training exercises for junior developers.
         During one of the training exercises, you are discussing testing. You are explaining what white-box testing entails.
         What is TRUE with regards to white-box testing? (Choose all that apply.)", ControlType.CheackBox),
-            new(36, new()
+            new(36, new Answer[]
             {
                 new(1, @"Black-box testing allows for testing every imaginable combination of end-user activities.", true),
                 new(2, @"Black-box testing requires the creation test cases by studying the code to identiW any possible failure scenarios."),
@@ -502,7 +502,7 @@ namespace ServerMTA.Model
         During one of the training exercises, you are discussing testing. 
         You are explaining what black-box testing entails.
         What is TRUE with regards to black-box testing? (Choose all that apply.)", ControlType.CheackBox),
-            new(37, new()
+            new(37, new Answer[]
             {
                 new(1, @"It is a contiguous collection of data items that can be accessed by an ordinal index."),
                 new(2, @"It does not allow random access.", true),
@@ -513,7 +513,7 @@ namespace ServerMTA.Model
         You have been instructed to create a new program for xyz.com. 
         You are planning to make use of a queue data structure.
         Which of the following options are TRUE with regards to the queue data structure?"),
-            new(38, new()
+            new(38, new Answer[]
             {
                 new(1, @"It is a contiguous collection of data items that can be accessed by an ordinal index."),
                 new(2, @"It does not support chaining, splitting, cycles, or other features that can leave the stack in a conflicting state."),
@@ -524,7 +524,7 @@ namespace ServerMTA.Model
         You have been instructed to create a new program for xyz.com.
         You are planning to make use of a stack data structure.
         which of the following options are TRUE with regards to the stack data structure?"),
-            new(39, new()
+            new(39, new Answer[]
             {
                 new(1, @"You should consider making use of the contains queue operation.", true),
                 new(2, @"You should consider making use of the holds queue operation."),
@@ -535,7 +535,7 @@ namespace ServerMTA.Model
         xyz.com has an application that employs a queue data structure for influencing data. 
         A fellow developer, named Kara Lang, wants to know if the queue includes a data item without having to process the data item.
         What option would you use?"),
-            new(40, new()
+            new(40, new Answer[]
             {
                 new(1, @"You should consider making use of the view queue operation."),
                 new(2, @"You should consider making use of the glance queue operation."),
@@ -546,7 +546,7 @@ namespace ServerMTA.Model
         The new application makes use of a stack data structure to handle data.
         You want to perform a queue operation that enables you to locate the data item that is next in line for processing, without processing that data item.
         VVhat option should you make use of?"),
-            new(41, new()
+            new(41, new Answer[]
             {
                 new(1, @"MergeSort"),
                 new(2, @"BubbleSort", true),
@@ -557,7 +557,7 @@ namespace ServerMTA.Model
         You are in the process of developing a new application. 
         You are making use of an algorithm in your code that requires making use of the comparison and swap techniques.
         What algorithm are you using?"),
-            new(42, new()
+            new(42, new Answer[]
             {
                 new(1, @"It allows you to navigate all of the list's nodes.", true),
                 new(2, @"It prevents you from navigating to any list node."),
@@ -569,7 +569,7 @@ namespace ServerMTA.Model
         The application must make use of a list that has multiple nodes.
         You link the application to only the head node.
         What is TRUE for this scenario?"),
-            new(43, new()
+            new(43, new Answer[]
             {
                 new(1, @"An array data structure."),
                 new(2, @"A linked list data structure.", true),
@@ -582,7 +582,7 @@ namespace ServerMTA.Model
         *Are extremely fast in executing insert and delete operations.
         *Are not stored in contiguous memory locations.
         What data structure should you make use of?"),
-            new(44, new()
+            new(44, new Answer[]
             {
                 new(1, @"Doubly linked lists are able to store each of the elements they contain in different and unrelated storage locations.", true),
                 new(2, @"It allocates all elements contiguously in memory, and keeps a count of the current number of elements."),
@@ -592,7 +592,7 @@ namespace ServerMTA.Model
         You make use of C# and ASP.NET for development purposes.
         You are creating a new application using a doubly linked list data structure.
         What is a TRUE statement with regards to this type of data structure?"),
-            new(45, new()
+            new(45, new Answer[]
             {
                 new(1, @"It defines how elements are presented and where they are placed on the Web page.", true),
                 new(2, @"It consists of a directive, which could extended with one or more attributes, within angle brackets."),
@@ -603,7 +603,7 @@ namespace ServerMTA.Model
         You have received instructions to create a Web page for xyz.com. 
         You are planning to make use of Cascading Style Sheet (CSS) for the Web page.
         What is TRUE with regards to using Cascading Style Sheet (CSS)?"),
-            new(46, new()
+            new(46, new Answer[]
             {
                 new(1, @"You should consider making use of the <IMG> HTML tag.", true),
                 new(2, @"You should consider making use of the <HTTP> HTML tag."),
@@ -615,7 +615,7 @@ namespace ServerMTA.Model
         xyz.com has informed that a picture that resides on a different web server must be presented to users when they access the Web page. 
         The picture can be retrieved via a public URL.
         What action should you take?"),
-            new(47, new()
+            new(47, new Answer[]
             {
                 new(1, @"It defines the shape, coordinates, and related URL of a single hyperlink region within a client-side image map"),
                 new(2, @"It allows you to create hyperlinks on your web page to access other pages on the Internet.", true),
@@ -625,7 +625,7 @@ namespace ServerMTA.Model
         You are in the process of creating a new Web page for xyz.com.
         You are planning to set the HREF attribute of an anchor element.
         What is TRUE with this setting?"),
-            new(48, new()
+            new(48, new Answer[]
             {
                 new(1, @"It will allow you to make sure that Web pages take the least time to load.", true),
                 new(2, @"An architect develops the system's technical blueprint."),
@@ -635,7 +635,7 @@ namespace ServerMTA.Model
         You are in the process of creating a new Web page for xyz.com.
         You have written JavaScript code for your Web site in a different file.
         You then set the SRC attribute of the", ControlType.CheackBox),
-            new(49, new()
+            new(49, new Answer[]
             {
                 new(1, @"It is only used in 11S 6.0."),
                 new(2, @"It is responsible for supporting the ASP.NET functionality.", true),
@@ -646,7 +646,7 @@ namespace ServerMTA.Model
         You are currently running a training exercise for potential developers. 
         You are discussing the aspnet_wp.exe worker process.
         What is TRUE with regards to the aspnet_wp.exe worker process? (Choose all that apply.)", ControlType.CheackBox),
-            new(50, new()
+            new(50, new Answer[]
             {
                 new(1, @"An architect develops system content.", true),
                 new(2, @"The Page Load method will be prevented from completing."),
@@ -657,7 +657,7 @@ namespace ServerMTA.Model
         You have recently written code for a Page Load method.
         You then configured the AutoEventWireup attribute of the @page directive to be TRUE.
         which of the following describes the results of this configuration?"),
-            new(51, new()
+            new(51, new Answer[]
             {
                 new(1, @"You should consider making use of the browser's History tab."),
                 new(2, @"You should consider making use of the browser's Favorites tab."),
@@ -670,7 +670,7 @@ namespace ServerMTA.Model
         Furthermore, you are infonned that the browsing data should be accessible to all Web pages, even if the user restarts the browser.
         You want to complete your task using as little administrative effort, and without making use of server side resources.
         What option should you take?"),
-            new(52, new()
+            new(52, new Answer[]
             {
                 new(1, @"You should consider making sure that all client workstations have Windows 7 installed."),
                 new(2, @"You should consider making sure that all client workstations have the necessary hardware requirements."),
@@ -681,7 +681,7 @@ namespace ServerMTA.Model
         xyz.com has an Internet Information Services (IIS) server, named xyz-SR07, which hosts a newly developed Web application.
         You are then informed that you must ensure that all xyz.com's staff is able to make use of the new Web application.
         Which of the following actions should you take?"),
-            new(53, new()
+            new(53, new Answer[]
             {
                 new(1, @"It specifies that you want to expose the method as part of the Web service.", true),
                 new(2, @"It prevents you from exposing the method as part of the Web service."),
@@ -691,7 +691,7 @@ namespace ServerMTA.Model
         You are in the process of creating a Web service using ASP.NET.
         You have attached the WebMethod attribute to a Public method.
         Which of the following options describe your reasons for doing this? (Choose all that apply.)", ControlType.CheackBox),
-            new(54, new()
+            new(54, new Answer[]
             {
                 new(1, @"You should analyze the test page that is shown in the Web browser after using Visual Studio to execute the Web services project.", true),
                 new(2, @"You should consider making use of black-box testing."),
@@ -702,7 +702,7 @@ namespace ServerMTA.Model
         You recently made use of C# to develop a new Web service that supports mapping data.
         You want to make sure that the Web service produces the proper output using the least amount of effort.
         Which of the following actions should you take?"),
-            new(55, new()
+            new(55, new Answer[]
             {
                 new(1, @"You should consider inserting the reference in the machine.config file"),
                 new(2, @"You should consider inserting the reference in the app.config file"),
@@ -713,7 +713,7 @@ namespace ServerMTA.Model
         TKWebApp makes use of a Web service to obtain data.
         You want to make sure that you are able to make use of the methods of this Web service inside TKWebApp by creating the client-side proxy classes.
         Which of the following actions should you take?"),
-            new(56, new()
+            new(56, new Answer[]
             {
                 new(1, @"You should consider generating a custom control for the unique user interface.", true),
                 new(2, @"You should consider generating a Web Form"),
@@ -726,7 +726,7 @@ namespace ServerMTA.Model
         You have noticed that the Visual Studio toolbox does not have suitable tools to complete your task. 
         You then decide to create the necessary code from scratch.
         What option should you make use of?"),
-            new(57, new()
+            new(57, new Answer[]
             {
                 new(1, @"It allows the user interface component the react to user actions.", true),
                 new(2, @"It prevents the user interface component from reacting to user actions."),
@@ -736,7 +736,7 @@ namespace ServerMTA.Model
         You have been instructed to create a user interface component for a new xyz.com application.
         You are required to make use of an event programming construct.
         What is the reason for this?"),
-            new(58, new()
+            new(58, new Answer[]
             {
                 new(1, @"It is made up of one or more independent windows, which appears separately on the Windows desktop.", true),
                 new(2, @"It is made up of a single main window, and the application's windows are contained within or float on top of the main window."),
@@ -746,7 +746,7 @@ namespace ServerMTA.Model
         You have received instructions to create a new Windows application for xyz.com.
         You are planning to create a Single Document Interface (SDI) application.
         What option is TRUE with regards to using Single Document Interface (SDI)?"),
-            new(59, new()
+            new(59, new Answer[]
             {
                 new(1, @"You should consider developing a custom control."),
                 new(2, @"You should consider developing a stored procedure."),
@@ -759,7 +759,7 @@ namespace ServerMTA.Model
         You should also make sure that the application starts automatically, without human input.
         You have been informed that your solution should reduce the amount of processes required for development, installation, and updates.
         What option should you use?"),
-            new(60, new()
+            new(60, new Answer[]
             {
                 new(1, @"You should consider creating a Windows Service application project, and configuring the Output type as Console Application."),
                 new(2, @"You should consider creating a Windows Forms application project with the Output type set to Console Application.", true),
@@ -771,7 +771,7 @@ namespace ServerMTA.Model
         Furthermore, an image of an item must be displayed onscreen as soon as a code is entered.
         To keep an eye on communication with the bar-code scanner, the application must log its operation to a console window.
         Which of the following actions should you take?"),
-            new(61, new()
+            new(61, new Answer[]
             {
                 new(1, @"You should consider creating a Windows Service application.", true),
                 new(2, @"You should consider creating an Active Directory application."),
@@ -785,7 +785,7 @@ namespace ServerMTA.Model
         *Messages to be written to the Windows application event log, and has no user interface.
         *A user to log off without interrupting the application's processes.
         What option should you make use of?"),
-            new(62, new()
+            new(62, new Answer[]
             {
                 new(1, @"You should consider accessing the Event Viewer on the local workstation.", true),
                 new(2, @"You should consider accessing the app.config file on the local workstation."),
@@ -796,7 +796,7 @@ namespace ServerMTA.Model
         Messages written by the new application will be stored in the Windows application event log of the local workstation.
         You want to examine these messages on a daily basis.
         What option should you make use of?"),
-            new(63, new()
+            new(63, new Answer[]
             {
                 new(1, @"It installs an executable containing classes that expand ServiceBase."),
                 new(2, @"It installs a class that expands ServiceBase to execute a service.", true),
@@ -807,7 +807,7 @@ namespace ServerMTA.Model
         You have been instructed to create a new service application for xyz.com.
         Your code will include the System.ServiceProcess.ServiceInstaller class.
         VVhat is a TRUE statement with regards to this class?"),
-            new(64, new()
+            new(64, new Answer[]
             {
                 new(1, @"You should consider configuring the CanPauseAndContinue property of the service to true.", true),
                 new(2, @"You should consider configuring the CanShutdown property of the service to false."),
@@ -818,7 +818,7 @@ namespace ServerMTA.Model
         Your solution should allow for the postponement of the process when system maintenance is required, as well as the resumption
         of the process subsequent to the maintenance being completed.
         Which of the following actions should you take?"),
-            new(65, new()
+            new(65, new Answer[]
             {
                 new(1, @"You should consider configuring the Windows service project to include an application installer."),
                 new(2, @"You should consider configuring the Windows service project to include an SMS installer."),
@@ -831,7 +831,7 @@ namespace ServerMTA.Model
         You want to make sure that the services are operational by installing them prior to use.
         You are then informed that the services must be installed using a suitable Windows installer tool.
         Which of the following actions should you take?"),
-            new(66, new()
+            new(66, new Answer[]
             {
                 new(1, @"The Source property is used to set the source name to register and use when writing to the event log.", true),
                 new(2, @"The Source property is used to set the object used to marshal the event handler calls issued as a result of an EventLog entry written event."),
@@ -843,7 +843,7 @@ namespace ServerMTA.Model
         The program must be able to record messages in the event log. 
         You have decided to include the Source property of the EventLog class in your code.
         Which of the following best describes the purpose of the Source property in the EventLog class?"),
-            new(67, new()
+            new(67, new Answer[]
             {
                 new(1, @"You should consider executing this service using the LocalSystem account.", true),
                 new(2, @"You should consider executing this service using the GlobalSystem account."),
@@ -854,7 +854,7 @@ namespace ServerMTA.Model
         You have been instructed to create a Windows service.
         This Windows service must have the ability to retrieve data hosted by the Windows Registry.
         What action should you take?"),
-            new(68, new()
+            new(68, new Answer[]
             {
                 new(1, @"It enables you to alter the display and performance of the form to an MDI parent form.", true),
                 new(2, @"It obtains a value indicating whether the form is a MDI child form."),
@@ -865,7 +865,7 @@ namespace ServerMTA.Model
         You have just completed creating a new Windows Forms application for xyz.com.
         You are preparing to configure the IsMdiContainer property of the form.
         Which of the following is TRUE with regards to this configuration?"),
-            new(69, new()
+            new(69, new Answer[]
             {
                 new(1, @"You should consider making use of MdiLayout.TileVertical.", true),
                 new(2, @"You should consider making use of MdiLayout.TilePerpendicular."),
@@ -875,7 +875,7 @@ namespace ServerMTA.Model
         You have receive instructions to create a new multiple document interface (MDI) Windows Form.
         You want to make sure that the code you create allows for the child windows to be displayed perpendicularly inside the client area of the MDI parent form.
         What option should you use in your code?"),
-            new(70, new()
+            new(70, new Answer[]
             {
                 new(1, @"You should consider making use of the Fill method."),
                 new(2, @"You should consider making use of the StreamWriter class."),
@@ -885,7 +885,7 @@ namespace ServerMTA.Model
         You have been instructed to create a new command-line application for xyz.com.
         You want to make sure that you are able to retrieve a response from the command-line.
         What option should you make use of?"),
-            new(71, new()
+            new(71, new Answer[]
             {
                 new(1, @"You should consider making use of the net start command.", true),
                 new(2, @"You should consider making use of the Nslookup command."),
@@ -896,7 +896,7 @@ namespace ServerMTA.Model
         You have recently created a Windows service for xyz.com. 
         You are then instructed to run a newly created Windows service from the command-line.
         What is the option you should take?"),
-            new(72, new()
+            new(72, new Answer[]
             {
                 new(1, @"You should consider executing the Snmputil.exe command."),
                 new(2, @"You should consider executing the Fed-Util.exe command."),
@@ -906,7 +906,7 @@ namespace ServerMTA.Model
         You have just completed the creation of a Windows service.
         You are now preparing to apply the service by installing it.
         What option should you use?"),
-            new(73, new()
+            new(73, new Answer[]
             {
                 new(1, @"You should consider making use of the DMLWriter class."),
                 new(2, @"You should consider making use of the StreamWriter class.", true),
@@ -919,7 +919,7 @@ namespace ServerMTA.Model
         You have been informed that your solution should allow for the file to be accessed by ordinary text editors.
         You have also been informed that the file should take up as little space as possible.
         What action should you take?"),
-            new(74, new()
+            new(74, new Answer[]
             {
                 new(1, @"You should consider making use of the SqlCommand.ExecuteReader method."),
                 new(2, @"You should consider making use of the SqlCommand.ExecuteScalar method.", true),
@@ -931,7 +931,7 @@ namespace ServerMTA.Model
         The new application must be able to retrieve a single value from a xyz.com SQL Server database.
         You want to make sure that this process takes as little time as possible.
         What option should you make use of?"),
-            new(75, new()
+            new(75, new Answer[]
             {
                 new(1, @"You should consider making use of the FILL SQL statement."),
                 new(2, @"You should consider making use of the DISCONTINUE SQL statement."),
@@ -942,7 +942,7 @@ namespace ServerMTA.Model
         xyz.com has a database table, named TKItems. 
         You want to make sure that obsolete items are expunged from TKItems when you update it.
         What action should you take?"),
-            new(76, new()
+            new(76, new Answer[]
             {
                 new(1, @"You should consider configuring the DataTable class to store the data."),
                 new(2, @"You should consider configuring the DataSet class to store the data.", true),
@@ -954,7 +954,7 @@ namespace ServerMTA.Model
         the program must be able to return a list of data from a xyz.com database and allow you to view the returned data,
         regardless of whether you are linked to the SQL server or not.
         What action should you take?"),
-            new(77, new()
+            new(77, new Answer[]
             {
                 new(1, @"It writes characters using an encoding value to convert the characters to bytes."),
                 new(2, @"It allows characters to be read using an encoding value to convert the characters from bytes."),
@@ -966,7 +966,7 @@ namespace ServerMTA.Model
         This new program must be able to write information to a flat file.
         You decide to include a BinaryWriter class in your code.
         What is TRUE with regards to the BinaryWriter class?"),
-            new(78, new()
+            new(78, new Answer[]
             {
                 new(1, @"You should consider making use of the Fill method in the written code.", true),
                 new(2, @"You should consider making use of the Copy method in the written code."),
@@ -976,7 +976,7 @@ namespace ServerMTA.Model
         You have received instructions to create a new application for xyz.com. 
         The new application must have the ability to duplicate information hosted by a xyz.com SQL server data table in a Dataset.
         What action should you take?"),
-            new(79, new()
+            new(79, new Answer[]
             {
                 new(1, @"Stored procedures can improve the security of your application.", true),
                 new(2, @"Stored procedures prevent modular programming."),

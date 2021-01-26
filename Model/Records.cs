@@ -3,7 +3,7 @@
 namespace ServerMTA.Model
 {
     public enum ControlType { CheackBox, RadioButton, YesNo, ImgRadio };
-    public record Exam(int ID, List<Answer> Answers, string Value = "", ControlType Type = ControlType.RadioButton, bool IsCorrect = false, bool IsFlagged = false, int Num = 0)
+    public record Exam(int ID, Answer[] Answers, string Value = "", ControlType Type = ControlType.RadioButton, bool IsCorrect = false, bool IsFlagged = false, int Num = 0)
     {
         public bool IsCorrect { get; set; } = IsCorrect;
         public bool IsFlagged { get; set; } = IsFlagged;

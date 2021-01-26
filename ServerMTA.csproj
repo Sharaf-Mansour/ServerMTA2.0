@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+	  <RuntimeFrameworkVersion>5.0.2</RuntimeFrameworkVersion>
+
 	  <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 
 	  <!-- To make the application smaller, we can explicitly turn off timezone and collation support. -->
