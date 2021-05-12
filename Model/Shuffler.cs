@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace ServerMTA.Model
 {
     public static class Shuffler
     {
-        private static Random Random => new();
+        private static Random Random => new((int)DateTime.Now.Ticks);
         public static void Shuffle<T>(this T[] list)
         {
             int n = list.Length;
