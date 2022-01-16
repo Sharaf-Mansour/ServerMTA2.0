@@ -1,25 +1,35 @@
 ﻿@page "/Download"
 @inject ExamController ExamController;
- <button class="btnsubmit" @onclick='Print'>Print</button>
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+<button class="btnsubmit" @onclick='Print'>Print</button>
 <button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
- @foreach(var Qeustion in ExamController.CurrentExam ){
-     <div> <h2 style="padding:20px">Qeustion Number @Qeustion.Num </h2>
-         @if (Qeustion.Type == ControlType.ImgRadio)
-         {
-             <img src="@Qeustion.Value" style="  max-width: 75%;  height: auto;"/>
-         }
-         else
-         {
-             <pre style="padding:20px"> @Qeustion.Value </pre> <br />
-        
-         }
-
-          
-         <br />
-   <div style="padding-left: 20px;">
-      @foreach (var item in Qeustion.Answers) {
-         <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">	
-         <pre class="@((item.IsSelected) ? "checkright":"")">@item.Value </pre> </label>  }
-       <br />     <label>    <strong>
-   @(Qeustion.Answers.Any(x => x.IsSelected) == true ? Qeustion.IsCorrect ? "CORRECT" : "WRONG" :"Not Answered")
-</strong> </label> </div> </div>   <br clear="all" style="page-break-before:always" />}
+ @foreach (var Qeustion in ExamController.CurrentExam)
+{
+    <div>
+        <h2 style="padding:20px">Qeustion Number @Qeustion.Num </h2>
+        @if (Qeustion.Type is ControlType.ImgRadio)
+        {
+            <img src="@Qeustion.Value" style="  max-width: 75%;  height: auto;" />
+        }
+        else
+        {
+            <pre style="padding:20px"> @Qeustion.Value </pre> <br />
+        }
+        <br />
+        <div style="padding-left: 20px;">
+            @foreach (var item in Qeustion.Answers)
+            {
+                <label for="@item.ID" class=" @((item.IsCorrect) ? "blue" : "" ) ">
+                    <pre class="@((item.IsSelected) ? "checkright":"")">@item.Value </pre>
+                </label>
+            }
+            <br />     <label>
+                <strong>
+                    @(Qeustion.Answers.Any(x => x.IsSelected) == true ? Qeustion.IsCorrect ? "CORRECT" : "WRONG" :"Not Answered")
+                </strong>
+            </label>
+        </div>
+    </div>
+    <br clear="all" style="page-break-before:always" />
+}

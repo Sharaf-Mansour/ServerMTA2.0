@@ -1,13 +1,24 @@
 ﻿@page "/Score"
 @inject ExamController ExamController;
- <div class="container">
-<div class="wrapper">
-     <h1>You scored  @ExamController.Score out of @ExamController.CountAll</h1>
-      <progress  class="progress" id="file" value="@ScorePerc" max="100" data-label="@StringScore">  </progress></div>
-       <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
-        <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
- <div  class="table-box"><table cellspacing='0' class="tbl"><tbody class="tbodytbl">
- @foreach(var item in ExamController.CurrentExam){
-     <tr class="trbodytbl">
-         <td class="tddata">@item.Num</td>
-         <td class="tddata @(item.IsCorrect ? "right" : "wrong")   "></td></tr>}</tbody></table></div></div>
+@inject NavigationManager NavigationManager
+<div class="container">
+    <div class="wrapper">
+        <h1>You scored  @ExamController.Score out of @ExamController.CountAll</h1>
+        <progress class="progress" id="file" value="@ScorePerc" max="100" data-label="@StringScore">  </progress>
+    </div>
+    <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
+    <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
+    <div class="table-box">
+        <table cellspacing='0' class="tbl">
+            <tbody class="tbodytbl">
+                @foreach (var item in ExamController.CurrentExam)
+                {
+                    <tr class="trbodytbl">
+                        <td class="tddata">@item.Num</td>
+                        <td class="tddata @(item.IsCorrect ? "right" : "wrong")   "></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

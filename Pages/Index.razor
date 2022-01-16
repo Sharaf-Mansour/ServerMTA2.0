@@ -1,70 +1,77 @@
 ﻿@page "/"
 @inject ExamController ExamController;
+@inject NavigationManager NavigationManager
 <div class="container">
     <h1>Welcome to the Microsoft @ExamController.ExamName() Exam </h1>
-       <button class="btn btnindex" style="margin: 50px auto;" @onclick='()=>NavigateToComponent("1")'>Click to Start</button>
-           <div style="margin: 50px auto;margin-top: 20px;padding-top: 10px;border: 2px solid #aaa;border-radius: 12px;box-shadow: 0 0px 20px #999;width: 80%;">
+    <button class="btn btnindex" style="margin: 50px auto;" @onclick='()=>NavigateToComponent("1")'>Click to Start</button>
+    <div style="margin: 50px auto;margin-top: 20px;padding-top: 10px;border: 2px solid #aaa;border-radius: 12px;box-shadow: 0 0px 20px #999;width: 80%;">
         <h1 style="margin-bottom: 25px;">Control Panel</h1>
-                       <table  border="0" style="text-align: left;margin: auto; width: 25%"  >
-            <tr> 
-                <td  colspan="2" style="text-align: center; vertical-align: middle; width: 50%;">   <button @onclick='() => SetExam(new ExamAIData())' class='btnnav  @( ExamController.DataSource.GetType() == typeof(ExamAIData) ? "btnnavcolorcheck active" : "")'  >
-                     AI   Exam </button> </td>
-                 @*                <td style="text-align: center; vertical-align: middle; width: 50%;">  <button @onclick='() => SetExam(new ExamMTAData())' class='btnnav  @(  ExamController.DataSource.GetType() == typeof(ExamMTAData) ?  "btnnavcolorcheck active" : "")'  >
-                     MTA Exam</button>       </td> *@
-            </tr><br />
+        <table border="0" style="text-align: left;margin: auto; width: 25%">
             <tr>
-                <td colspan="2">
+                <td colspan="2" style="text-align: center; vertical-align: middle; width: 50%;">
+                    <button @onclick='() => SetExam(new ExamAIData())' class='btnnav  @( ExamController.DataSource.GetType() == typeof(ExamAIData) ? "btnnavcolorcheck active" : "")'>
+                        AI   Exam
+                    </button>
+                </td>
+                <td colspan="2" style="text-align: center; vertical-align: middle; width: 50%;">
+                    <button @onclick='() => SetExam(new ExamMTAData())' class='btnnav  @(  ExamController.DataSource.GetType() == typeof(ExamMTAData) ?  "btnnavcolorcheck active" : "")'>
+                        MTA Exam
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="padding-top:20px;">
                     <input type="checkbox" name="cb" id="cb1" @bind="ExamController.AllowShowAnswer" /><label class="label" for="cb1">&nbsp;Show Answer</label>
                 </td>
-             </tr><br />
+            </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="4" style="padding-top:20px;">
                     <input type="checkbox" name="cb" id="cb2" @bind="ExamController.ShuffleQeustion" /><label class="label" for="cb2">&nbsp;Random&nbsp;Questions</label>
                 </td>
-            </tr><br />
+            </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="4" style="padding-top:20px;">
                     <input type="checkbox" name="cb" id="cb3" @bind="ExamController.ShuffleAnswer" /><label class="label" for="cb3">&nbsp;Random Answer</label>
                 </td>
-            </tr><br />
+            </tr>
         </table>
-      @*  <table style="margin: 50px auto;text-align: left;">
+        @*  <table style="margin: 50px auto;text-align: left;">
             <tr>
-                <td>
-                 
-                </td>
-       @*<td style="padding-left: 50px;">
-                    <div>
-                        <input type="radio" name="rd" id="rd1" /><label for="rd1">All Questions</label>
-                    </div>
-                </td>
-            </tr> 
+            <td>
+
+            </td>
+            @*<td style="padding-left: 50px;">
+            <div>
+            <input type="radio" name="rd" id="rd1" /><label for="rd1">All Questions</label>
+            </div>
+            </td>
+            </tr>
             <tr>
-                <td>
-                   
-                </td>
+            <td>
+
+            </td>
+            @*<td style="padding-left: 50px;" colspan="2">
+            <div>
+            <input type="radio" name="rd" id="rd2" /><label for="rd2">Specific Number Of Questions :</label>
+            <input type="number" min="0" class="num" />
+            </div>
+            </td>
+            </tr>
+            <tr>
+            <td style="padding-top: 10px;">
+
+            </td>*@
         @*<td style="padding-left: 50px;" colspan="2">
-                    <div>
-                        <input type="radio" name="rd" id="rd2" /><label for="rd2">Specific Number Of Questions :</label>
-                        <input type="number" min="0" class="num" />
-                    </div>
-                </td>
+            <div>
+            <input type="radio" name="rd" id="rd3" /><label for="rd3">
+            From :&nbsp;&nbsp;
+            </label><input type="number" min="0" class="num" />
+            To :&nbsp;&nbsp;
+            <input type="number" min="0" class="num" />
+            </div>
+            </td>
             </tr>
-            <tr>
-                <td style="padding-top: 10px;">
-                  
-                </td>*@
-             @*<td style="padding-left: 50px;" colspan="2">
-                    <div>
-                        <input type="radio" name="rd" id="rd3" /><label for="rd3">
-                            From :&nbsp;&nbsp;
-                        </label><input type="number" min="0" class="num" />
-                        To :&nbsp;&nbsp;
-                        <input type="number" min="0" class="num" />
-                    </div>
-                </td>
-            </tr>
-        </table*@
-        <br/>
+            </table*@
+        <br />
     </div>
 </div>

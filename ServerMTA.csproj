@@ -1,30 +1,45 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-	  <RuntimeFrameworkVersion>5.0.2</RuntimeFrameworkVersion>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>Preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 
-	  <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+		<PublishTrimmed>true</PublishTrimmed>
+		<BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+		<BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<UseSystemResourceKeys>true</UseSystemResourceKeys>
+		<UseNativeHttpHandler>true</UseNativeHttpHandler>
+		<MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+		<HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+		<EventSourceSupport>false</EventSourceSupport>
+		<EnableUnsafeUTF7Encoding>false</EnableUnsafeUTF7Encoding>
+		<EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+		<DebuggerSupport>false</DebuggerSupport>
+		<AutoreleasePoolSupport>false</AutoreleasePoolSupport>
+		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+		<SignAssembly>False</SignAssembly>
+		<AnalysisLevel>preview</AnalysisLevel>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 
-	  <!-- To make the application smaller, we can explicitly turn off timezone and collation support. -->
-    <!-- Normally the linker automatically strips any features we aren't using, but these two otherwise stay on by default. -->
-    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
-    <BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
-	  <InvariantGlobalization>true</InvariantGlobalization>
-
-	  <UseBlazorWebAssembly>true</UseBlazorWebAssembly>
-    <AssemblyName>ServerMTA</AssemblyName>
-    <RootNamespace>ServerMTA</RootNamespace>
-    <ApplicationIcon>BOTwufsujyWAAAAAElFTkSuQmCC.ico</ApplicationIcon>
-  </PropertyGroup>
 
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.2" PrivateAssets="all" />
-  </ItemGroup>
+		<UseBlazorWebAssembly>true</UseBlazorWebAssembly>
+		<AssemblyName>ServerMTA</AssemblyName>
+		<RootNamespace>ServerMTA</RootNamespace>
+		<ApplicationIcon>BOTwufsujyWAAAAAElFTkSuQmCC.ico</ApplicationIcon>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
- </Project>
+</Project>

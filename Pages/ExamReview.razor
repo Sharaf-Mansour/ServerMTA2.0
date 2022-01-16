@@ -1,12 +1,13 @@
 ﻿@page "/Review"
 @inject NavigationManager NavigationManager
 @inject ExamController ExamController;
-@code{ private void NavigateToComponent(string Report)=> NavigationManager.NavigateTo(Report);}
+@code { private void NavigateToComponent(string Report) => NavigationManager.NavigateTo(Report);}
 <p style="text-align: center;color: #000;font-weight: bold;margin: 10px;">
     <span class="spntbl">Not answered @ExamController.CountNotAnswered<span style="color: #ddd;">|</span></span>
     <span class="spntbl">Marked @ExamController.CountFlagged <span style="color: #ddd;">|</span></span>
     <span class="spntbl">Count  @ExamController.CountAll &nbsp;</span>
-    <button class="btnend" @onclick='()=>NavigateToComponent("Score")'>End</button></p>
+    <button class="btnend" @onclick='()=>NavigateToComponent("Score")'>End</button>
+</p>
 <div class="table-box">
     <table cellspacing='0' class="tbl">
         <thead class="theadtbl">
@@ -18,10 +19,15 @@
             </tr>
         </thead>
         <tbody class="tbodytbl">
-            @foreach (var i in ExamController.CurrentExam) {
-<tr class="trbodytbl">
-    <td class="tddata" style="width:10%">@i.Num</td>
- <td class="tddata @(i.IsFlagged ? "mark" : "") " style="width:32%"></td>
-<td class="tddata @(i.Answers.Any(x => x.IsSelected) == false?  "answer" : "" )" style="width:42%"></td>
-    <td class="tddata"><button class="btndone" @onclick='()=>NavigateToComponent($"{i.Num}")'>@i.Num</button></td>
-</tr>}  </tbody>    </table></div>
+            @foreach (var i in ExamController.CurrentExam)
+            {
+                <tr class="trbodytbl">
+                    <td class="tddata" style="width:10%">@i.Num</td>
+                    <td class="tddata @(i.IsFlagged ? "mark" : "") " style="width:32%"></td>
+                    <td class="tddata @(i.Answers.Any(x => x.IsSelected) == false?  "answer" : "" )" style="width:42%"></td>
+                    <td class="tddata"><button class="btndone" @onclick='()=>NavigateToComponent($"{i.Num}")'>@i.Num</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

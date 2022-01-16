@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Components;
-
-namespace ServerMTA.Model
+namespace ServerMTA.Model;
+public class ExamMTAData : IExamData
 {
-    public class ExamMTAData : IExamData
+    public string ExamName() => "MTA 98-361";
+    public Span<Exam> CurrentExam() => new Exam[]
     {
-        public string ExamName() => "MTA 98-361";
-        public Exam[] CurrentExam() => new Exam[]
-        {
             new(1, new Answer[]
             {
                 new(1, @"You should consider making use of the flowchart method.", true),
@@ -987,8 +981,5 @@ namespace ServerMTA.Model
         You are currently running a training exercise for potential developers.
         You are in the process of discussing stored procedures.
         That are options that suitably describe the advantages of making use of stored procedures in SQL Server? (Choose all that apply.)", ControlType.CheackBox),
-        };
-
-
-    }
+    };
 }

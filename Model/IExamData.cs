@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ServerMTA.Model
+﻿namespace ServerMTA.Model;
+public interface IExamData
 {
-    public interface IExamData
-    {
-        public string ExamName();
-        public Exam[] CurrentExam();
-    }
+    public string ExamName();
+    public Span<Exam> CurrentExam();
 }

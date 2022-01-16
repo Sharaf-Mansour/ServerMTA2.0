@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Components;
-
-namespace ServerMTA.Model
+namespace ServerMTA.Model;
+public class ExamAIData : IExamData
 {
-    public class ExamAIData : IExamData
+    public string ExamName() => "AI-900";
+    public Span<Exam> CurrentExam() => new Exam[]
     {
-        public string ExamName() => "AI-900";
-        public Exam[] CurrentExam() => new Exam[]
-        {
             new(1, new Answer[]
             {
                 new(1, @"increased sales"),
@@ -797,7 +791,5 @@ respond to unanticipated conditions, and resist harmful manipulation"),
                 new(3, @"Language detection"),
                 new(4, @"Sentiment analysis"),
             }, @"Summarize important information from the support ticket."),
-           };
-
-    }
+       };
 }
