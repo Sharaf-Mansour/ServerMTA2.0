@@ -8,7 +8,7 @@ self.addEventListener('fetch', event => event.respondWith(onFetch(event)));
 const CACHE_VERSION = 1.10;
 const cacheNamePrefix = 'offline-cache-';
 const cacheName = `${cacheNamePrefix}${self.assetsManifest.version + CACHE_VERSION}`;
-const offlineAssetsInclude = [ /\.dll$/, /\.pdb$/, /\.wasm/, /\.html/, /\.js$/, /\.json$/, /\.css$/, /\.woff$/, /\.png$/, /\.jpe?g$/, /\.gif$/, /\.ico$/ ];
+const offlineAssetsInclude = [ /\.dll$/, /\.pdb$/, /\.wasm/, /\.html/, /\.js$/, /\.json$/, /\.css$/, /\.woff$/, /\.png$/, /\.webmanifest/, /\.jpe?g$/, /\.gif$/, /\.ico$/ ];
 const offlineAssetsExclude = [ /^service-worker\.js$/ ];
 
 async function onInstall(event) {
@@ -20,11 +20,11 @@ async function onInstall(event) {
         .filter(asset => !offlineAssetsExclude.some(pattern => pattern.test(asset.url)))
         .map(asset => new Request(asset.url, { integrity: asset.hash }));
     await caches.open(cacheName).then(cache => cache.addAll(assetsRequests));
+    self.skipWaiting();
 }
 
 async function onActivate(event) {
     console.info('Service worker: Activate');
-
     // Delete unused caches
     const cacheKeys = await caches.keys();
     await Promise.all(cacheKeys
