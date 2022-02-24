@@ -9,11 +9,8 @@ namespace ServerMTA.Model
             int n = list.Length;
             while (n > 1)
             {
-                n--;
-                int k = Random.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
+                int k = Random.Next(n--);
+                (list[k], list[n]) = (list[n], list[k]);         
             }
         }
     }
