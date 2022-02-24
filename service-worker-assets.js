@@ -13,7 +13,7 @@
       "url": "_framework\/dotnet.wasm"
     },
     {
-      "hash": "sha256-Rs3UXiiBoCMEBc\/2TdZJyhh5iMjwXjgaXAzj8EOIqus=",
+      "hash": "sha256-590pg0\/4QyfrrHXup4rOmMI2ca8JMawoHsgun2TMiDA=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -25,7 +25,7 @@
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-dx5LdA2XIsMDaR5ILhKiG8Gqmoa0kTdV+j8XtWdEyqQ=",
+      "hash": "sha256-4Jv0gNbJoXMa\/lTICbmyhg4a2Un\/omPuMfKbXf6PpD4=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -73,7 +73,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-E+i75\/nKlsq9RDjNcAr0EOwDC33TSvhXmNpnkBkRmbY=",
+      "hash": "sha256-tJZjTaymqWdPCMyLhsgwE+7pK0WGCpxFtIGIoLTOVe0=",
       "url": "_framework\/ServerMTA.dll"
     },
     {
@@ -165,5 +165,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "Q+8NnTiL"
+  "version": "\/6XaG63W"
 };
