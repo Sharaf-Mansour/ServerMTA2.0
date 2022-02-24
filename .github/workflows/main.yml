@@ -35,7 +35,7 @@ jobs:
         run: dotnet publish ServerMTA.csproj -c Release -o release --nologo 
         
       - name: Change base-tag in index.html from / to ServerMTA
-        run: sed -i 's/<base href="\/" \/>/<base href="\/CVBuilder\/" \/>/g' release/wwwroot/index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/ServerMTA2.0/\/" \/>/g' release/wwwroot/index.html
       - name: Fix service-worker-assets.js hashes
         working-directory: release/wwwroot
         run: |
