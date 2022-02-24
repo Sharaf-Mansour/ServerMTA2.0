@@ -3,7 +3,7 @@
 @inject NavigationManager NavigationManager
 <div class="container">
     <h1>Welcome to the Microsoft @ExamController.ExamName() Exam </h1>
-    <button class="btn btnindex" style="margin: 50px auto;" @onclick='()=>NavigateToComponent(MetaData.Url+"/1")'>Click to Start</button>
+    <button class="btn btnindex" style="margin: 50px auto;" @onclick='()=>NavigateToComponent("1")'>Click to Start</button>
     <div style="margin: 50px auto;margin-top: 20px;padding-top: 10px;border: 2px solid #aaa;border-radius: 12px;box-shadow: 0 0px 20px #999;width: 80%;">
         <h1 style="margin-bottom: 25px;">Control Panel</h1>
         <table border="0" style="text-align: left;margin: auto; width: 25%">

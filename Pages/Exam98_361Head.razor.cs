@@ -1,7 +1,7 @@
 namespace ServerMTA.Pages;
 public partial class Exam98_361Head
 {
-    public static bool HasRefreshed = true;
+    public static bool HasRefreshed { get; set; } = true;
     [Parameter] public int QNumber { get; set; }
     private bool ShowAnswer;
     private bool CorrectAnswer;
@@ -9,15 +9,12 @@ public partial class Exam98_361Head
     private void NavigateToComponent(string Report)
     {
         (ShowAnswer, CorrectAnswer) = (false, false);
-        NavigationManager.NavigateTo(Report);
+        NavigationManager.NavigateTo(MetaData.Url+'/'+Report);
     }
     protected override void OnInitialized()
     {
         if (HasRefreshed)
-        {
             NavigationManager.NavigateTo(MetaData.Url+"/");
-            StateHasChanged();
-        }
     }
     private void Marker(ChangeEventArgs args) => Qeustion.IsFlagged = (bool)(args.Value ?? false);
     private void RadioSelection(Answer I)

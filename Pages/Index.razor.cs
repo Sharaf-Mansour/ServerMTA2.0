@@ -15,6 +15,6 @@ public partial class Index
             ExamController.SortAnswer();
         ExamController.Numrize();
         Exam98_361Head.HasRefreshed = false;
-        NavigationManager.NavigateTo(Report);
+        NavigationManager.NavigateTo(MetaData.Url+'/'+Report);
     }
 }
