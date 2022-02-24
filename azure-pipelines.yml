@@ -14,7 +14,7 @@ steps:
   displayName: Use Latest .NET Core 6.0 SDK
   inputs:
     packageType: 'sdk'
-    dotnet-version: '7.0.x'
+    dotnet-version: '6.0.x'
     include-prerelease: true
 - task: DotNetCoreCLI@2
   displayName: Publish App
