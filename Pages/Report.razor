@@ -3,7 +3,7 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 <button class="btnsubmit" @onclick='Print'>Print</button>
-<button class="btnsubmit" @onclick='()=>NavigateToComponent("Score")'>back</button>
+<button class="btnsubmit" @onclick='()=>NavigateToComponent(MetaData.Url+"/Score")'>back</button>
  @foreach (var Qeustion in ExamController.CurrentExam)
 {
     <div>

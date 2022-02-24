@@ -15,7 +15,7 @@ public partial class Exam98_361Head
     {
         if (HasRefreshed)
         {
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo(MetaData.Url+"/");
             StateHasChanged();
         }
     }

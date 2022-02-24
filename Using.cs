@@ -6,3 +6,4 @@ global using ServerMTA.Model;
 global using Microsoft.AspNetCore.Components;
 global using System.Linq;
 global using Microsoft.JSInterop;
+global using ServerMTA.Shared;

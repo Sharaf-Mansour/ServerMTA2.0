@@ -6,8 +6,8 @@
         <h1>You scored  @ExamController.Score out of @ExamController.CountAll</h1>
         <progress class="progress" id="file" value="@ScorePerc" max="100" data-label="@StringScore">  </progress>
     </div>
-    <button class="btnsubmit" @onclick='()=>NavigateToComponent("/")'>Retake Exam</button>
-    <button class="btnsubmit" @onclick='()=>NavigateToComponent("Download")'>Download EXAM</button>
+    <button class="btnsubmit" @onclick='()=>NavigateToComponent(MetaData.Url+"/")'>Retake Exam</button>
+    <button class="btnsubmit" @onclick='()=>NavigateToComponent(MetaData.Url+"/Download")'>Download EXAM</button>
     <div class="table-box">
         <table cellspacing='0' class="tbl">
             <tbody class="tbodytbl">
