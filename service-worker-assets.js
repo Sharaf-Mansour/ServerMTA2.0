@@ -13,7 +13,7 @@
       "url": "_framework\/dotnet.wasm"
     },
     {
-      "hash": "sha256-590pg0\/4QyfrrHXup4rOmMI2ca8JMawoHsgun2TMiDA=",
+      "hash": "sha256-EEQDcYvVwzjJHMxmtqo6p+hfAl1XC1TiA67BpWVEpLE=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -73,7 +73,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-tJZjTaymqWdPCMyLhsgwE+7pK0WGCpxFtIGIoLTOVe0=",
+      "hash": "sha256-CEDXV2+N0eOios62oI42TSMwL0m3Ugm1p+gL9spTtcU=",
       "url": "_framework\/ServerMTA.dll"
     },
     {
@@ -165,5 +165,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "\/6XaG63W"
+  "version": "\/ap8jQsA"
 };
